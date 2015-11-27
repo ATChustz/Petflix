@@ -10,16 +10,22 @@
 }
 
 #button-container {
-    position:relative;
-    margin: 0 auto;
+  margin-top: 130%;
 }
 
 button {
 	color: white;
 	background-color: transparent;
+  left:50%;
+  width:200px;
+  bottom:5px;
 }
 
 #login, #signup{
 	border: 1px solid white;
+}
+
+#signup {
+	margin-top: 10px;
 }
 
