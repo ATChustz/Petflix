@@ -1,1 +1,38 @@
 /* CSS declarations go here */
+.container {
+
+}
+
+#login-screen {
+	background-image: url('xs-logindog.png');
+	height: 667px;
+	width: 375px;
+}
+
+#logo {
+	width: 262px;
+	margin-left: 35px;
+	margin-top: 20px;
+}
+
+#button-container {
+  margin-top: 130%;
+  margin-left: 20px;
+}
+
+button {
+	color: white;
+	background-color: transparent;
+  left:50%;
+  width:300px;
+  bottom:5px;
+}
+
+#login, #signup{
+	border: 1px solid white;
+}
+
+#signup {
+	margin-top: 10px;
+}
+
