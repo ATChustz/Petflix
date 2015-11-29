@@ -1,0 +1,36 @@
+<head>
+  <title>Detail View</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+<body>
+
+  <div class="container" id="detail">
+{{>pet}}
+<div class="row">
+<button type="button" class="btn btn-primary center-block" id="chill-button">Chill</button>
+</div>
+</div>
+</body>
+
+<!-- Template to pet information -->
+<template name="pet">
+  {{#with pet}}
+ <img id="dog" src="{{imgURL}}"/>
+<div class="row">
+  <div class="col-xs-6 about-pet detail-content">About {{Petname}}</div>
+  <div class="col-xs-5 detail-content">Rating: {{rating}}</div>
+</div>
+<div class="row"><div class="col-xs-12 detail-content">Breed: {{breed}}</div></div>
+<div class="row"><div class="col-xs-12 detail-content">Age: {{age}}</div></div>
+<div class="row"><div class="col-xs-12 detail-content">Temperment: {{temperment}}</div></div>
+<div class="row"><div class="col-xs-12 detail-content">Bio: {{bio}}</div></div>
+{{/with}}
+</template>
+
+
+
+
+
+
+

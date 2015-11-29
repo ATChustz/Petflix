@@ -1,6 +1,6 @@
 /* CSS declarations go here */
 .container {
-
+width: 375px;
 }
 
 #login-screen {
@@ -35,4 +35,22 @@ button {
 #signup {
 	margin-top: 10px;
 }
+
+.detail-content {
+	font-size: 14;
+	margin-left: 1%;
+	margin-right: 1%;
+}
+.about-pet {
+	font-size: 18;
+	font-weight: bold;
+
+}
+
+#chill-button {
+	width: 200px;
+	
+}
+
+
 

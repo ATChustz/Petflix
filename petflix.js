@@ -1,23 +1,32 @@
-if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
-}
+    pet_profile = new Mongo.Collection("pet profile");
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    // code to run on server at startup
+    pet_profile.remove({});
+    var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
+    pet_profile.insert({name: "Bella", breed: 'Labrador', rating: 5, age: 4, bio: bell_bio, temperment: 'mild', imgURL : "bella.png"});
+    Meteor.publish("all pets", function(){
+      return pet_profile.find();
+    });
+
+
   });
 }
+if (Meteor.isClient) {
+  var pet_name = "Bella";
+  Meteor.subscribe("all pets");
+
+
+  Template.pet.helpers({
+    pet: function() {
+      var pet =  pet_profile.findOne({name: pet_name});
+      return pet;
+    }
+  });
+
+
+
+
+}
+
+
