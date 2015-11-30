@@ -88,9 +88,19 @@
 	{{#each pets}}
 
 	<div class="image">
-		 <a href="{{name}}"><img id="{{name}}" src="{{imgURL}}"/></a>
-		 <h2><span>{{name}}<span class='spacer'></span><br />{{breed}}</span></h2>
-	</div>
+	<a href="{{name}}">
+    <img id="{{name}}" src="{{imgURL}}"/>
+		<h2>
+			<span>
+				{{name}}
+				<span class='spacer'></span>
+				<br />
+				<span class='spacer'></span>
+				{{breed}}
+			</span>
+		</h2>
+	</a>
+</div>
 	
 	{{/each}}
 </template>
