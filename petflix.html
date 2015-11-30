@@ -4,16 +4,70 @@
 </head>
 
 <body>
-  <div class="container" id="login-screen">
-  	<img id="logo" src="petflix-logo.png"/>
-  	<div id="button-container">
-  		<a href="#">
-  			<button class="btn" id="login">Log In</button>
-  		</a>
-  		<br/>
-  		<a href="#">
-  			<button class="btn" id="signup">Sign Up</button>
-  		</a>
-  	</div>
-	</div>
+  
 </body>
+
+<template name="login">
+	<div class="container" id="login-screen">
+	  <img id="logo" src="petflix-logo.png"/>
+	  <div id="button-container">
+	  	<a href="/list">
+	  		<button class="btn" id="login">Log In</button>
+	  	</a>
+	  	<br/>
+	  	<a href="/list">
+	  		<button class="btn" id="signup">Sign Up</button>
+	  	</a>
+	  </div>
+	</div>
+</template>
+
+<template name="list">
+	<div class="container" id="list">
+			{{>dog}}
+	</div>
+</template>
+
+<template name="detail">
+	<div class="container" id="detail">
+		{{>pet}}
+		<div class="row">
+			<button type="button" class="btn btn-primary center-block" id="chill-button">Chill</button>
+		</div>
+	</div>
+</template>
+
+<!-- Template to pet information -->
+<template name="pet">
+  {{#with pet}}
+		<img id="dog" src="{{imgURL}}"/>
+		<div class="row">
+	  	<div class="col-xs-6 about-pet detail-content">About {{name}}</div>
+	  	<div class="col-xs-5 detail-content">Rating: <img id = "stars" src = "{{rating}}"/></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 detail-content">Breed: {{breed}}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 detail-content">Age: {{age}}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 detail-content">Temperment: {{temperment}}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 detail-content">Bio: {{bio}}</div>
+		</div>
+	{{/with}}
+</template>
+
+<!-- Template for simple dog info -->
+<template name="dog">
+	{{#each pets}}
+
+	<div class="image">
+		 <a href="{{name}}"><img id="{{name}}" src="{{imgURL}}"/></a>
+		 <h2><span>{{name}}<span class='spacer'></span><br />{{breed}}</span></h2>
+	</div>
+	
+	{{/each}}
+</template>
