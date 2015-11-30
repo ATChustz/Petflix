@@ -32,7 +32,30 @@
 	<div class="container" id="detail">
 		{{>pet}}
 		<div class="row">
-			<button type="button" class="btn btn-primary center-block" id="chill-button">Chill</button>
+			<button type="button" class="btn btn-primary btn-lg center-block" id="chill-button" data-toggle="modal" data-target="#myModal">Chill</button>
+		</div>
+	</div>
+
+	<!-- Confirmation dialog -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog  modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        {{>confirmation}}
+      </div>
+        <button type="button" class="btn btn-default center-block" id="ok-button" data-dismiss="modal">OK</button>
+    </div>
+  </div>
+</div>
+</template>
+
+<!-- Template to confirmation -->
+<template name="confirmation">
+	<div class="row">
+		<div class="col-xs-12">
+			{{#with pet}}
+				Congratulations! You have confirmed {{name}}!
+			{{/with}}
 		</div>
 	</div>
 </template>

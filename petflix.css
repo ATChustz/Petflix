@@ -23,8 +23,7 @@ width: 375px;
 button {
 	color: white;
 	background-color: transparent;
-  left:50%;
-  width:300px;
+  width:100%;
   bottom:5px;
 }
 
@@ -34,6 +33,10 @@ button {
 
 #signup {
 	margin-top: 10px;
+}
+
+#ok-button {
+	color: #CF6619;
 }
 
 .detail-content {
@@ -56,6 +59,11 @@ button {
 	height: 15px;
 	padding-bottom: 3px;
 
+}
+
+#myModal {
+top:30%;
+outline: none;
 }
 
 .image {
