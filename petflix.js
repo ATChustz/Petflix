@@ -22,6 +22,7 @@ var pet_name = "Bella";
 if (Meteor.isServer) {
   Meteor.startup(function () {
     pet_profile.remove({});
+    pet_profile.insert({name: "Lily", breed: 'Labrador', rating: "5star.png", age: 4, bio: "Lily is the best dog in the world.", temperment: 'crazy', imgURL : "lily.png"});
     var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
     pet_profile.insert({name: "Bella", breed: 'Labrador', rating: "5star.png", age: 4, bio: bell_bio, temperment: 'mild', imgURL : "bella.png"});
     var max_bio = "Max loves people";
