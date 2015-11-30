@@ -6,6 +6,14 @@ Router.route('/list', function () {
   this.render('list');
 });
 
+// given a url like "/post/5"
+Router.route('/:_id', function () {
+  var params = this.params; // { _id: "bella" }
+  var id = params._id; // "5"
+  pet_name = id;
+  this.render('detail');
+});
+
 
 pet_profile = new Mongo.Collection("pet profile");
 var pet_name = "Bella";
