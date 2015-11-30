@@ -2,9 +2,9 @@
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    pet_profile.remove({});
+    pet_profile.remove({}); //remove all documents
     var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
-    pet_profile.insert({name: "Bella", breed: 'Labrador', rating: 5, age: 4, bio: bell_bio, temperment: 'mild', imgURL : "bella.png"});
+    pet_profile.insert({name: "Bella", breed: 'Labrador', rating: "5star.png", age: 4, bio: bell_bio, temperment: 'mild', imgURL : "bella.png"});
     Meteor.publish("all pets", function(){
       return pet_profile.find();
     });
