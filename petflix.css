@@ -51,7 +51,10 @@ button {
 }
 
 #chill-button {
-	width: 200px;
+	color: #CF6619;
+	background-color: transparent;
+	width: 170px;
+	border: 1px solid #CF6619;
 	
 }
 
@@ -60,7 +63,25 @@ button {
 	padding-bottom: 3px;
 
 }
+.comments{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin: 0px;
+}
 
+.pet-info{
+	background-color: rgb(242,242,242);
+	padding-left: 0px;
+	padding-right: 0px;
+	margin: 0px;
+	padding-bottom: 40px;
+}
+
+.walker-name{
+	font-weight: bold;
+}
 #myModal {
 top:30%;
 outline: none;
@@ -68,6 +89,16 @@ outline: none;
 
 .image {
 	position: relative;
+}
+
+#dog{
+	margin: 0;
+	padding: 0;
+}
+
+.fa-arrow-left{
+	transform: scale(1.5,1);
+	color: #CF6619;
 }
 
 h2 {

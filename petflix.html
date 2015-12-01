@@ -31,9 +31,6 @@
 <template name="detail">
 	<div class="container" id="detail">
 		{{>pet}}
-		<div class="row">
-			<button type="button" class="btn btn-primary btn-lg center-block" id="chill-button" data-toggle="modal" data-target="#myModal">Chill</button>
-		</div>
 	</div>
 
 	<!-- Confirmation dialog -->
@@ -43,7 +40,7 @@
       <div class="modal-body text-center">
         {{>confirmation}}
       </div>
-        <button type="button" class="btn btn-default center-block" id="ok-button" data-dismiss="modal">OK</button>
+        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
     </div>
   </div>
 </div>
@@ -65,24 +62,42 @@
 <div class="row">
   {{#with pet}}  
   <a href="/list"><i class="fa fa-arrow-left" id="back"></i></a>
-		<img id="dog" src="{{imgURL}}"/>
-		<div class="row">
+  <div class="row">
+  	<div class="col-xs-12">
+		<img id="dog" class="img-responsive" src="{{imgURL}}"/>
+		<div class="row pet-info">
 	  	<div class="col-xs-6 about-pet detail-content">About {{name}}</div>
 	  	<div class="col-xs-5 detail-content">Rating: <img id = "stars" src = "{{rating}}"/></div>
-		</div>
-		<div class="row">
+
 			<div class="col-xs-12 detail-content">Breed: {{breed}}</div>
-		</div>
-		<div class="row">
+
 			<div class="col-xs-12 detail-content">Age: {{age}}</div>
-		</div>
-		<div class="row">
+
 			<div class="col-xs-12 detail-content">Temperment: {{temperment}}</div>
-		</div>
-		<div class="row">
+
 			<div class="col-xs-12 detail-content">Bio: {{bio}}</div>
+		
+				<button type="button" class="btn btn-primary btn-lg center-block" id="chill-button" data-toggle="modal" data-target="#myModal">Chill</button>
+			</div>
+		
+			{{#each comments}}
+			<div class="row comments">
+				<div class="row">
+					<div class="col-xs-4 walker-name">{{walker}}</div>
+					<div class="col-xs-3 col-xs-offset-4"><img id = "stars" src = "{{rating}}"/></div>
+				</div>
+				<div class="row">
+					<div class="col-xs-4">{{date}}</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">{{comment}}</div>
+				</div>
+			</div>
+			{{/each}}
+			</div>
 		</div>
-	{{/with}}
+			{{/with}}
+
   </div>
 </template>
 
