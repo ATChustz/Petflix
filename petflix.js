@@ -81,7 +81,7 @@ if (Meteor.isClient) {
     }
   });
 
-    Template.confirmation.helpers({
+    Template.cancellation.helpers({
     pet: function() {
       var pet =  pet_profile.findOne({name: pet_name});
       return pet;
