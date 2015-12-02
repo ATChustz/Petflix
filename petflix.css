@@ -9,6 +9,17 @@ width: 375px;
 	width: 375px;
 }
 
+
+#scheduler-dog {
+	padding: 30px;
+}
+
+#form{
+	padding-left: 30px;
+}
+#pickup{
+	padding-bottom: 20px;
+}
 #logo {
 	width: 262px;
 	margin-left: 35px;
@@ -27,10 +38,26 @@ button {
   bottom:5px;
 }
 
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+.at{
+	margin-right: 5px;
+}
+
+.pick-option{
+	margin-bottom: 5px;
+}
 #login, #signup{
 	border: 1px solid white;
 }
 
+.verifier-remind{
+	color: grey;
+	margin-top: 30px;
+}
 #signup {
 	margin-top: 10px;
 }
@@ -38,6 +65,7 @@ button {
 #ok-button {
 	color: #CF6619;
 }
+
 
 .detail-content {
 	font-size: 14;
@@ -50,12 +78,30 @@ button {
 
 }
 
-#chill-button {
+
+
+
+
+.verifier-img{
+	padding-top: 50px;
+	width: 200px;
+}
+
+#button-text {
 	color: #CF6619;
+	padding: 0px;
+	margin: 0px;
+}
+
+.dropdown-toggle{
 	background-color: transparent;
-	width: 170px;
+	width: 140px;
 	border: 1px solid #CF6619;
-	
+
+}
+#confirm-button {
+	color: #CF6619;
+
 }
 
 #stars{
@@ -71,6 +117,10 @@ button {
 	margin: 0px;
 }
 
+#bottom-button{
+	margin-top: 30px;
+}
+
 .pet-info{
 	background-color: rgb(242,242,242);
 	padding-left: 0px;
@@ -82,7 +132,7 @@ button {
 .walker-name{
 	font-weight: bold;
 }
-#myModal {
+#myModal1, #myModal2 {
 top:30%;
 outline: none;
 }
@@ -99,6 +149,27 @@ outline: none;
 .fa-arrow-left{
 	transform: scale(1.5,1);
 	color: #CF6619;
+}
+
+.general-button{
+		color: #CF6619;
+	background-color: transparent;
+	width: 140px;
+	border: 1px solid #CF6619;
+}
+
+.general-button:hover{
+  background-color: transparent;
+  border: 1px solid #CF6619;
+}
+
+.general-button:active{
+  background-color: transparent;
+  border: 1px solid #CF6619;
+}
+
+#cancel-button{
+	margin-top: 20px;
 }
 
 h2 {
