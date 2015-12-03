@@ -47,7 +47,9 @@ button {
   bottom:5px;
 }
 
-
+hr{
+	border: 1px solid rgb(230,230,230);
+}
 input[type="radio"] {
   margin-right: 10px;
 }
@@ -174,7 +176,7 @@ a:hover{
 .walker-name{
 	font-weight: bold;
 }
-#myModal1, #myModal2 {
+#myModal1, #myModal2, #myModal4{
 top:30%;
 outline: none;
 }
@@ -182,7 +184,9 @@ outline: none;
 .image {
 	position: relative;
 }
-
+.highlight{
+	color: #CF6619;
+}
 #dog{
 	margin: 0;
 	padding: 0;
@@ -192,10 +196,6 @@ outline: none;
 	font-size: 0.7em;
 }
 
-.fa-arrow-left{
-	transform: scale(1.5,1);
-	color: #CF6619;
-}
 
 .badges{
 	margin: 0px;
@@ -294,6 +294,12 @@ outline: none;
 	text-align: center;
 	color: white;
 	opacity: .75;
+}
+
+
+h4, h5 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
 }
 
 
