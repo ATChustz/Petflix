@@ -267,12 +267,14 @@ outline: none;
 
 .pet_name {
 	position: absolute;
-	top: 50%;
+	top: 40%;
 	left: 0;
 	width: 100%;
 	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
 	text-align: center;
 	color: white;
+	margin-top: 0px;
 }
 
 .quote {
@@ -287,13 +289,15 @@ outline: none;
 
 .breed{
 	position: absolute;
-	top: 63%;
+	top: 53%;
 	left: 0;
 	width: 100%;
 	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
 	text-align: center;
 	color: white;
 	opacity: .75;
+	margin-top: 0px;
 }
 
 
