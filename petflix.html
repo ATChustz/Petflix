@@ -2,6 +2,7 @@
   <title>Petflix</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Just+Another+Hand' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -119,20 +120,20 @@
 <template name="dog">
 <div class="row">
 	{{#each pets}}
-	<div class="image">
-	<a href="{{name}}">
-    <img id="{{name}}" src="{{imgURL}}"/>
-		<h2>
-			<span>
-				{{name}}
-				<span class='spacer'></span>
-				<br />
-				<span class='spacer'></span>
-				{{breed}}
-			</span>
-		</h2>
-	</a>
-</div>
+		<div class="image">
+			<a href="{{name}}">
+		    <img id="{{name}}" src="{{imgURL}}"/>
+		    	<div class="opq">
+
+			    	<h4 class="distance">{{distance}}</h4>
+			    	<h1 class="pet_name"> {{name}} </h1>
+					<h5 class="breed">{{breed}}</h5>
+					<h2 class="quote">{{quote}}</h2>
+
+				</div>
+
+			</a>
+		</div>
 	
 	{{/each}}
   </div>
@@ -233,7 +234,6 @@
 </template>
 
 <template name="verifier">
-
 	<div class="container">
 		<div class="row">
   				<div class="col-xs-4 back-arrow">
