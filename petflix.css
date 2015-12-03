@@ -47,7 +47,9 @@ button {
   bottom:5px;
 }
 
-
+hr{
+	border: 1px solid rgb(230,230,230);
+}
 input[type="radio"] {
   margin-right: 10px;
 }
@@ -57,7 +59,13 @@ input[type="radio"] {
 }
 
 .pick-option{
-	margin-bottom: 5px;
+	margin: 0px;
+
+}
+
+#chill-pet{
+	padding-top: 10px;
+	margin-bottom: 10px;
 }
 #login, #signup{
 	border: 1px solid white;
@@ -168,7 +176,7 @@ a:hover{
 .walker-name{
 	font-weight: bold;
 }
-#myModal1, #myModal2 {
+#myModal1, #myModal2, #myModal4{
 top:30%;
 outline: none;
 }
@@ -176,7 +184,9 @@ outline: none;
 .image {
 	position: relative;
 }
-
+.highlight{
+	color: #CF6619;
+}
 #dog{
 	margin: 0;
 	padding: 0;
@@ -186,10 +196,6 @@ outline: none;
 	font-size: 0.7em;
 }
 
-.fa-arrow-left{
-	transform: scale(1.5,1);
-	color: #CF6619;
-}
 
 .badges{
 	margin: 0px;
@@ -199,7 +205,8 @@ outline: none;
 }
 
 .dont{
-	padding-bottom: 5px;
+	padding-bottom: 0px;
+	font-weight: bold;
 }
 
 .badeges-container{
@@ -239,25 +246,60 @@ outline: none;
 	margin-top: 20px;
 }
 
-h2 {
+
+.opq{
+    background-color: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.distance {
+	font-family: 'Montserrat', sans-serif;
+	text-align: right;
+	color: white;
+	margin: 6px;
+}
+
+
+
+.pet_name {
 	position: absolute;
-	top: 200px;
+	top: 50%;
 	left: 0;
 	width: 100%;
 	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	color: white;
 }
 
-h2 span {
-color: white;
-font: bold 24px/45px 'Montserrat', Sans-Serif;
-letter-spacing: -1px;
-		background: rgb(0, 0, 0);
-		background: rgba(0, 0, 0, 0.7);
-		padding: 10px;
+.quote {
+	position: absolute;
+	top: 75%;
+	left: 0;
+	width: 100%;
+	font-family: 'Just Another Hand', cursive;
+	text-align: center;
+	color: white;
 }
 
-h2 span.spacer {
-	padding: 0 2px;
-	background: none;
+.breed{
+	position: absolute;
+	top: 63%;
+	left: 0;
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	color: white;
+	opacity: .75;
 }
+
+
+h4, h5 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+}
+
 
