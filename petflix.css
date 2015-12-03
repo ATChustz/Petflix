@@ -199,7 +199,8 @@ outline: none;
 }
 
 .dont{
-	padding-bottom: 5px;
+	padding-bottom: 0px;
+	font-weight: bold;
 }
 
 .badeges-container{
