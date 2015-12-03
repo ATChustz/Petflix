@@ -16,6 +16,8 @@ width: 375px;
 	padding: 30px;
 }
 
+
+
 #form{
 	padding-left: 30px;
 }
@@ -64,6 +66,17 @@ input[type="radio"] {
 	margin-top: 10px;
 }
 
+#home-location {
+	color:grey;
+	font-size: 0.9em;
+}
+
+#owner-location {
+		color:grey;
+	font-size: 0.9em;
+
+}
+
 #ok-button {
 	color: #CF6619;
 }
@@ -79,6 +92,8 @@ input[type="radio"] {
 	font-weight: bold;
 
 }
+
+
 
 
 
@@ -146,6 +161,10 @@ outline: none;
 #dog{
 	margin: 0;
 	padding: 0;
+}
+
+.class-why{
+	font-size: 0.7em;
 }
 
 .fa-arrow-left{
