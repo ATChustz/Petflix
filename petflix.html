@@ -297,7 +297,7 @@
       <div class="modal-body text-center">
         {{>confirmation}}
       </div>
-        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+        <a href="/video"><button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button></a>
     </div>
   </div>
 </div>
@@ -328,5 +328,12 @@
 	</div>
 </template>
 
+<template name="video">
+	<div class="row">
+		<video width="320" height="240" controls>
+		  <source src="lily.mp4" type="video/mp4">
+		</video>
+	</div>
+</template>
 
 

@@ -22,6 +22,9 @@ Router.route('/:_id', function () {
   this.render('detail');
 });
 
+Router.route('/video', function () {
+  this.render('video');
+});
 
 var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
