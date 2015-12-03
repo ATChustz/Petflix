@@ -36,13 +36,13 @@ if (Meteor.isServer) {
     var lily_comments = [{walker: "Penny", rating:"5star.png", date:"Aug 2015", comment:"Lily is such an amazing girl! I couldn't wait to meet her again!"}];
     pet_profile.insert({name: "Lily", breed: 'Labrador', rating: "5star.png", age: 4, bio: "Lily is the best dog in the world.", temperment: 'crazy', imgURL : "lily.png",comments: lily_comments, badges: lily_badges, class: "B.png", distance: "1.3 miles"});
     
-    var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"feed me realy meat", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
+    var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"only feed me real meat products", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
     var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
     var bella_comments = [{walker: "Leonard", rating:"5star.png", date:"Oct 2015", comment:"Bella is so energetic to hand out with me! She made my day!"}, 
     {walker:"Sheldon",rating:"4halfstar.png", date:"Nov 2015", comment:"Bella is awesome, though she is too curious of everything."}];
     pet_profile.insert({name: "Bella", breed: 'Labrador', rating: "5star.png", age: 4, bio: bell_bio, temperment: 'mild', imgURL : "bella.png",comments: bella_comments,badges: bella_badges, class: "C.png", distance: "1.7 miles"});
     
-    var max_badges = [{ask: "don't put me in a bag", icon: "fa-suitcase"},{ask:"feed me realy meat", icon:"fa-cutlery"}];
+    var max_badges = [{ask: "don't put me in a bag", icon: "fa-suitcase"},{ask:"only feed me real meat products", icon:"fa-cutlery"}];
     var max_bio = "Max loves people";
     var max_comments = [{walker:"Howard",rating:"4halfstar.png", date:"Dec 2015", comment:"Trust me, Max will be your best friend."}];
     pet_profile.insert({name: "Max", breed: 'Golden Retriever', rating: "4star.png", age: 3, bio: max_bio, temperment: 'energetic', imgURL : "max.png",comments:max_comments, badges: max_badges, class: "D.png", distance: "0.5 miles"});
