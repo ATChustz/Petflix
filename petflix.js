@@ -27,6 +27,7 @@ var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
 var pet_name = "Bella";
  var schedule_time = "Thursday 5:00pm";
+ var schedule_id;
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
@@ -114,7 +115,10 @@ if (Meteor.isClient) {
       if (pickup == ""){
         pickup = $('input:text[name=user-enter]').val();
       }
-      schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time});
+      if(schedule_id!=null){
+        schedules.remove({_id: schedule_id});
+      }
+      schedule_id = schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time});
 
     }
 
