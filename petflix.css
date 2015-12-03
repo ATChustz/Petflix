@@ -21,8 +21,6 @@ width: 375px;
 	padding-right: 30px;
 }
 
-
-
 #form{
 	padding-left: 30px;
 }
@@ -47,7 +45,9 @@ button {
   bottom:5px;
 }
 
-
+hr{
+	border: 1px solid rgb(230,230,230);
+}
 input[type="radio"] {
   margin-right: 10px;
 }
@@ -57,10 +57,17 @@ input[type="radio"] {
 }
 
 .pick-option{
-	margin-bottom: 5px;
+	margin: 0px;
+
+}
+
+#chill-pet{
+	padding-top: 10px;
+	margin-bottom: 10px;
 }
 #login, #signup{
 	border: 1px solid white;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .verifier-remind{
@@ -83,7 +90,7 @@ input[type="radio"] {
 }
 
 #ok-button {
-	color: #CF6619;
+	color: #FF9600;
 }
 
 
@@ -101,15 +108,16 @@ input[type="radio"] {
 #back{
 	display: inline-block;
 	padding-right: 3px;
+	margin-right: 2px;
 }
 
 
 a {
-    color: #CF6619;
+    color: #FF9600;
 }
 
 a:hover{
-	color: #CF6619;
+	color: #FF9600;
 }
 
 
@@ -118,7 +126,7 @@ a:hover{
 }
 
 #button-text {
-	color: #CF6619;
+	color: #FF9600;
 	padding: 0px;
 	margin: 0px;
 }
@@ -126,11 +134,11 @@ a:hover{
 .dropdown-toggle{
 	background-color: transparent;
 	width: 140px;
-	border: 1px solid #CF6619;
+	border: 1px solid #FF9600;
 
 }
 #confirm-button {
-	color: #CF6619;
+	color: #FF9600;
 
 }
 
@@ -163,12 +171,13 @@ a:hover{
 	padding-right: 0px;
 	margin: 0px;
 	padding-bottom: 10px;
+	padding-top: 5px;
 }
 
 .walker-name{
 	font-weight: bold;
 }
-#myModal1, #myModal2 {
+#myModal1, #myModal2, #myModal4{
 top:30%;
 outline: none;
 }
@@ -176,7 +185,9 @@ outline: none;
 .image {
 	position: relative;
 }
-
+.highlight{
+	color: #FF9600;
+}
 #dog{
 	margin: 0;
 	padding: 0;
@@ -186,10 +197,6 @@ outline: none;
 	font-size: 0.7em;
 }
 
-.fa-arrow-left{
-	transform: scale(1.5,1);
-	color: #CF6619;
-}
 
 .badges{
 	margin: 0px;
@@ -199,19 +206,29 @@ outline: none;
 }
 
 .dont{
-	padding-bottom: 5px;
+	padding-bottom: 0px;
+	font-weight: bold;
 }
 
-.badeges-container{
+.about-pet, .dont {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.badges-container{
 	padding-top: 20px;
 }
 
 .back-arrow{
 	padding-top: 5px;
-	color: #CF6619;
+	color: #FF9600;
 }
-.chill-container{
-	padding-top: 20px;
+
+#last-attribute {
+	padding-bottom: 20px;
+}
+
+#bone-button {
+	margin-left: 106px;
 }
 
 .title{
@@ -219,45 +236,84 @@ outline: none;
 	font-weight: bold;
 }
 .general-button{
-		color: #CF6619;
+		color: #FF9600;
 	background-color: transparent;
 	width: 140px;
-	border: 1px solid #CF6619;
+	border: 1px solid #FF9600;
 }
 
 .general-button:hover{
   background-color: transparent;
-  border: 1px solid #CF6619;
+  border: 1px solid #FF9600;
 }
 
 .general-button:active{
   background-color: transparent;
-  border: 1px solid #CF6619;
+  border: 1px solid #FF9600;
 }
 
 #cancel-button{
 	margin-top: 20px;
 }
 
-h2 {
+
+.opq{
+    background-color: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.distance {
+	font-family: 'Montserrat', sans-serif;
+	text-align: right;
+	color: white;
+	margin: 6px;
+}
+
+
+
+.pet_name {
 	position: absolute;
-	top: 200px;
+	top: 40%;
 	left: 0;
 	width: 100%;
 	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	margin-top: 0px;
 }
 
-h2 span {
-color: white;
-font: bold 24px/45px 'Montserrat', Sans-Serif;
-letter-spacing: -1px;
-		background: rgb(0, 0, 0);
-		background: rgba(0, 0, 0, 0.7);
-		padding: 10px;
+.quote {
+	position: absolute;
+	top: 75%;
+	left: 0;
+	width: 100%;
+	font-family: 'Just Another Hand', cursive;
+	text-align: center;
+	color: white;
 }
 
-h2 span.spacer {
-	padding: 0 2px;
-	background: none;
+.breed{
+	position: absolute;
+	top: 53%;
+	left: 0;
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	opacity: .75;
+	margin-top: 0px;
 }
+
+
+h4, h5 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+}
+
 
