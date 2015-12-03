@@ -21,8 +21,6 @@ width: 375px;
 	padding-right: 30px;
 }
 
-
-
 #form{
 	padding-left: 30px;
 }
@@ -69,6 +67,7 @@ input[type="radio"] {
 }
 #login, #signup{
 	border: 1px solid white;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .verifier-remind{
@@ -91,7 +90,7 @@ input[type="radio"] {
 }
 
 #ok-button {
-	color: #CF6619;
+	color: #FF9600;
 }
 
 
@@ -109,15 +108,16 @@ input[type="radio"] {
 #back{
 	display: inline-block;
 	padding-right: 3px;
+	margin-right: 2px;
 }
 
 
 a {
-    color: #CF6619;
+    color: #FF9600;
 }
 
 a:hover{
-	color: #CF6619;
+	color: #FF9600;
 }
 
 
@@ -126,7 +126,7 @@ a:hover{
 }
 
 #button-text {
-	color: #CF6619;
+	color: #FF9600;
 	padding: 0px;
 	margin: 0px;
 }
@@ -134,11 +134,11 @@ a:hover{
 .dropdown-toggle{
 	background-color: transparent;
 	width: 140px;
-	border: 1px solid #CF6619;
+	border: 1px solid #FF9600;
 
 }
 #confirm-button {
-	color: #CF6619;
+	color: #FF9600;
 
 }
 
@@ -171,6 +171,7 @@ a:hover{
 	padding-right: 0px;
 	margin: 0px;
 	padding-bottom: 10px;
+	padding-top: 5px;
 }
 
 .walker-name{
@@ -185,7 +186,7 @@ outline: none;
 	position: relative;
 }
 .highlight{
-	color: #CF6619;
+	color: #FF9600;
 }
 #dog{
 	margin: 0;
@@ -209,16 +210,25 @@ outline: none;
 	font-weight: bold;
 }
 
-.badeges-container{
+.about-pet, .dont {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.badges-container{
 	padding-top: 20px;
 }
 
 .back-arrow{
 	padding-top: 5px;
-	color: #CF6619;
+	color: #FF9600;
 }
-.chill-container{
-	padding-top: 20px;
+
+#last-attribute {
+	padding-bottom: 20px;
+}
+
+#bone-button {
+	margin-left: 106px;
 }
 
 .title{
@@ -226,20 +236,20 @@ outline: none;
 	font-weight: bold;
 }
 .general-button{
-		color: #CF6619;
+		color: #FF9600;
 	background-color: transparent;
 	width: 140px;
-	border: 1px solid #CF6619;
+	border: 1px solid #FF9600;
 }
 
 .general-button:hover{
   background-color: transparent;
-  border: 1px solid #CF6619;
+  border: 1px solid #FF9600;
 }
 
 .general-button:active{
   background-color: transparent;
-  border: 1px solid #CF6619;
+  border: 1px solid #FF9600;
 }
 
 #cancel-button{
