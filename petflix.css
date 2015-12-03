@@ -47,7 +47,9 @@ button {
   bottom:5px;
 }
 
-
+hr{
+	border: 1px solid rgb(230,230,230);
+}
 input[type="radio"] {
   margin-right: 10px;
 }
@@ -265,5 +267,10 @@ letter-spacing: -1px;
 h2 span.spacer {
 	padding: 0 2px;
 	background: none;
+}
+
+h4, h5 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
 }
 

@@ -107,6 +107,7 @@
 					<div class="col-xs-12">{{comment}}</div>
 				</div>
 			</div>
+			<hr>
 			{{/each}}
 			</div>
 		</div>
@@ -155,7 +156,7 @@
 			
 	</div>
 	<div class="row" id="form">
-		<form class="scheduler">
+		<form>
 			<div class="row" id="pickup">
 			<div class="col-xs-12 pick-option">
 			  <input type="radio" name="pickup" value="your home" checked>Drop off at my home location<p id="home-location">Panama Mall, Stanford, CA 94305</p>
@@ -236,10 +237,12 @@
 
 	<div class="container">
 		<div class="row">
+			{{#with pet}}
   				<div class="col-xs-4 back-arrow">  
   					<a href="/scheduler"><img id = "back" src = "Back.png"/>Back</a>
 				</div>
 				<div class="col-xs-5 title"><p>{{name}} - Schedule</p></div>
+			{{/with}}
 		</div>
 
 
