@@ -1,4 +1,8 @@
 /* CSS declarations go here */
+body {
+	font-family: helvetica;
+}
+
 .container {
 width: 375px;
 }
@@ -135,6 +139,12 @@ a:hover{
 	padding-bottom: 3px;
 
 }
+
+#class {
+	height: 20px;
+	width: 20px;
+}
+
 .comments{
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -234,11 +244,12 @@ h2 {
 	top: 200px;
 	left: 0;
 	width: 100%;
+	font-family: 'Montserrat', sans-serif;
 }
 
 h2 span {
 color: white;
-font: bold 24px/45px Helvetica, Sans-Serif;
+font: bold 24px/45px 'Montserrat', Sans-Serif;
 letter-spacing: -1px;
 		background: rgb(0, 0, 0);
 		background: rgba(0, 0, 0, 0.7);
