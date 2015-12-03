@@ -9,7 +9,9 @@ width: 375px;
 	width: 375px;
 }
 
-
+.btn:focus,.btn:active {
+   outline: none !important;
+}
 #scheduler-dog {
 	padding: 30px;
 }
@@ -112,8 +114,8 @@ input[type="radio"] {
 .comments{
 	padding-top: 20px;
 	padding-bottom: 20px;
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 20px;
+	padding-right: 20px;
 	margin: 0px;
 }
 
@@ -126,7 +128,7 @@ input[type="radio"] {
 	padding-left: 0px;
 	padding-right: 0px;
 	margin: 0px;
-	padding-bottom: 40px;
+	padding-bottom: 10px;
 }
 
 .walker-name{
@@ -151,6 +153,25 @@ outline: none;
 	color: #CF6619;
 }
 
+.badges{
+	margin: 0px;
+}
+.badges i{
+	padding-right: 10px;
+}
+
+.dont{
+	padding-bottom: 5px;
+}
+
+.badeges-container{
+	padding-top: 20px;
+}
+
+
+.chill-container{
+	padding-top: 20px;
+}
 .general-button{
 		color: #CF6619;
 	background-color: transparent;
