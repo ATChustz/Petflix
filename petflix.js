@@ -14,6 +14,10 @@ Router.route('/verifier', function () {
   this.render('verifier');
 });
 
+Router.route('/video', function () {
+  this.render('video');
+});
+
 // given a url like "/post/5"
 Router.route('/:_id', function () {
   var params = this.params; // { _id: "bella" }
@@ -22,9 +26,6 @@ Router.route('/:_id', function () {
   this.render('detail');
 });
 
-Router.route('/video', function () {
-  this.render('video');
-});
 
 var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
