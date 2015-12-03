@@ -151,16 +151,15 @@
 		<div class="row text-center">
 			
 			<img id="scheduler-dog" class="img-responsive" src="{{imgURL}}"/>
-			<p class="lead"> You are going to chill with {{name}} ...</p>
+			<p class="lead" id="chill-pet"> You are going to chill with {{name}} ...</p>
 			
 	</div>
 	<div class="row" id="form">
 		<form class="scheduler">
 			<div class="row" id="pickup">
 			<div class="col-xs-12 pick-option">
-
-			  <input type="radio" name="pickup" value="your home" checked>Drop off at my home location
-			  <br></div>
+			  <input type="radio" name="pickup" value="your home" checked>Drop off at my home location<p id="home-location">Panama Mall, Stanford, CA 94305</p>
+			  </div>
 			<div class="col-xs-12 pick-option">
 			  <input type="radio" name="pickup" value="owner's home">Pick up from owner’s location
 			  <br><p id="owner-location">{{location}}</p></div>
@@ -211,7 +210,7 @@
         <h4>What is a walker verifier?</h4>
         <p>A walker verifier is a certificated person who ensures that you are able to walk a certain class of dog.</p>
         <h4>Why do I need a verifier to walk this dog?</h4>
-        <p>{{name}} belongs to class <img id = "class" src = "{{class}}"/> but you are currently permitted to walk dogs of class C max. You need to have a verifier to ensure that you are get well with {{name}}.</p>
+        <p>{{name}} belongs to class <img id = "class" src = "{{class}}"/> but you are currently permitted to walk dogs of class D max. You need to have a verifier to ensure that you are get well with {{name}}.</p>
         <h5>You need a verifier if you are</h5>
         <li>New user who never walk a dog through this platform</li>
         <li>Would like to walk a dog that is beyond your permitted class</li>

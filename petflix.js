@@ -112,7 +112,6 @@ if (Meteor.isClient) {
       if (pickup == ""){
         pickup = $('input:text[name=user-enter]').val();
       }
-
       schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time});
 
     }

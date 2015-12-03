@@ -57,7 +57,13 @@ input[type="radio"] {
 }
 
 .pick-option{
-	margin-bottom: 5px;
+	margin: 0px;
+
+}
+
+#chill-pet{
+	padding-top: 10px;
+	margin-bottom: 10px;
 }
 #login, #signup{
 	border: 1px solid white;
