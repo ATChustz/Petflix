@@ -13,7 +13,8 @@ width: 375px;
    outline: none !important;
 }
 #scheduler-dog {
-	padding: 30px;
+	padding-left: 30px;
+	padding-right: 30px;
 }
 
 
@@ -93,14 +94,22 @@ input[type="radio"] {
 
 }
 
+#back{
+	display: inline-block;
+	padding-right: 3px;
+}
 
 
+a {
+    color: #CF6619;
+}
 
-
+a:hover{
+	color: #CF6619;
+}
 
 
 .verifier-img{
-	padding-top: 50px;
 	width: 200px;
 }
 
@@ -187,9 +196,17 @@ outline: none;
 	padding-top: 20px;
 }
 
-
+.back-arrow{
+	padding-top: 5px;
+	color: #CF6619;
+}
 .chill-container{
 	padding-top: 20px;
+}
+
+.title{
+	padding-top: 5px;
+	font-weight: bold;
 }
 .general-button{
 		color: #CF6619;

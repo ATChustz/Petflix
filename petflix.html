@@ -49,9 +49,14 @@
 
 <!-- Template to pet information -->
 <template name="pet">
+  {{#with pet}}
+  <div class="row">
+  <div class="col-xs-4 back-arrow">  
+  <a href="/list"><img id = "back" src = "Back.png"/>Back</a>
+</div>
+	<div class="col-xs-5 title"><p>{{name}} - Detail</p></div>
+</div>
 <div class="row">
-  {{#with pet}}  
-  <a href="/list"><i class="fa fa-arrow-left" id="back"></i></a>
   <div class="row">
   	<div class="col-xs-12">
 		<img id="dog" class="img-responsive" src="{{imgURL}}"/>
@@ -103,9 +108,9 @@
 			{{/each}}
 			</div>
 		</div>
+		  </div>
 			{{/with}}
 
-  </div>
 </template>
 
 <!-- Template for simple dog info -->
@@ -134,6 +139,13 @@
 <template name="scheduler">
 	<div class="container">
 		{{#with pet}}
+		  <div class="row">
+  				<div class="col-xs-4 back-arrow">  
+  					<a href="/{{name}}"><img id = "back" src = "Back.png"/>Back</a>
+				</div>
+				<div class="col-xs-5 title"><p>{{name}} - Schedule</p></div>
+		</div>
+		
 		<div class="row text-center">
 			
 			<img id="scheduler-dog" class="img-responsive" src="{{imgURL}}"/>
@@ -219,7 +231,16 @@
 </template>
 
 <template name="verifier">
+
 	<div class="container">
+		<div class="row">
+  				<div class="col-xs-4 back-arrow">  
+  					<a href="/scheduler"><img id = "back" src = "Back.png"/>Back</a>
+				</div>
+				<div class="col-xs-5 title"><p>{{name}} - Schedule</p></div>
+		</div>
+
+
 		
 		<div class="row ">
 			<div class="col-xs-6 text-center">
@@ -291,6 +312,7 @@ any questions.</p>
 		<div class="col-xs-12">
 			{{#with pet}}
 				You've cancelled schedule with {{name}}!
+
 			{{/with}}
 		</div>
 	</div>
