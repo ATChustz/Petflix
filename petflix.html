@@ -53,16 +53,16 @@
 <template name="pet">
   {{#with pet}}
   <div class="row">
-  <div class="col-xs-4 back-arrow">
-  <a href="/list"><img id = "back" src = "Back.png"/>Back</a>
+	  <div class="col-xs-4 back-arrow">
+	  <a href="/list"><img id = "back" src = "Back.png"/>Back</a>
+		</div>
+		<div class="col-xs-5 title"><p>{{name}} - Detail</p></div>
 </div>
-	<div class="col-xs-5 title"><p>{{name}} - Detail</p></div>
-</div>
-<div class="row">
 
   <div class="row">
+
   	<div class="col-xs-12">
-		<img id="dog" class="img-responsive" src="{{imgURL}}"/>
+		<img class="detail-dog" src="{{imgURL}}"/>
 		<div class="row pet-info">
 	  	<div class="col-xs-6 about-pet detail-content">About {{name}}</div>
 	  	<div class="col-xs-5 detail-content">Rating: <img id = "stars" src = "{{rating}}"/></div>
@@ -106,12 +106,9 @@
 			</div>
 			<hr>
 			{{/each}}
-			</div>
-		</div>
-		  </div>
-			{{/with}}
-
-
+	</div>
+  </div>
+  {{/with}}
 
 <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog  modal-sm" role="document">
@@ -330,6 +327,7 @@
 
 <template name="video">
 	<div class="row">
+		  <a href="/verifier"><img id = "back" src = "Back.png"/>Back</a>
 		  <iframe width="560" height="315" src="https://www.youtube.com/embed/g-HAt8siG1c?start=120" frameborder="0" allowfullscreen></iframe>
 	</div>
 </template>
