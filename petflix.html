@@ -65,13 +65,13 @@
 		<img class="detail-dog" src="{{imgURL}}"/>
 		<div class="row pet-info">
 	  	<div class="col-xs-6 about-pet detail-content">About {{name}}</div>
-	  	<div class="col-xs-5 detail-content">Rating: <img id = "stars" src = "{{rating}}"/></div>
+	  	<div class="col-xs-6 detail-content">Rating: <img id = "stars" src = "{{rating}}"/></div>
 
 			<div class="col-xs-6 detail-content">Breed: {{breed}}</div>
-			<div class="col-xs-5 detail-content">Class: <img id = "class" src = "{{class}}"/><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"> What's this?</a></div>
+			<div class="col-xs-6 detail-content">Class: <img id = "class" src = "{{class}}"/><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"> What's this?</a></div>
 
 			<div class="col-xs-6 detail-content">Age: {{age}}</div>
-			<div class="col-xs-5 detail-content">Proximity: {{distance}}</div>
+			<div class="col-xs-6 detail-content">Proximity: {{distance}}</div>
 
 			<div class="col-xs-12 detail-content">Temperament: {{temperment}}</div>
 
@@ -327,7 +327,11 @@
 
 <template name="video">
 	<div class="row">
+		<div class="col-xs-4">
 		  <a href="/verifier"><img id = "back" src = "Back.png"/>Back</a>
+		</div>
+	</div>
+	<div class="row">
 		  <iframe width="560" height="315" src="https://www.youtube.com/embed/g-HAt8siG1c?start=120" frameborder="0" allowfullscreen></iframe>
 	</div>
 </template>
