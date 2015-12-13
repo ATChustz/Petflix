@@ -14,6 +14,10 @@ Router.route('/verifier', function () {
   this.render('verifier');
 });
 
+Router.route('/video', function () {
+  this.render('video');
+});
+
 // given a url like "/post/5"
 Router.route('/:_id', function () {
   var params = this.params; // { _id: "bella" }
@@ -52,6 +56,11 @@ if (Meteor.isServer) {
     pet_profile.insert({name: "Lily", breed: 'Labrador', rating: "5star.png", age: 4, bio: "Lily is the best dog in the world.", temperment: 'Crazy', imgURL : "lily.png",
       comments: lily_comments, badges: lily_badges, class: "B.png", distance: "1.3 miles",location:"557 Mayfield Ave Stanford, CA 94305", quote: "I'll run laps around you!"});
   
+    var billy_badges = [{ask: "Why am I here?", icon: "fa-link"},{ask:"I'm a goat!", icon:"fa-frown-o"},{ask: "Fine woof.", icon: "fa-suitcase"}];
+    var billy_comments = [{walker: "Alex", rating:"3star.png", date:"Sep 2015", comment:"Billy is a goat! Not a dog."}];
+    pet_profile.insert({name: "Billy", breed: 'The Goat', rating: "3star.png", age: 6, bio: "Billy is a goat.", temperment: 'Goat', imgURL : "billy.png",
+      comments: billy_comments, badges: billy_badges, class: "D.png", distance: "1 miles",location:"500 Mayfield Ave Stanford, CA 94305", quote: "Why am I here? I'm a goat!"});
+
     Meteor.publish("all pets", function(){
       return pet_profile.find();
     });
