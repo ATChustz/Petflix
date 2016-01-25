@@ -68,14 +68,129 @@
 		  		<a class="{{profileTab}}" href="/{{name}}/profile">Profile</a>
 		  	</div>
 		  	<div class="col-xs-6 text-center nopadding">
-					<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
+				<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
 		  	</div>
 			</div>
 			<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
-			<h2>{{name}}'s schedule and availability will go here</h2>
+			<div class="row">
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="#">Availability</a>
+				</div>								
+			</div>
 		{{/with}}
 	</div>
 </template>
+
+<!-- Template to current schedule -->
+<template name="current">
+	<div class="container">
+		{{#with schedule}}
+		{{#with pet}}
+			<div class="row">
+		  	<div class="col-xs-6 text-center nopadding">
+		  		<a class="{{profileTab}}" href="/{{name}}/profile">Profile</a>
+		  	</div>
+		  	<div class="col-xs-6 text-center nopadding">
+				<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
+		  	</div>
+			</div>
+			<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+			<div class="row">
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
+				</div>								
+			</div>
+		{{/with}}
+		<br>
+			<ul class="list-group">
+				<li class="list-group-item">
+					<i class="pull-left fa fa-ban"></i>
+					<span style="right:500px" class="text-center">{{time}}</span> 
+					<i class="pull-right fa fa-phone"></i>
+				</li>
+			</ul>
+		{{/with}}
+	</div>
+</template>
+
+<!-- Template to pending requests -->
+<template name="requests">
+	<div class="container">
+		{{#with schedule}}
+		{{#with pet}}
+			<div class="row">
+		  	<div class="col-xs-6 text-center nopadding">
+		  		<a class="{{profileTab}}" href="/{{name}}/profile">Profile</a>
+		  	</div>
+		  	<div class="col-xs-6 text-center nopadding">
+				<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
+		  	</div>
+			</div>
+			<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+			<div class="row">
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
+				</div>								
+			</div>
+		{{/with}}
+			<ul class="list-group">
+				{{time}}
+			</ul>
+		{{/with}}
+	</div>
+</template>
+
+<!-- Template to dog availability -->
+<template name="availability">
+	<div class="container">
+		{{#with schedule}}
+		{{#with pet}}
+			<div class="row">
+		  	<div class="col-xs-6 text-center nopadding">
+		  		<a class="{{profileTab}}" href="/{{name}}/profile">Profile</a>
+		  	</div>
+		  	<div class="col-xs-6 text-center nopadding">
+				<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
+		  	</div>
+			</div>
+			<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+			<div class="row">
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
+				</div>								
+			</div>
+		{{/with}}
+			<ul class="list-group">
+				{{time}}
+			</ul>
+		{{/with}}
+	</div>	
+</template>
+
 
 <!-- Template for owner view of dog profile -->
 <template name="profile">
