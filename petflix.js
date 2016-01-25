@@ -82,7 +82,19 @@ if (Meteor.isClient) {
   Meteor.subscribe("all pets");
   Meteor.subscribe("schedules");
 
+  Template.registerHelper("profileTab", () => {
+    if (Router.current().route.getName().endsWith("profile")) {
+      return "btn btn-default dogtab activetab";
+    }
+    return "btn btn-default dogtab";
+  });
 
+  Template.registerHelper("scheduleTab", () => {
+    if (Router.current().route.getName().endsWith("schedule")) {
+      return "btn btn-default dogtab activetab";
+    }
+    return "btn btn-default dogtab";
+  });
 
   Template.pet.helpers({
     pet: function() {
