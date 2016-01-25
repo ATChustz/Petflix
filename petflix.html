@@ -71,7 +71,7 @@
 					<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
 		  	</div>
 			</div>
-			<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+			<img class="profile-dog img-circle center-block" src="../{{imgURL}}"/>
 			<h2>{{name}}'s schedule and availability will go here</h2>
 		{{/with}}
 	</div>
@@ -96,14 +96,14 @@
     <div class="row">
     	
 	  	<div class="col-xs-12">
-			<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+			<img class="profile-dog img-circle center-block" src="../{{imgURL}}"/>
 			<div class="row pet-info">
 
 			  	<div class="col-xs-6 about-pet detail-content">About {{name}}</div>
-			  	<div class="col-xs-6 detail-content">Rating: <img id = "stars" src = "{{rating}}"/></div>
+			  	<div class="col-xs-6 detail-content">Rating: <img id = "stars" src = "../{{rating}}"/></div>
 
 				<div class="col-xs-6 detail-content">Breed: {{breed}}</div>
-				<div class="col-xs-6 detail-content">Class: <img id = "class" src = "{{class}}"/><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"> What's this?</a></div>
+				<div class="col-xs-6 detail-content">Class: <img id = "class" src = "../{{class}}"/><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"> What's this?</a></div>
 
 				<div class="col-xs-6 detail-content">Age: {{age}}</div>
 				<div class="col-xs-6 detail-content">Proximity: {{distance}}</div>
