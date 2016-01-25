@@ -13,7 +13,7 @@
 	<div class="container" id="login-screen">
 	  <img id="logo" src="PF&C-logo.png"/>
 	  <div id="button-container">
-	  	<a href="/list">
+	  	<a href="/addowner">
 	  		<button class="btn" id="login">New Dog</button>
 	  	</a>
 	  	<br/>
@@ -337,6 +337,77 @@
 	</div>
 	<div class="row">
 		  <iframe width="560" height="315" src="https://www.youtube.com/embed/g-HAt8siG1c?start=120" frameborder="0" allowfullscreen></iframe>
+	</div>
+</template>
+
+<template name="addowner">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+		  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-4">		
+				<img src="paw.png">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">		
+				<p class="tell">Tell us about yourself!</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-3">		
+				<input type="text" name="name" placeholder="Name"><br>
+				<input type="text" name="address" placeholder="Address"><br>
+				<input type="text" name="phone" placeholder="Phone Number"><br>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-3">		
+				<a href="/adddog"><img id="add-button" src="add-button.png"></a>
+			</div>
+		</div>	
+		<!-- Need to add form elements to owner database -->
+	
+	</div>
+</template>
+
+<template name="adddog">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+		  		<a href="/addowner"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-4">		
+				<img src="adddog.png">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">		
+				<p class="tell">Tell us about yourself!</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-3">		
+				<input type="text" name="name" placeholder="Name"><br>
+				<input type="text" name="address" placeholder="Address"><br>
+				<input type="text" name="phone" placeholder="Phone Number"><br>
+				<input type="text" name="phone" placeholder="Phone Number"><br>
+
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-3">		
+				<a href="/adddog"><img id="add-button" src="add-button.png"></a>
+			</div>
+		</div>	
+
 	</div>
 </template>
 
