@@ -350,3 +350,16 @@ h4, h5 {
 	background-color: #FF9600 !important;
 	color: white;
 }
+
+#success-text {
+	text-align: center;
+	margin: 30 auto;
+}
+
+#success-heading {
+	font-family: 'Montserrat', sans-serif;
+}
+
+#success-body {
+	font-family: 'Just Another Hand', cursive;
+}
