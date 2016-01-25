@@ -177,6 +177,12 @@ a:hover{
 	width: 100%;
 }
 
+.profile-dog {
+	width: 50%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
 .walker-name{
 	font-weight: bold;
 }
@@ -319,4 +325,17 @@ h4, h5 {
 	font-weight: bold;
 }
 
+.dogtab {
+	display: block;
+	width: 100%;
+	color: #FF9600;
+}
 
+.nopadding {
+	padding: 0px !important;
+}
+
+.activetab {
+	background-color: #FF9600 !important;
+	color: white;
+}
