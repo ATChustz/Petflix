@@ -18,6 +18,14 @@ Router.route('/video', function () {
   this.render('video');
 });
 
+Router.route('/addowner', function () {
+  this.render('addowner');
+});
+
+Router.route('/adddog', function () {
+  this.render('adddog');
+});
+
 // given a url like "/post/5"
 Router.route('/:_id', function () {
   var params = this.params; // { _id: "bella" }
@@ -29,6 +37,7 @@ Router.route('/:_id', function () {
 
 var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
+var owners = new Mongo.Collection("owners");
 var pet_name = "Bella";
  var schedule_time = "Thursday 5:00pm";
  var schedule_id;
@@ -37,6 +46,7 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     pet_profile.remove({});
     schedules.remove({});
+    owners.remove({});
   
     var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"only feed me real meat products", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
     var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
@@ -73,6 +83,7 @@ if (Meteor.isClient) {
 
   Meteor.subscribe("all pets");
   Meteor.subscribe("schedules");
+  Meteor.subscribe("owners");
 
 
 
@@ -112,38 +123,64 @@ if (Meteor.isClient) {
   });
 
     Template.scheduler.events({
-     'click .dropdown-menu': function (event) {
+      'click .dropdown-menu': function (event) {
         $('#chosen').text( $(event.target).text());
         schedule_time = $(event.target).text();
-    },
+      },
 
       'click #confirm-button': function (event) {
  
-      var pickup = $('input:radio[name=pickup]:checked').val();
+        var pickup = $('input:radio[name=pickup]:checked').val();
 
-      if (pickup == ""){
-        pickup = $('input:text[name=user-enter]').val();
+        if (pickup == ""){
+          pickup = $('input:text[name=user-enter]').val();
+        }
+        if(schedule_id!=null){
+          schedules.remove({_id: schedule_id});
+        }
+        schedule_id = schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time});
+
       }
-      if(schedule_id!=null){
-        schedules.remove({_id: schedule_id});
+
+    });
+
+    Template.verifier.helpers({
+      schedule: function() {
+        var schedule =  schedules.findOne({name: pet_name});
+        return schedule;
+      },
+
+      pet: function() {
+        var pet =  pet_profile.findOne({name: pet_name});
+        return pet;
       }
-      schedule_id = schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time});
+    });
 
-    }
+    Template.adddog.helpers({
+      "submit .dog-form": function (event) {
+        event.preventDefault();
+        var name = event.target.name.value;
+        var breed = event.target.breed.value;
+        var age = event.target.age.value;
+        var description = event.target.description.value;
+        var temperment = event.target.temperment.value;
+        var bio = event.target.bio.value;
 
-});
+        pet_profile.insert({
+          name: name,
+          breed: breed,
+          age: age,
+          description: description,
+          temperment: temperment,
+          bio: bio,
+          rating: "5star.png",
+          distance: "1.7 miles",
+          photo: "nala.png",
+          class: "C.png",
+        });
 
-        Template.verifier.helpers({
-    schedule: function() {
-      var schedule =  schedules.findOne({name: pet_name});
-      return schedule;
-    },
-
-        pet: function() {
-      var pet =  pet_profile.findOne({name: pet_name});
-      return pet;
-    }
-  });
+      }
+    });
 
 
 }
