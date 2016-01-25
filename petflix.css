@@ -34,8 +34,9 @@ width: 375px;
 }
 
 #button-container {
-  margin-top: 130%;
+  margin-top: 110%;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 button {
@@ -175,6 +176,12 @@ a:hover{
 
 .detail-dog{
 	width: 100%;
+}
+
+.profile-dog {
+	width: 50%;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 .walker-name{
@@ -319,4 +326,27 @@ h4, h5 {
 	font-weight: bold;
 }
 
+.dogtab {
+	display: block;
+	width: 100%;
+	color: #FF9600;
+}
 
+.nopadding {
+	padding: 0px !important;
+}
+
+#tell {
+	font-family: 'Montserrat', sans-serif;
+	color: #FF9600;
+}
+
+.paw {
+	display: block;
+  margin: 10% auto;
+}
+
+.activetab {
+	background-color: #FF9600 !important;
+	color: white;
+}

@@ -13,12 +13,16 @@
 	<div class="container" id="login-screen">
 	  <img id="logo" src="PF&C-logo.png"/>
 	  <div id="button-container">
-	  	<a href="/list">
-	  		<button class="btn" id="login">Log In</button>
+	  	<a href="/addowner">
+	  		<button class="btn" id="login">New Dog</button>
 	  	</a>
 	  	<br/>
 	  	<a href="/list">
-	  		<button class="btn" id="signup">Sign Up</button>
+	  		<button class="btn" id="signup">Owner Login</button>
+	  	</a>
+	  	<br/>
+	  	<a href="/list">
+	  		<button class="btn" id="signup">Walker Login</button>
 	  	</a>
 	  </div>
 	</div>
@@ -26,7 +30,7 @@
 
 <template name="list">
 	<div class="container" id="list">
-			{{>dog}}
+		{{>dog}}
 	</div>
 </template>
 
@@ -34,19 +38,72 @@
 	<div class="container" id="detail">
 		{{>pet}}
 	</div>
+</template>
 
-
+<template name="dog_profile_ownersv">
+	<div class="container" id="dog_profile_ownersv">
+		{{>profile}}
+	</div>
 </template>
 
 <!-- Template to confirmation -->
 <template name="confirmation">
-	<div class="row">
-		<div class="col-xs-12">
-			{{#with pet}}
-				Congratulations! You have confirmed {{name}}!
-			{{/with}}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				{{#with pet}}
+					Congratulations! You have confirmed {{name}}!
+				{{/with}}
+			</div>
 		</div>
 	</div>
+</template>
+
+<!-- Template to owner view of dog profile -->
+<template name="profile">
+	{{#with pet}}
+	<div class="row">
+	  <div class="col-xs-6 text-center nopadding">
+	  	<a class="{{profileTab}}" href="/{{name}}/profile">
+	  		Profile
+	  	</a>
+	  </div>
+	  <div class="col-xs-6 text-center nopadding">
+		<a class="{{scheduleTab}}" href="/{{name}}/schedule">
+			Schedule
+		</a>
+	  </div>
+    </div>
+
+    <div class="row">
+    	
+	  	<div class="col-xs-12">
+			<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+			<div class="row pet-info">
+
+			  	<div class="col-xs-6 about-pet detail-content">About {{name}}</div>
+			  	<div class="col-xs-6 detail-content">Rating: <img id = "stars" src = "{{rating}}"/></div>
+
+				<div class="col-xs-6 detail-content">Breed: {{breed}}</div>
+				<div class="col-xs-6 detail-content">Class: <img id = "class" src = "{{class}}"/><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"> What's this?</a></div>
+
+				<div class="col-xs-6 detail-content">Age: {{age}}</div>
+				<div class="col-xs-6 detail-content">Proximity: {{distance}}</div>
+
+				<div class="col-xs-12 detail-content">Temperament: {{temperment}}</div>
+
+				<div class="col-xs-12 detail-content" id="last-attribute">Bio: {{bio}}</div>
+
+				<div class="col-xs-12 detail-content badges-container">
+					<p class="dont text-center">{{name}} asks "please"...</p>
+					{{#each badges}}
+					<div class="col-xs-4 text-center"><i class="text-center fa {{icon}}"></i><p>{{ask}}</p></div>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/with}}
 </template>
 
 <!-- Template to pet information -->
@@ -57,7 +114,7 @@
 	  	<a href="/list"><img id = "back" src = "Back.png"/>Back</a>
 		</div>
 		<div class="col-xs-5 title"><p>{{name}} - Detail</p></div>
-	</div>
+  </div>
 
   <div class="row">
   	<div class="col-xs-12">
@@ -65,7 +122,6 @@
 		<div class="row pet-info">
 	  	<div class="col-xs-6 about-pet detail-content">About {{name}}</div>
 	  	<div class="col-xs-6 detail-content">Rating: <img id = "stars" src = "{{rating}}"/></div>
-
 			<div class="col-xs-6 detail-content">Breed: {{breed}}</div>
 			<div class="col-xs-6 detail-content">Class: <img id = "class" src = "{{class}}"/><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"> What's this?</a></div>
 
@@ -80,32 +136,32 @@
 
 			<div class="col-xs-12 detail-content badges-container">
 				<p class="dont">{{name}} asks "please"...</p>
+				
 				{{#each badges}}
-
 				<p class="badges"><i class="fa {{icon}}"></i>{{ask}}</p>
-
 				{{/each}}
+
 			</div>
 		</div>
 		
-			{{#each comments}}
-			<div class="row comments">
-				<div class="row">
-					<div class="col-xs-4 walker-name">{{walker}}</div>
-					<div class="col-xs-3 col-xs-offset-4"><img id = "stars" src = "{{rating}}"/></div>
-				</div>
-				<div class="row">
-					<div class="col-xs-4">{{date}}</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12">{{comment}}</div>
-				</div>
+		{{#each comments}}
+		<div class="row comments">
+			<div class="row">
+				<div class="col-xs-4 walker-name">{{walker}}</div>
+				<div class="col-xs-3 col-xs-offset-4"><img id = "stars" src = "{{rating}}"/></div>
 			</div>
-			<hr>
-			{{/each}}
+			<div class="row">
+				<div class="col-xs-4">{{date}}</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">{{comment}}</div>
+			</div>
+		</div>
+		<hr>
+		{{/each}}
 	</div>
-  </div>
-  {{/with}}
+ </div>
+ {{/with}}
 
 <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog  modal-sm" role="document">
@@ -321,6 +377,73 @@
 	</div>
 	<div class="row">
 		  <iframe width="560" height="315" src="https://www.youtube.com/embed/g-HAt8siG1c?start=120" frameborder="0" allowfullscreen></iframe>
+	</div>
+</template>
+
+<template name="addowner">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+		  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<img class="paw" src="paw.png">
+				<p id="tell">Tell us about yourself!</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<form role="form" id="dog-form">
+					<input type="text" class="form-control" name="name" placeholder="Name"><br>
+					<input type="text" class="form-control" name="address" placeholder="Address"><br>
+					<input type="text" class="form-control" name="phone" placeholder="Phone Number"><br>
+					<a href="/adddog"><input type="image" class="paw" src="add-button.png" alt="next"></a>
+
+				</form>
+			</div>
+		</div>
+		<!-- Need to add form elements to owner database -->
+	
+	</div>
+</template>
+
+<template name="adddog">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+		  		<a href="/addowner"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+		</div>
+				
+
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<form role="form" id="dog-form">
+					<input type="image" class="paw" src="adddog.png">
+					<input type="text" class="form-control" name="name" placeholder="Name"><br>
+					<input type="text" class="form-control" name="address" placeholder="Breed"><br>
+					<input type="text" class="form-control" name="phone" placeholder="Age (Years)"><br>
+					<input type="text" class="form-control" name="description" placeholder="Description"><br>
+					<select name="Class" class="form-control" >
+						<option  disabled selected>Temperament:</option>
+  						<option value="Aggressive">Aggressive</option>
+  						<option value="Energetic">Energetic</option>
+  						<option value="Playful">Playful</option>
+ 					 	<option value="Calm">Calm</option>
+
+					</select><br>
+ 					<textarea class="form-control" name="bio" rows="2" placeholder="Bio"></textarea><br>
+
+					<a href="/list"><input type="image" src="finish.png" class="paw" alt="finish"></a>
+				</form>
+			</div>
+		</div>
+		
+
 	</div>
 </template>
 
