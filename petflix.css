@@ -34,8 +34,9 @@ width: 375px;
 }
 
 #button-container {
-  margin-top: 130%;
+  margin-top: 120%;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 button {
