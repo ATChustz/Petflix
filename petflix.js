@@ -39,6 +39,7 @@ Router.route('/:_id/schedule', function () {
   var id = params._id; // "5"
   pet_name = id;
   this.render('schedule');
+});
 
 Router.route('/:_id/profile', function() {
   var params = this.params;
@@ -124,7 +125,6 @@ if (Meteor.isClient) {
     pets: function () {
       return pet_profile.find({});
     }
-
   });
 
   Template.profile.helpers({
@@ -141,41 +141,40 @@ if (Meteor.isClient) {
     }
   });
 
-    Template.cancellation.helpers({
+  Template.cancellation.helpers({
     pet: function() {
       var pet =  pet_profile.findOne({name: pet_name});
       return pet;
     }
   });
 
-    Template.scheduler.helpers({
+  Template.scheduler.helpers({
     pet: function() {
       var pet =  pet_profile.findOne({name: pet_name});
       return pet;
     }
   });
 
-    Template.scheduler.events({
-      'click .dropdown-menu': function (event) {
-        $('#chosen').text( $(event.target).text());
-        schedule_time = $(event.target).text();
-      },
+  Template.scheduler.events({
+    'click .dropdown-menu': function (event) {
+      $('#chosen').text( $(event.target).text());
+      schedule_time = $(event.target).text();
+    },
 
-      'click #confirm-button': function (event) {
- 
-        var pickup = $('input:radio[name=pickup]:checked').val();
+    'click #confirm-button': function (event) {
 
-        if (pickup == ""){
-          pickup = $('input:text[name=user-enter]').val();
-        }
-        if(schedule_id!=null){
-          schedules.remove({_id: schedule_id});
-        }
-        schedule_id = schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time});
+      var pickup = $('input:radio[name=pickup]:checked').val();
 
+      if (pickup == ""){
+        pickup = $('input:text[name=user-enter]').val();
       }
+      if(schedule_id!=null){
+        schedules.remove({_id: schedule_id});
+      }
+      schedule_id = schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time});
 
-    });
+    }
+  });
 
   Template.verifier.helpers({
     schedule: function() {
@@ -186,33 +185,33 @@ if (Meteor.isClient) {
         var pet =  pet_profile.findOne({name: pet_name});
         return pet;
       }
-    });
+  });
 
-    Template.adddog.helpers({
-      "submit .dog-form": function (event) {
-        event.preventDefault();
-        var name = event.target.name.value;
-        var breed = event.target.breed.value;
-        var age = event.target.age.value;
-        var description = event.target.description.value;
-        var temperment = event.target.temperment.value;
-        var bio = event.target.bio.value;
+  Template.adddog.helpers({
+    "submit .dog-form": function (event) {
+      event.preventDefault();
+      var name = event.target.name.value;
+      var breed = event.target.breed.value;
+      var age = event.target.age.value;
+      var description = event.target.description.value;
+      var temperment = event.target.temperment.value;
+      var bio = event.target.bio.value;
 
-        pet_profile.insert({
-          name: name,
-          breed: breed,
-          age: age,
-          description: description,
-          temperment: temperment,
-          bio: bio,
-          rating: "5star.png",
-          distance: "1.7 miles",
-          photo: "nala.png",
-          class: "C.png",
-        });
+      pet_profile.insert({
+        name: name,
+        breed: breed,
+        age: age,
+        description: description,
+        temperment: temperment,
+        bio: bio,
+        rating: "5star.png",
+        distance: "1.7 miles",
+        photo: "nala.png",
+        class: "C.png",
+      });
 
-      }
-    });
+    }
+  });
 
   Template.schedule.helpers({
     pet: function() {
@@ -220,9 +219,4 @@ if (Meteor.isClient) {
       return pet;
     }
   });
-
 }
-
-
-
-
