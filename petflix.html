@@ -46,7 +46,7 @@
 	</div>
 </template>
 
-<!-- Template to confirmation -->
+<!-- Template for confirmation -->
 <template name="confirmation">
 	<div class="container">
 		<div class="row">
@@ -59,7 +59,25 @@
 	</div>
 </template>
 
-<!-- Template to owner view of dog profile -->
+<!-- Template for owner view of dog schedule -->
+<template name="schedule">
+	<div class="container">
+		{{#with pet}}
+			<div class="row">
+		  	<div class="col-xs-6 text-center nopadding">
+		  		<a class="{{profileTab}}" href="/{{name}}/profile">Profile</a>
+		  	</div>
+		  	<div class="col-xs-6 text-center nopadding">
+					<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
+		  	</div>
+			</div>
+			<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+			<h2>{{name}}'s schedule and availability will go here</h2>
+		{{/with}}
+	</div>
+</template>
+
+<!-- Template for owner view of dog profile -->
 <template name="profile">
 	{{#with pet}}
 	<div class="row">
@@ -73,7 +91,7 @@
 			Schedule
 		</a>
 	  </div>
-    </div>
+	</div>
 
     <div class="row">
     	
@@ -111,78 +129,72 @@
   {{#with pet}}
   <div class="row">
 	  <div class="col-xs-4 back-arrow">
-	  <a href="/list"><img id = "back" src = "Back.png"/>Back</a>
+	  	<a href="/list"><img id = "back" src = "Back.png"/>Back</a>
 		</div>
 		<div class="col-xs-5 title"><p>{{name}} - Detail</p></div>
   </div>
 
   <div class="row">
-
   	<div class="col-xs-12">
 		<img class="detail-dog" src="{{imgURL}}"/>
 		<div class="row pet-info">
 	  	<div class="col-xs-6 about-pet detail-content">About {{name}}</div>
 	  	<div class="col-xs-6 detail-content">Rating: <img id = "stars" src = "{{rating}}"/></div>
+			<div class="col-xs-6 detail-content">Breed: {{breed}}</div>
+			<div class="col-xs-6 detail-content">Class: <img id = "class" src = "{{class}}"/><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"> What's this?</a></div>
 
-		<div class="col-xs-6 detail-content">Breed: {{breed}}</div>
-		<div class="col-xs-6 detail-content">Class: <img id = "class" src = "{{class}}"/><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"> What's this?</a></div>
+			<div class="col-xs-6 detail-content">Age: {{age}}</div>
+			<div class="col-xs-6 detail-content">Proximity: {{distance}}</div>
 
-		<div class="col-xs-6 detail-content">Age: {{age}}</div>
-		<div class="col-xs-6 detail-content">Proximity: {{distance}}</div>
+			<div class="col-xs-12 detail-content">Temperament: {{temperment}}</div>
 
-		<div class="col-xs-12 detail-content">Temperament: {{temperment}}</div>
-
-		<div class="col-xs-12 detail-content" id="last-attribute">Bio: {{bio}}</div>
+			<div class="col-xs-12 detail-content" id="last-attribute">Bio: {{bio}}</div>
 						
-		<a id="bone-button" href="/scheduler"><img src="bone-button.png"></a>
+			<a id="bone-button" href="/scheduler"><img src="bone-button.png"></a>
 
-		<div class="col-xs-12 detail-content badges-container">
-			<p class="dont">{{name}} asks "please"...</p>
-			{{#each badges}}
-
-			<p class="badges"><i class="fa {{icon}}"></i>{{ask}}</p>
-
-			{{/each}}
-
-
-		</div>
-	</div>
-		
-			{{#each comments}}
-			<div class="row comments">
-				<div class="row">
-					<div class="col-xs-4 walker-name">{{walker}}</div>
-					<div class="col-xs-3 col-xs-offset-4"><img id = "stars" src = "{{rating}}"/></div>
-				</div>
-				<div class="row">
-					<div class="col-xs-4">{{date}}</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12">{{comment}}</div>
-				</div>
+			<div class="col-xs-12 detail-content badges-container">
+				<p class="dont">{{name}} asks "please"...</p>
+				{{#each badges}}
+				<p class="badges"><i class="fa {{icon}}"></i>{{ask}}</p>
+				{{/each}}
 			</div>
-			<hr>
-			{{/each}}
+		</div>
+		
+		{{#each comments}}
+		<div class="row comments">
+			<div class="row">
+				<div class="col-xs-4 walker-name">{{walker}}</div>
+				<div class="col-xs-3 col-xs-offset-4"><img id = "stars" src = "{{rating}}"/></div>
+			</div>
+			<div class="row">
+				<div class="col-xs-4">{{date}}</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">{{comment}}</div>
+			</div>
+		</div>
+		<hr>
+		{{/each}}
 	</div>
-  </div>
-  {{/with}}
+ </div>
+ {{/with}}
 
-<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog  modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        <p>A dog's <span class="highlight">CLASS</span> represents the relative challenge the walker may experience walking it. The classes range from D, the least challenging dogs, to A, the most challenging dogs. The first time you walk a dog from a class above what you have walked before you must have your ability to walk dogs of that class confirmed by a walker verifier. Each dog's class is determined by a formula that takes into account its breed, age, and temperament.</p>
-      </div>
-        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	        <p>A dog's <span class="highlight">CLASS</span> represents the relative challenge the walker may experience walking it. The classes range from D, the least challenging dogs, to A, the most challenging dogs. The first time you walk a dog from a class above what you have walked before you must have your ability to walk dogs of that class confirmed by a walker verifier. Each dog's class is determined by a formula that takes into account its breed, age, and temperament.</p>
+	      </div>
+	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
+	</div>
 
 </template>
 
 <!-- Template for simple dog info -->
 <template name="dog">
-<div class="row">
+	<div class="row">
 	{{#each pets}}
 		<div class="image">
 			<a href="{{name}}">
@@ -207,94 +219,78 @@
 	<div class="container">
 		{{#with pet}}
 		  <div class="row">
-  				<div class="col-xs-4 back-arrow">
-  					<a href="/{{name}}"><img id = "back" src = "Back.png"/>Back</a>
+  			<div class="col-xs-4 back-arrow">
+  				<a href="/{{name}}"><img id = "back" src = "Back.png"/>Back</a>
 				</div>
 				<div class="col-xs-5 title"><p>{{name}} - Schedule</p></div>
-		</div>
-		
-		<div class="row text-center">
-			
-			<img id="scheduler-dog" class="img-responsive" src="{{imgURL}}"/>
-			<p class="lead" id="chill-pet"> You are going to chill with {{name}} ...</p>
-			
-	</div>
-	<div class="row" id="form">
-		<form>
-			<div class="row" id="pickup">
-			<div class="col-xs-12 pick-option">
-			  <input type="radio" name="pickup" value="your home" checked>Drop off at my home location<p id="home-location">Panama Mall, Stanford, CA 94305</p>
-			  </div>
-			<div class="col-xs-12 pick-option">
-			  <input type="radio" name="pickup" value="owner's home">Pick up from owner’s location
-			  <br><p id="owner-location">{{location}}</p></div>
-			  <div class="col-xs-12">
-			  <input type="radio" name="pickup" value="">Meet up at <input type="text" name="user-enter" placeholder="Enter a location"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
 			</div>
+			<div class="row text-center">
+				<img id="scheduler-dog" class="img-responsive" src="{{imgURL}}"/>
+				<p class="lead" id="chill-pet"> You are going to chill with {{name}} ...</p>	
 			</div>
-		<div class="row">
-			<div class="col-xs-9 col-xs-offset-2">
-			  <span class="at">At</span>
-			  <div class="btn-group" role="group">
-				    <button type="button" id="chosen" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				      Thursday 5:00pm
-				      <span class="caret"></span>
-				    </button>
-			    <ul class="dropdown-menu">
-			      <li><a href="#">Thursday 5:00pm</a></li>
-			      <li><a href="#">Thursday 5:15pm</a></li>
-			      <li><a href="#">Thursday 5:30pm</a></li>
-			      <li><a href="#">Thursday 5:45pm</a></li>
-			      <li><a href="#">Thursday 6:00pm</a></li>
-			    </ul>
-			  </div>
+			<div class="row" id="form">
+				<form>
+					<div class="row" id="pickup">
+					<div class="col-xs-12 pick-option">
+					  <input type="radio" name="pickup" value="your home" checked>Drop off at my home location<p id="home-location">Panama Mall, Stanford, CA 94305</p>
+					  </div>
+					<div class="col-xs-12 pick-option">
+					  <input type="radio" name="pickup" value="owner's home">Pick up from owner’s location
+					  <br><p id="owner-location">{{location}}</p></div>
+					  <div class="col-xs-12">
+					  <input type="radio" name="pickup" value="">Meet up at <input type="text" name="user-enter" placeholder="Enter a location"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+					</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-9 col-xs-offset-2">
+						  <span class="at">At</span>
+						  <div class="btn-group" role="group">
+							    <button type="button" id="chosen" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							      Thursday 5:00pm
+							      <span class="caret"></span>
+							    </button>
+						    <ul class="dropdown-menu">
+						      <li><a href="#">Thursday 5:00pm</a></li>
+						      <li><a href="#">Thursday 5:15pm</a></li>
+						      <li><a href="#">Thursday 5:30pm</a></li>
+						      <li><a href="#">Thursday 5:45pm</a></li>
+						      <li><a href="#">Thursday 6:00pm</a></li>
+						    </ul>
+						  </div>
+						</div>
+					</div>
+					<div class="row verifier-remind">
+						<div class="col-xs-10 col-xs-offset-1">
+							<p>You need a verifier to walk {{name}}<a href="#" data-toggle="modal" data-target="#myModal3"> Why?</a></p>
+						</div>
+						<div class="col-xs-11">
+							<a id="button-text" href="/verifier"><button type="button" class="btn btn-default btn-lg center-block general-button" id="confirm-button" >Confirm</button></a>
+						</div>
+					</div>
+				</form>
 			</div>
-		</div>
-
-		<div class="row verifier-remind">
-			<div class="col-xs-10 col-xs-offset-1">
-			<p>You need a verifier to walk {{name}}<a href="#" data-toggle="modal" data-target="#myModal3"> Why?</a></p>
-		</div>
-		<div class="col-xs-11">
-				<a id="button-text" href="/verifier"><button type="button" class="btn btn-default btn-lg center-block general-button" id="confirm-button" >Confirm</button></a>
-
-		</div>
+		{{/with}}
 	</div>
-		
-
-		</form>
+	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	{{#with pet}}
+	        <h4>What is a walker verifier?</h4>
+	        <p>A walker verifier is a person certified by <span class="highlight">Petflix & Chill</span> who will ensure that you are able to walk a dog of this class.</p>
+	        <h4>Why do I need a verifier to walk this dog?</h4>
+	        <p>{{name}} belongs to class <img id = "class" src = "{{class}}"/> and you currently have not been verified for dogs of any class. You need to have a verifier to ensure that you do well with dogs of {{name}}'s class.</p>
+	        <h5>You need a verifier if:</h5>
+	        <li>You have not walked a dog of at least this class before. </li>
+	        <li>You are a new user and have not yet completed your first walk.</li>
+	        <h5>You will be exempt from walking with a verifier if you:</h5>
+	        <li>Have walked a dog of this class before. </li>
+	        {{/with}}
+	      </div>
+	      <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
 	</div>
-	{{/with}}
-</div>
-
-<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog  modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-      	{{#with pet}}
-        <h4>What is a walker verifier?</h4>
-        <p>A walker verifier is a person certified by <span class="highlight">Petflix & Chill</span> who will ensure that you are able to walk a dog of this class.</p>
-        <h4>Why do I need a verifier to walk this dog?</h4>
-        <p>{{name}} belongs to class <img id = "class" src = "{{class}}"/> and you currently have not been verified for dogs of any class. You need to have a verifier to ensure that you do well with dogs of {{name}}'s class.</p>
-        <h5>You need a verifier if:</h5>
-        <li>You have not walked a dog of at least this class before. </li>
-        <li>You are a new user and have not yet completed your first walk.</li>
-        <h5>You will be exempt from walking with a verifier if you:</h5>
-        <li>Have walked a dog of this class before. </li>
-
-
-
-        {{/with}}
-
-      </div>
-        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
-    </div>
-  </div>
-</div>
-
-
-
-
 </template>
 
 <template name="verifier">
@@ -311,7 +307,7 @@
 
 
 		
-		<div class="row ">
+		<div class="row">
 			<div class="col-xs-6 text-center">
 				<img class="img-responsive verifier-img" src="verifier.png"/>
 				<p>John</p>
@@ -330,48 +326,42 @@
 				<p>Hi! I am John, the verifier for your walk with {{name}}. Pay no attention to the fact that I am also a dog. I will bring {{name}} to {{pickuplocation}} at {{time}} and to assist and evaluate you for your walk with {{name}}. Please call (123)-456-7890 if you have any questions.</p>
 
 			</div>
-
-
-
-	{{/with}}
+			
+			{{/with}}
+			
 			<div class="col-xs-8 col-xs-offset-2" id="bottom-button">
 				<a href="/video"><button type="button" class="btn btn-default btn-lg center-block general-button"  id="ok-button" ><p id="button-text">OK</p></button></a>
 
 				<button type="button" class="btn btn-default btn-lg center-block general-button" data-toggle="modal" data-target="#myModal2" id="cancel-button" ><p id="button-text">Cancel</p></button>
+			</div>
 		</div>
-	</div>
-	
-
 	</div>
 
 		<!-- Confirmation dialog -->
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog  modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        {{>confirmation}}
-      </div>
-        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	        {{>confirmation}}
+	      </div>
+	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
+	</div>
 
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog  modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        {{>cancellation}}
-      </div>
-        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
-    </div>
-  </div>
-</div>
-
-
-
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	        {{>cancellation}}
+	      </div>
+	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
+	</div>
 </template>
 
-	<!-- Template to confirmation -->
+	<!-- Template for cancellation -->
 <template name="cancellation">
 	<div class="row">
 		<div class="col-xs-12">
@@ -382,10 +372,11 @@
 	</div>
 </template>
 
+
 <template name="video">
 	<div class="row">
 		<div class="col-xs-4">
-		  <a href="/verifier"><img id = "back" src = "Back.png"/>Back</a>
+		  <a href="/verifier"><img id="back" src="Back.png"/>Back</a>
 		</div>
 	</div>
 	<div class="row">
@@ -459,5 +450,8 @@
 
 	</div>
 </template>
+
+
+
 
 
