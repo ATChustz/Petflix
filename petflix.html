@@ -349,22 +349,19 @@
 		</div>
 
 		<div class="row">
-			<div class="col-xs-2 col-xs-offset-4">		
-				<img src="paw.png">
-			</div>
-		</div>
-		<div class="row">
 			<div class="col-xs-6 col-xs-offset-3">		
-				<p class="tell">Tell us about yourself!</p>
+				<img class="paw" src="paw.png">
+				<p id="tell">Tell us about yourself!</p>
 			</div>
 		</div>
+
 		<div class="row">
 			<div class="col-xs-6 col-xs-offset-3">
 				<form role="form" id="dog-form">		
 					<input type="text" class="form-control" name="name" placeholder="Name"><br>
 					<input type="text" class="form-control" name="address" placeholder="Address"><br>
 					<input type="text" class="form-control" name="phone" placeholder="Phone Number"><br>
-					<a href="/list"><input type="image" src="add-button.png" alt="next"></a>
+					<a href="/adddog"><input type="image" class="paw" src="add-button.png" alt="next"></a>
 
 				</form>
 			</div>
@@ -386,7 +383,7 @@
 		<div class="row">
 			<div class="col-xs-6 col-xs-offset-3">
 				<form role="form" id="dog-form">
-					<input type="image" src="adddog.png">		
+					<input type="image" class="paw" src="adddog.png">		
 					<input type="text" class="form-control" name="name" placeholder="Name"><br>
 					<input type="text" class="form-control" name="address" placeholder="Breed"><br>
 					<input type="text" class="form-control" name="phone" placeholder="Age (Years)"><br>
@@ -399,15 +396,11 @@
  					 	<option value="D.png">D</option>
 					</select>
 
-					<a href="/list"><input type="image" src="finish.png" alt="finish"></a>
+					<a href="/list"><input type="image" src="finish.png" class="paw" alt="finish"></a>
 				</form>
 			</div>
 		</div>	
-		<div class="row">
-			<div class="col-xs-2 col-xs-offset-3">		
-				
-			</div>
-		</div>	
+		
 
 	</div>
 </template>

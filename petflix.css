@@ -320,4 +320,13 @@ h4, h5 {
 	font-weight: bold;
 }
 
+#tell {
+	font-family: 'Montserrat', sans-serif;
+	color: #FF9600;	
+}
+
+.paw {
+	display: block;
+    margin: 10% auto;
+}
 
