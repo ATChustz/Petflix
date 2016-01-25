@@ -13,12 +13,16 @@
 	<div class="container" id="login-screen">
 	  <img id="logo" src="PF&C-logo.png"/>
 	  <div id="button-container">
-	  	<a href="/list">
-	  		<button class="btn" id="login">Log In</button>
+	  	<a href="/addowner">
+	  		<button class="btn" id="login">New Dog</button>
 	  	</a>
 	  	<br/>
 	  	<a href="/list">
-	  		<button class="btn" id="signup">Sign Up</button>
+	  		<button class="btn" id="signup">Owner Login</button>
+	  	</a>
+	  	<br/>
+	  	<a href="/list">
+	  		<button class="btn" id="signup">Walker Login</button>
 	  	</a>
 	  </div>
 	</div>
@@ -312,7 +316,7 @@
 
 
 
-	</template>
+</template>
 
 	<!-- Template to confirmation -->
 <template name="cancellation">
@@ -333,6 +337,73 @@
 	</div>
 	<div class="row">
 		  <iframe width="560" height="315" src="https://www.youtube.com/embed/g-HAt8siG1c?start=120" frameborder="0" allowfullscreen></iframe>
+	</div>
+</template>
+
+<template name="addowner">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+		  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">		
+				<img class="paw" src="paw.png">
+				<p id="tell">Tell us about yourself!</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<form role="form" id="dog-form">		
+					<input type="text" class="form-control" name="name" placeholder="Name"><br>
+					<input type="text" class="form-control" name="address" placeholder="Address"><br>
+					<input type="text" class="form-control" name="phone" placeholder="Phone Number"><br>
+					<a href="/adddog"><input type="image" class="paw" src="add-button.png" alt="next"></a>
+
+				</form>
+			</div>
+		</div>	
+		<!-- Need to add form elements to owner database -->
+	
+	</div>
+</template>
+
+<template name="adddog">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">
+		  		<a href="/addowner"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+		</div>		
+				
+
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<form role="form" id="dog-form">
+					<input type="image" class="paw" src="adddog.png">		
+					<input type="text" class="form-control" name="name" placeholder="Name"><br>
+					<input type="text" class="form-control" name="address" placeholder="Breed"><br>
+					<input type="text" class="form-control" name="phone" placeholder="Age (Years)"><br>
+					<input type="text" class="form-control" name="description" placeholder="Description"><br>
+					<select name="Class" class="form-control" >
+						<option  disabled selected>Temperament:</option>
+  						<option value="Aggressive">Aggressive</option>
+  						<option value="Energetic">Energetic</option>
+  						<option value="Playful">Playful</option>
+ 					 	<option value="Calm">Calm</option>
+
+					</select><br>
+ 					<textarea class="form-control" name="bio" rows="2" placeholder="Bio"></textarea><br>
+
+					<a href="/list"><input type="image" src="finish.png" class="paw" alt="finish"></a>
+				</form>
+			</div>
+		</div>	
+		
+
 	</div>
 </template>
 
