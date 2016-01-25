@@ -14,8 +14,8 @@ Router.route('/verifier', function () {
   this.render('verifier');
 });
 
-Router.route('/video', function () {
-  this.render('video');
+Router.route('/success', function () {
+  this.render('success');
 });
 
 Router.route('/addowner', function () {
@@ -184,6 +184,13 @@ if (Meteor.isClient) {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
     },
+      pet: function() {
+        var pet =  pet_profile.findOne({name: pet_name});
+        return pet;
+      }
+  });
+
+  Template.success.helpers({
       pet: function() {
         var pet =  pet_profile.findOne({name: pet_name});
         return pet;
