@@ -26,12 +26,19 @@ Router.route('/:_id', function () {
   this.render('detail');
 });
 
+Router.route('/:_id/schedule', function () {
+  var params = this.params; // { _id: "bella" }
+  var id = params._id; // "5"
+  pet_name = id;
+  this.render('schedule');
+});
+
 
 var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
 var pet_name = "Bella";
- var schedule_time = "Thursday 5:00pm";
- var schedule_id;
+var schedule_time = "Thursday 5:00pm";
+var schedule_id;
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
@@ -133,7 +140,7 @@ if (Meteor.isClient) {
 
 });
 
-        Template.verifier.helpers({
+  Template.verifier.helpers({
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
@@ -145,6 +152,12 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.schedule.helpers({
+    pet: function() {
+      var pet =  pet_profile.findOne({name: pet_name});
+      return pet;
+    }
+  });
 
 }
 

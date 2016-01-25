@@ -54,13 +54,12 @@
   {{#with pet}}
   <div class="row">
 	  <div class="col-xs-4 back-arrow">
-	  <a href="/list"><img id = "back" src = "Back.png"/>Back</a>
+	  	<a href="/list"><img id = "back" src = "Back.png"/>Back</a>
 		</div>
 		<div class="col-xs-5 title"><p>{{name}} - Detail</p></div>
-</div>
+	</div>
 
   <div class="row">
-
   	<div class="col-xs-12">
 		<img class="detail-dog" src="{{imgURL}}"/>
 		<div class="row pet-info">
@@ -86,10 +85,8 @@
 				<p class="badges"><i class="fa {{icon}}"></i>{{ask}}</p>
 
 				{{/each}}
-
-
 			</div>
-			</div>
+		</div>
 		
 			{{#each comments}}
 			<div class="row comments">
@@ -234,10 +231,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 </template>
 
 <template name="verifier">
@@ -254,7 +247,7 @@
 
 
 		
-		<div class="row ">
+		<div class="row">
 			<div class="col-xs-6 text-center">
 				<img class="img-responsive verifier-img" src="verifier.png"/>
 				<p>John</p>
@@ -273,48 +266,42 @@
 				<p>Hi! I am John, the verifier for your walk with {{name}}. Pay no attention to the fact that I am also a dog. I will bring {{name}} to {{pickuplocation}} at {{time}} and to assist and evaluate you for your walk with {{name}}. Please call (123)-456-7890 if you have any questions.</p>
 
 			</div>
-
-
-
-	{{/with}}
+			
+			{{/with}}
+			
 			<div class="col-xs-8 col-xs-offset-2" id="bottom-button">
 				<a href="/video"><button type="button" class="btn btn-default btn-lg center-block general-button"  id="ok-button" ><p id="button-text">OK</p></button></a>
 
 				<button type="button" class="btn btn-default btn-lg center-block general-button" data-toggle="modal" data-target="#myModal2" id="cancel-button" ><p id="button-text">Cancel</p></button>
+			</div>
 		</div>
-	</div>
-	
-
 	</div>
 
 		<!-- Confirmation dialog -->
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog  modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        {{>confirmation}}
-      </div>
-        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	        {{>confirmation}}
+	      </div>
+	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
+	</div>
 
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog  modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        {{>cancellation}}
-      </div>
-        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	        {{>cancellation}}
+	      </div>
+	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
+	</div>
+</template>
 
-
-
-	</template>
-
-	<!-- Template to confirmation -->
+	<!-- Template for cancellation -->
 <template name="cancellation">
 	<div class="row">
 		<div class="col-xs-12">
@@ -325,15 +312,24 @@
 	</div>
 </template>
 
+
 <template name="video">
 	<div class="row">
 		<div class="col-xs-4">
-		  <a href="/verifier"><img id = "back" src = "Back.png"/>Back</a>
+		  <a href="/verifier"><img id="back" src="Back.png"/>Back</a>
 		</div>
 	</div>
 	<div class="row">
 		  <iframe width="560" height="315" src="https://www.youtube.com/embed/g-HAt8siG1c?start=120" frameborder="0" allowfullscreen></iframe>
 	</div>
 </template>
+
+
+<template name="schedule">
+	{{#with pet}}
+		<h2>{{name}}</h2>
+	{{/with}}
+</template>
+
 
 
