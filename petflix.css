@@ -34,8 +34,9 @@ width: 375px;
 }
 
 #button-container {
-  margin-top: 130%;
+  margin-top: 110%;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 button {
@@ -333,6 +334,16 @@ h4, h5 {
 
 .nopadding {
 	padding: 0px !important;
+}
+
+#tell {
+	font-family: 'Montserrat', sans-serif;
+	color: #FF9600;
+}
+
+.paw {
+	display: block;
+  margin: 10% auto;
 }
 
 .activetab {
