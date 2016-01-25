@@ -156,6 +156,32 @@ if (Meteor.isClient) {
       }
     });
 
+    Template.adddog.helpers({
+      "submit .dog-form": function (event) {
+        event.preventDefault();
+        var name = event.target.name.value;
+        var breed = event.target.breed.value;
+        var age = event.target.age.value;
+        var description = event.target.description.value;
+        var temperment = event.target.temperment.value;
+        var bio = event.target.bio.value;
+
+        pet_profile.insert({
+          name: name,
+          breed: breed,
+          age: age,
+          description: description,
+          temperment: temperment,
+          bio: bio,
+          rating: "5star.png",
+          distance: "1.7 miles",
+          photo: "nala.png",
+          class: "C.png",
+        });
+
+      }
+    });
+
 
 }
 
