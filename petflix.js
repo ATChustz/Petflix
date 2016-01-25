@@ -34,6 +34,14 @@ Router.route('/:_id', function () {
   this.render('detail');
 });
 
+Router.route('/:_id/profile', function() {
+  var params = this.params;
+  var id = params._id;
+  pet_name = id;
+  
+  this.render('dog_profile_ownersv');
+});
+
 
 var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
@@ -85,7 +93,19 @@ if (Meteor.isClient) {
   Meteor.subscribe("schedules");
   Meteor.subscribe("owners");
 
+  Template.registerHelper("profileTab", () => {
+    if (Router.current().route.getName().endsWith("profile")) {
+      return "btn btn-default dogtab activetab";
+    }
+    return "btn btn-default dogtab";
+  });
 
+  Template.registerHelper("scheduleTab", () => {
+    if (Router.current().route.getName().endsWith("schedule")) {
+      return "btn btn-default dogtab activetab";
+    }
+    return "btn btn-default dogtab";
+  });
 
   Template.pet.helpers({
     pet: function() {
@@ -100,6 +120,13 @@ if (Meteor.isClient) {
     }
 
   });
+
+  Template.profile.helpers({
+    pet: function() {
+      var pet = pet_profile.findOne({name: pet_name});
+      return pet;
+    }
+  })
 
   Template.confirmation.helpers({
     pet: function() {
