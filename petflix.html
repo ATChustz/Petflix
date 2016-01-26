@@ -225,8 +225,8 @@
 				<div class="col-xs-5 title"><p>{{name}} - Schedule</p></div>
 			</div>
 			<div class="row text-center">
-				<img id="scheduler-dog" class="img-responsive" src="{{imgURL}}"/>
-				<p class="lead" id="chill-pet"> You are going to chill with {{name}} ...</p>	
+				<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+				<p class="lead" id="chill-pet"> You are going to chill with {{name}} ...</p>
 			</div>
 			<div class="row" id="form">
 				<form>
@@ -381,7 +381,7 @@
 			</div>
 		</div>
 		{{#with pet}}
-		<div class="success-text">
+		<div id="success-text">
 			  <h1 id="success-heading">Congratulations!</h1>
 			  <h2 id="success-body">You've successfully confirmed {{name}}</h2>
 		</div>
