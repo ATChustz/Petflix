@@ -68,14 +68,141 @@
 		  		<a class="{{profileTab}}" href="/{{name}}/profile">Profile</a>
 		  	</div>
 		  	<div class="col-xs-6 text-center nopadding">
-					<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
+				<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
 		  	</div>
 			</div>
 			<img class="profile-dog img-circle center-block" src="../{{imgURL}}"/>
-			<h2>{{name}}'s schedule and availability will go here</h2>
+			<div class="row">
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
+				</div>								
+			</div>
 		{{/with}}
 	</div>
 </template>
+
+<!-- Template to current schedule -->
+<template name="current">
+	<div class="container">
+		{{#with schedule}}
+		{{#with pet}}
+			<div class="row">
+		  	<div class="col-xs-6 text-center nopadding">
+		  		<a class="{{profileTab}}" href="/{{name}}/profile">Profile</a>
+		  	</div>
+		  	<div class="col-xs-6 text-center nopadding">
+				<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
+		  	</div>
+			</div>
+			<img class="profile-dog img-circle center-block" src="../{{imgURL}}"/>
+			<div class="row">
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab activetab" href="/{{name}}/schedule/current">Current</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
+				</div>								
+			</div>
+		{{/with}}
+		<br>
+		<div class="row">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<i style="color: red" class="pull-left fa fa-ban"></i>
+					<span style="right:500px" class="text-center">{{time}}</span> 
+					<i style="color: green" class="pull-right fa fa-phone"></i>
+				</li>
+			</ul>
+		</div>
+		{{/with}}
+	</div>
+</template>
+
+<!-- Template to pending requests -->
+<template name="requests">
+	<div class="container">
+		{{#with schedule}}
+		{{#with pet}}
+			<div class="row">
+		  	<div class="col-xs-6 text-center nopadding">
+		  		<a class="{{profileTab}}" href="/{{name}}/profile">Profile</a>
+		  	</div>
+		  	<div class="col-xs-6 text-center nopadding">
+				<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
+		  	</div>
+			</div>
+			<img class="profile-dog img-circle center-block" src="../{{imgURL}}"/>
+			<div class="row">
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab activetab" href="/{{name}}/schedule/requests">Requests</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
+				</div>								
+			</div>
+		{{/with}}
+			<br>
+		<div class="row">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<i style="color: red" class="pull-left fa fa-ban"></i>
+					<span style="right:500px" class="text-center">{{time}}</span> 
+					<i style="color: green" class="pull-right fa fa-check"></i>
+				</li>
+			</ul>
+		</div>
+		{{/with}}
+	</div>
+</template>
+
+<!-- Template to dog availability -->
+<template name="availability">
+	<div class="container">
+		{{#with pet}}
+			<div class="row">
+		  	<div class="col-xs-6 text-center nopadding">
+		  		<a class="{{profileTab}}" href="/{{name}}/profile">Profile</a>
+		  	</div>
+		  	<div class="col-xs-6 text-center nopadding">
+				<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
+		  	</div>
+			</div>
+			<img class="profile-dog img-circle center-block" src="../{{imgURL}}"/>
+			<div class="row">
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab activetab" href="/{{name}}/schedule/availability">Availability</a>
+				</div>								
+			</div>
+		{{/with}}
+		<br>
+			<form class="text-center">
+				Start date and time:<br>
+				<input type="datetime-local" name="start"><br><br>
+				End date and time:<br>
+				<input type="datetime-local" name="start"><br><br>
+				<input type="submit" value="Add Availabilty">		
+			</form>
+	</div>	
+</template>
+
 
 <!-- Template for owner view of dog profile -->
 <template name="profile">
@@ -87,7 +214,7 @@
 	  	</a>
 	  </div>
 	  <div class="col-xs-6 text-center nopadding">
-		<a class="{{scheduleTab}}" href="/{{name}}/schedule">
+		<a class="{{scheduleTab}}" href="/{{name}}/schedule/current">
 			Schedule
 		</a>
 	  </div>

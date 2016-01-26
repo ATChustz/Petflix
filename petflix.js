@@ -45,10 +45,29 @@ Router.route('/:_id/profile', function() {
   var params = this.params;
   var id = params._id;
   pet_name = id;
-  
   this.render('dog_profile_ownersv');
 });
 
+Router.route('/:_id/schedule/current', function () {
+  var params = this.params; // { _id: "bella" }
+  var id = params._id; // "5"
+  pet_name = id;
+  this.render('current');
+});
+
+Router.route('/:_id/schedule/requests', function () {
+  var params = this.params; // { _id: "bella" }
+  var id = params._id; // "5"
+  pet_name = id;
+  this.render('requests');
+});
+
+Router.route('/:_id/schedule/availability', function () {
+  var params = this.params; // { _id: "bella" }
+  var id = params._id; // "5"
+  pet_name = id;
+  this.render('availability');
+});
 
 var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
@@ -86,6 +105,8 @@ if (Meteor.isServer) {
     pet_profile.insert({name: "Billy", breed: 'The Goat', rating: "3star.png", age: 6, bio: "Billy is a goat.", temperment: 'Goat', imgURL : "billy.png",
       comments: billy_comments, badges: billy_badges, class: "D.png", distance: "1 miles",location:"500 Mayfield Ave Stanford, CA 94305", quote: "Why am I here? I'm a goat!"});
 
+    schedules.insert({name: "Bella", pickuplocation: "Stanford", time: "5:30 P.M."});
+
     Meteor.publish("all pets", function(){
       return pet_profile.find();
     });
@@ -111,7 +132,7 @@ if (Meteor.isClient) {
   });
 
   Template.registerHelper("scheduleTab", () => {
-    if (Router.current().route.getName().endsWith("schedule")) {
+    if (Router.current().route.getName().indexOf("schedule") > -1) {
       return "btn btn-default dogtab activetab";
     }
     return "btn btn-default dogtab";
@@ -157,6 +178,39 @@ if (Meteor.isClient) {
       return pet;
     }
   })
+
+  Template.current.helpers({
+    schedule: function() {
+      var schedule =  schedules.findOne({name: pet_name});
+      return schedule;
+    },
+    pet: function() {
+      var pet = pet_profile.findOne({name: pet_name});
+      return pet;
+    }
+  });
+
+  Template.requests.helpers({
+    schedule: function() {
+      var schedule =  schedules.findOne({name: pet_name});
+      return schedule;
+    },    
+    pet: function() {
+      var pet = pet_profile.findOne({name: pet_name});
+      return pet;      
+    }
+  });
+
+  Template.availability.helpers({
+    schedule: function() {
+      var schedule =  schedules.findOne({name: pet_name});
+      return schedule;
+    },    
+    pet: function() {
+      var pet = pet_profile.findOne({name: pet_name});
+      return pet;      
+    }
+  });
 
   Template.confirmation.helpers({
     pet: function() {
