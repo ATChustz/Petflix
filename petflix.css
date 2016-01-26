@@ -123,6 +123,7 @@ a:hover{
 
 .verifier-img{
 	width: 200px;
+	border-radius: 100%;
 }
 
 #button-text {

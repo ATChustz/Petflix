@@ -322,6 +322,35 @@
 <!-- Template for simple dog info -->
 <template name="dog">
 	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<form role="form" class="search">
+				<input type="text" class="form-control" name="text" placeholder="Search by name">
+			</form>
+		  	
+		</div>
+	</div>
+	{{#if bool}}
+	<div class="row">
+		{{#each names}}
+			<div class="image">
+				<a href="{{name}}">
+			    <img id="{{name}}" src="{{imgURL}}"/>
+			    	<div class="opq">
+
+				    	<h4 class="distance">{{distance}}</h4>
+				    	<h1 class="pet_name"> {{name}} </h1>
+						<h5 class="breed">The {{breed}}</h5>
+						<h2 class="quote">{{quote}}</h2>
+
+					</div>
+
+				</a>
+			</div>
+		
+		{{/each}}
+	</div>
+	{{else}}
+	<div class="row">
 	{{#each pets}}
 		<div class="image">
 			<a href="{{name}}">
@@ -339,7 +368,14 @@
 		</div>
 	
 	{{/each}}
-  </div>
+  	</div>
+  	{{/if}}
+</template>
+
+<template name="search-results">
+	{{#each names}}
+    	<h1>{{title}}</h1>
+  	{{/each}}
 </template>
 
 <template name="scheduler">
@@ -352,8 +388,8 @@
 				<div class="col-xs-5 title"><p>{{name}} - Schedule</p></div>
 			</div>
 			<div class="row text-center">
-				<img id="scheduler-dog" class="img-responsive" src="{{imgURL}}"/>
-				<p class="lead" id="chill-pet"> You are going to chill with {{name}} ...</p>	
+				<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+				<p class="lead" id="chill-pet"> You are going to chill with {{name}} ...</p>
 			</div>
 			<div class="row" id="form">
 				<form>
@@ -437,7 +473,7 @@
 		<div class="row">
 			<div class="col-xs-6 text-center">
 				<img class="img-responsive verifier-img" src="verifier.png"/>
-				<p>John</p>
+				<p>Alexa</p>
 
 			</div>
 			{{#with schedule}}
@@ -450,7 +486,7 @@
 			{{/with}}
 
 			<div class="col-xs-10 col-xs-offset-1">
-				<p>Hi! I am John, the verifier for your walk with {{name}}. Pay no attention to the fact that I am also a dog. I will bring {{name}} to {{pickuplocation}} at {{time}} and to assist and evaluate you for your walk with {{name}}. Please call (123)-456-7890 if you have any questions.</p>
+				<p>Hi! I'm Alexa, the verifier for your walk with {{name}}. I will bring {{name}} to {{pickuplocation}} at {{time}} to assist and evaluate you for your walk with {{name}}. Please call (123)-456-7890 if you have any questions.</p>
 
 			</div>
 			
@@ -488,7 +524,7 @@
 	</div>
 </template>
 
-	<!-- Template for cancellation -->
+<!-- Template for cancellation -->
 <template name="cancellation">
 	<div class="row">
 		<div class="col-xs-12">
@@ -558,7 +594,7 @@
 				
 
 		<div class="row">
-			<div class="col-xs-6 col-xs-offset-3">
+			<div class="col-xs-8 col-xs-offset-2">
 				<form role="form" id="dog-form">
 					<input type="image" class="paw" src="adddog.png">
 					<input type="text" class="form-control" name="name" placeholder="Name"><br>
