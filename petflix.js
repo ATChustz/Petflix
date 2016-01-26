@@ -132,7 +132,7 @@ if (Meteor.isClient) {
   });
 
   Template.registerHelper("scheduleTab", () => {
-    if (Router.current().route.getName().endsWith("schedule")) {
+    if (Router.current().route.getName().indexOf("schedule") > -1) {
       return "btn btn-default dogtab activetab";
     }
     return "btn btn-default dogtab";
