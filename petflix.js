@@ -14,8 +14,8 @@ Router.route('/verifier', function () {
   this.render('verifier');
 });
 
-Router.route('/video', function () {
-  this.render('video');
+Router.route('/success', function () {
+  this.render('success');
 });
 
 Router.route('/addowner', function () {
@@ -94,6 +94,9 @@ if (Meteor.isServer) {
     });
   });
 }
+
+
+
 if (Meteor.isClient) {
 
   Meteor.subscribe("all pets");
@@ -208,6 +211,13 @@ if (Meteor.isClient) {
       }
   });
 
+  Template.success.helpers({
+      pet: function() {
+        var pet =  pet_profile.findOne({name: pet_name});
+        return pet;
+      }
+  });
+
   Template.adddog.events({
     "submit .dog-form": function (event) {
       event.preventDefault();
@@ -217,7 +227,6 @@ if (Meteor.isClient) {
       var description = event.target.description.value;
       var temperment = event.target.temperment.value;
       var bio = event.target.bio.value;
-      console.log(name);
       pet_profile.insert({
         name: name,
         breed: breed,
@@ -230,7 +239,6 @@ if (Meteor.isClient) {
         photo: "nala.png",
         class: "C.png",
       });
-
     }
   });
 
