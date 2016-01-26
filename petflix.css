@@ -364,3 +364,8 @@ h4, h5 {
 #success-body {
 	font-family: 'Just Another Hand', cursive;
 }
+
+#return {
+	margin: 0 auto;
+	text-align: center;
+}
