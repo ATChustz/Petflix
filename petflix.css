@@ -46,7 +46,7 @@ button {
   bottom:5px;
 }
 
-hr{
+hr {
 	border: 1px solid rgb(230,230,230);
 }
 input[type="radio"] {
@@ -368,4 +368,19 @@ h4, h5 {
 #return {
 	margin: 0 auto;
 	text-align: center;
+}
+
+.owner-preview {
+	width: 100px;
+	display: inline;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#owner-prompt {
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+}
+
+.owner-preview h3 {
+	margin-left: 50px;
 }

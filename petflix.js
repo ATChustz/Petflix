@@ -26,6 +26,10 @@ Router.route('/adddog', function () {
   this.render('adddog');
 });
 
+Router.route('/select', function () {
+  this.render('select');
+});
+
 // given a url like "/post/5"
 Router.route('/:_id', function () {
   var params = this.params; // { _id: "bella" }
@@ -227,6 +231,12 @@ if (Meteor.isClient) {
     pet: function() {
       var pet =  pet_profile.findOne({name: pet_name});
       return pet;
+    }
+  });
+
+  Template.select.helpers({
+    pets: function () {
+      return pet_profile.find({});
     }
   });
 }
