@@ -80,7 +80,7 @@
 					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
 				</div>
 				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab" href="#">Availability</a>
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
 				</div>								
 			</div>
 		{{/with}}
@@ -100,7 +100,7 @@
 				<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
 		  	</div>
 			</div>
-			<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+			<img class="profile-dog img-circle center-block" src="../{{imgURL}}"/>
 			<div class="row">
 				<div class="col-xs-4 text-center nopadding">
 					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
@@ -138,7 +138,7 @@
 				<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
 		  	</div>
 			</div>
-			<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+			<img class="profile-dog img-circle center-block" src="../{{imgURL}}"/>
 			<div class="row">
 				<div class="col-xs-4 text-center nopadding">
 					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
@@ -161,7 +161,6 @@
 <!-- Template to dog availability -->
 <template name="availability">
 	<div class="container">
-		{{#with schedule}}
 		{{#with pet}}
 			<div class="row">
 		  	<div class="col-xs-6 text-center nopadding">
@@ -171,7 +170,7 @@
 				<a class="{{scheduleTab}}" href="/{{name}}/schedule">Schedule</a>
 		  	</div>
 			</div>
-			<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+			<img class="profile-dog img-circle center-block" src="../{{imgURL}}"/>
 			<div class="row">
 				<div class="col-xs-4 text-center nopadding">
 					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
@@ -184,10 +183,14 @@
 				</div>								
 			</div>
 		{{/with}}
-			<ul class="list-group">
-				{{time}}
-			</ul>
-		{{/with}}
+		<br>
+			<form class="text-center">
+				Start date and time:<br>
+				<input type="datetime-local" name="start"><br><br>
+				End date and time:<br>
+				<input type="datetime-local" name="start"><br><br>
+				<input type="submit" value="Add Availabilty">		
+			</form>
 	</div>	
 </template>
 
