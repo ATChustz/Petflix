@@ -124,8 +124,29 @@ if (Meteor.isClient) {
   Template.dog.helpers({
     pets: function () {
       return pet_profile.find({});
+    },
+
+    names: function () {
+      var pet_names = Session.get('name');
+      return pet_profile.find({name: pet_names});
+    },
+
+    bool: function () {
+      return Session.get('bool');
     }
   });
+
+  Template.dog.events({
+    "submit .search": function (event) {
+      event.preventDefault();
+      var text = event.target.text.value;
+      Session.set('bool', true);
+      if(text == "") {
+        Session.set('bool', false);
+      }
+      Session.set('name', text);
+    }
+  })
 
   Template.profile.helpers({
     pet: function() {
@@ -187,7 +208,7 @@ if (Meteor.isClient) {
       }
   });
 
-  Template.adddog.helpers({
+  Template.adddog.events({
     "submit .dog-form": function (event) {
       event.preventDefault();
       var name = event.target.name.value;
@@ -196,7 +217,7 @@ if (Meteor.isClient) {
       var description = event.target.description.value;
       var temperment = event.target.temperment.value;
       var bio = event.target.bio.value;
-
+      console.log(name);
       pet_profile.insert({
         name: name,
         breed: breed,
