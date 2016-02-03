@@ -282,14 +282,14 @@ if (Meteor.isClient) {
       var name = event.target.name.value;
       var breed = event.target.breed.value;
       var age = event.target.age.value;
-      var description = event.target.description.value;
+      var tagline = event.target.tagline.value;
       var temperment = event.target.temperment.value;
       var bio = event.target.bio.value;
       pet_profile.insert({
         name: name,
         breed: breed,
         age: age,
-        description: description,
+        tagline: tagline,
         temperment: temperment,
         bio: bio,
         rating: "5star.png",

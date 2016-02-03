@@ -105,12 +105,6 @@ input[type="radio"] {
 
 }
 
-#back{
-	display: inline-block;
-	padding-right: 3px;
-	margin-right: 2px;
-}
-
 
 a {
     color: #FF9600;
@@ -229,9 +223,20 @@ outline: none;
 	padding-top: 20px;
 }
 
-.back-arrow{
+.back-arrow {
 	padding-top: 5px;
 	color: #FF9600;
+}
+
+#back{
+	display: inline-block;
+	padding-right: 3px;
+	margin-right: 2px;
+}
+
+.back-narrow {
+	width: 80px;
+
 }
 
 #last-attribute {
@@ -340,6 +345,7 @@ h4, h5 {
 #tell {
 	font-family: 'Montserrat', sans-serif;
 	color: #FF9600;
+	margin-left: 3px;
 }
 
 .paw {
@@ -362,7 +368,7 @@ h4, h5 {
 }
 
 #success-body {
-	font-family: 'Just Another Hand', cursive;
+	font-family: 'Just Another Hand', serif;
 }
 
 #return {
@@ -383,4 +389,100 @@ h4, h5 {
 
 .owner-preview h3 {
 	margin-left: 50px;
+}
+
+#add-owner-title {
+	margin-left: 21px;
+	padding-left: 0;
+}
+
+#add-dog-title {
+	margin-left: 15px;
+}
+
+.input-field {
+	display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+	border-radius: 0;
+	background: transparent;
+	color: #595F6E;
+	-webkit-appearance: none;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #F2F2F2 4%);
+	border: none;
+}
+
+.input-field-long {
+	display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+	border-radius: 0;
+	background: transparent;
+	color: #595F6E;
+	-webkit-appearance: none;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #F2F2F2 4%);
+	height: 120px;
+}
+
+.input-field-dropdown {
+	display: inline-block;
+  width: 80%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+	border-radius: 0;
+	background: transparent;
+	color: #595F6E;
+	-webkit-appearance: none;
+	border: none;
+	margin-bottom: 10px;
+}
+
+.input-field:focus {
+	outline:none;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #FF9600 4%);
+	transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+
+.input-field-long:focus {
+	outline-color: #FF9600;
+}
+
+.input-field-dropdown:focus {
+	outline-color: #FF9600;
+}
+
+select {
+	font-family: 'Montserrat', sans-serif;
+	opacity: .6;
+	color: #595F6E;
+}
+
+#dropdown-chevron {
+	position: relative;
+	opacity: 0.6;
+}
+
+.input-field::-webkit-input-placeholder, .input-field-long::-webkit-input-placeholder {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.input-field:-ms-input-placeholder, .input-field-long:-ms-input-placeholder {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.input-field:-moz-placeholder, .input-field-long:-moz-placeholder {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.input-field::-moz-placeholder, .input-field-long::-moz-placeholder {
+  font-family: 'Montserrat', sans-serif;
+}
+
+p {
+	font-family: 'Montserrat', sans-serif;
 }
