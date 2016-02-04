@@ -141,7 +141,7 @@ a:hover{
 	padding-top: 20px;
 	padding-left: 20px;
 	padding-right: 20px;
-	margin: 0px;
+	margin-bottom: 20px;
 }
 
 #bottom-button{
@@ -154,9 +154,9 @@ a:hover{
 }
 
 .profile-dog {
-	width: 50%;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .walker-name{
@@ -318,10 +318,13 @@ h4, h5 {
 	display: block;
 	width: 100%;
 	color: #FF9600;
+	height: 40px;
+	border: 2px solid #FF9600;
 }
 
 .nopadding {
-	padding: 0px !important;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 
 #tell {
@@ -338,6 +341,7 @@ h4, h5 {
 .activetab {
 	background-color: #FF9600 !important;
 	color: white;
+	border: none;
 }
 
 #success-text {
@@ -591,5 +595,31 @@ p {
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+.2-toggle {
+	border-radius: 0px !important;
+}
+
+.clean-link, .clean-link:visited {
+	text-decoration: none;
+}
+
+.toggle-text {
+	padding-top: 10px;
+}
+
+.profile-pad {
+	margin-right: 26px;
+}
+
+#edit-button {
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+
+
+
+
 
 

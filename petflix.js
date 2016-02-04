@@ -134,16 +134,16 @@ if (Meteor.isClient) {
 
   Template.registerHelper("profileTab", () => {
     if (Router.current().route.getName().endsWith("profile")) {
-      return "btn btn-default dogtab activetab";
+      return "btn-default dogtab activetab clean-link";
     }
-    return "btn btn-default dogtab";
+    return "btn-default dogtab clean-link";
   });
 
   Template.registerHelper("scheduleTab", () => {
     if (Router.current().route.getName().indexOf("schedule") > -1) {
-      return "btn btn-default dogtab activetab";
+      return "btn-default dogtab activetab clean-link";
     }
-    return "btn btn-default dogtab";
+    return "btn-default dogtab clean-link";
   });
 
   Template.pet.helpers({
