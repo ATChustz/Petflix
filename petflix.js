@@ -111,6 +111,9 @@ if (Meteor.isServer) {
 
     schedules.insert({name: "Bella", pickuplocation: "Stanford", time: "5:30 P.M."});
 
+    owners.insert({name: "Landay", address: "HCILYFE", phone: "6501234355"});
+
+    owners.insert({name: "James", address: "HCILIFE", phone: "6511234355"});
     Meteor.publish("all pets", function(){
       return pet_profile.find();
     });
@@ -118,7 +121,7 @@ if (Meteor.isServer) {
       return schedules.find();
     });
     Meteor.publish("owners", function(){
-      return schedules.find();
+      return owners.find();
     });
   });
 }
@@ -280,13 +283,13 @@ if (Meteor.isClient) {
   });
 
   Template.addowner.events({
-    "click #owner-form": function (event) {
+    "submit #owner-form": function (event) {
       event.preventDefault();
       var name = event.target.name.value;
       var address = event.target.address.value;
       var phone = event.target.phone.value;
       console.log("here");
-      pet_profile.insert({
+      owners.insert({
         name: name,
         address: address,
         phone: phone,
@@ -295,7 +298,7 @@ if (Meteor.isClient) {
   });
 
   Template.adddog.events({
-    "submit .dog-form": function (event) {
+    "submit #dog-form": function (event) {
       event.preventDefault();
       var name = event.target.name.value;
       var breed = event.target.breed.value;
