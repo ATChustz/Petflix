@@ -26,6 +26,10 @@ Router.route('/adddog', function () {
   this.render('adddog');
 });
 
+Router.route('/addwalker', function () {
+  this.render('addwalker');
+});
+
 Router.route('/select', function () {
   this.render('select');
 });

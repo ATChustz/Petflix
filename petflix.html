@@ -21,7 +21,7 @@
 	  		<button class="btn" id="signup">Owner Login</button>
 	  	</a>
 	  	<br/>
-	  	<a href="/list">
+	  	<a href="/addwalker">
 	  		<button class="btn" id="signup">Walker Login</button>
 	  	</a>
 	  </div>
@@ -597,6 +597,39 @@
 			</div>
 		</div>
 		<!-- Need to add form elements to owner database -->
+	
+	</div>
+</template>
+
+<template name="addwalker">
+	<div class="container">
+		<div class="row">
+	  	<div class="col-xs-4 back-arrow back-narrow">
+	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+			<div class="col-xs-6 title" id="add-walker-title">
+				<p>Add Walker Information</p>
+			</div>
+  	</div>
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<img class="paw" src="paw.png">
+				<p id="tell">Tell us about yourself!</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<form role="form" id="dog-form">
+					<input type="text" class="input-field" name="name" placeholder="Name"><br>
+					<input type="text" class="input-field" name="address" placeholder="Address"><br>
+					<input type="text" class="input-field" name="phone" placeholder="Phone Number"><br>
+					<a href="/list"><input type="image" class="paw" src="bone-button.png" alt="next"></a>
+
+				</form>
+			</div>
+		</div>
+		<!-- Need to add form elements to walker database -->
 	
 	</div>
 </template>

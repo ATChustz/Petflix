@@ -400,6 +400,12 @@ h4, h5 {
 	margin-left: 15px;
 }
 
+#add-walker-title {
+	padding-left: 0;
+	width: 190px;
+	margin-left: 23px;
+}
+
 .input-field {
 	display: block;
   width: 100%;
