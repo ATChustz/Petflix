@@ -26,6 +26,10 @@ Router.route('/adddog', function () {
   this.render('adddog');
 });
 
+Router.route('/addwalker', function () {
+  this.render('addwalker');
+});
+
 Router.route('/select', function () {
   this.render('select');
 });
@@ -198,10 +202,10 @@ if (Meteor.isClient) {
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
-    },    
+    },
     pet: function() {
       var pet = pet_profile.findOne({name: pet_name});
-      return pet;      
+      return pet;
     }
   });
 
@@ -209,10 +213,10 @@ if (Meteor.isClient) {
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
-    },    
+    },
     pet: function() {
       var pet = pet_profile.findOne({name: pet_name});
-      return pet;      
+      return pet;
     }
   });
 
@@ -282,14 +286,14 @@ if (Meteor.isClient) {
       var name = event.target.name.value;
       var breed = event.target.breed.value;
       var age = event.target.age.value;
-      var description = event.target.description.value;
+      var tagline = event.target.tagline.value;
       var temperment = event.target.temperment.value;
       var bio = event.target.bio.value;
       pet_profile.insert({
         name: name,
         breed: breed,
         age: age,
-        description: description,
+        tagline: tagline,
         temperment: temperment,
         bio: bio,
         rating: "5star.png",

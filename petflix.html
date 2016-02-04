@@ -21,7 +21,7 @@
 	  		<button class="btn" id="signup">Owner Login</button>
 	  	</a>
 	  	<br/>
-	  	<a href="/list">
+	  	<a href="/addwalker">
 	  		<button class="btn" id="signup">Walker Login</button>
 	  	</a>
 	  </div>
@@ -331,7 +331,6 @@
 	    </div>
 	  </div>
 	</div>
-
 </template>
 
 <!-- Template for simple dog info -->
@@ -574,11 +573,11 @@
 <template name="addowner">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-4">
-		  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
+	  	<div class="col-xs-4 back-arrow back-narrow">
+	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
 			</div>
-		</div>
-
+			<div class="col-xs-6 title" id="add-owner-title"><p>Add Owner Information</p></div>
+  	</div>
 		<div class="row">
 			<div class="col-xs-6 col-xs-offset-3">
 				<img class="paw" src="paw.png">
@@ -589,10 +588,10 @@
 		<div class="row">
 			<div class="col-xs-6 col-xs-offset-3">
 				<form role="form" id="dog-form">
-					<input type="text" class="form-control" name="name" placeholder="Name"><br>
-					<input type="text" class="form-control" name="address" placeholder="Address"><br>
-					<input type="text" class="form-control" name="phone" placeholder="Phone Number"><br>
-					<a href="/adddog"><input type="image" class="paw" src="add-button.png" alt="next"></a>
+					<input type="text" class="input-field" name="name" placeholder="Name"><br>
+					<input type="text" class="input-field" name="address" placeholder="Address"><br>
+					<input type="text" class="input-field" name="phone" placeholder="Phone Number"><br>
+					<a href="/adddog"><input type="image" class="paw" src="continue-button.png" alt="next"></a>
 
 				</form>
 			</div>
@@ -602,43 +601,85 @@
 	</div>
 </template>
 
+<template name="addwalker">
+	<div class="container">
+		<div class="row">
+	  	<div class="col-xs-4 back-arrow back-narrow">
+	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+			<div class="col-xs-6 title" id="add-walker-title">
+				<p>Add Walker Information</p>
+			</div>
+  	</div>
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<img class="paw" src="paw.png">
+				<p id="tell">Tell us about yourself!</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<form role="form" id="dog-form">
+					<input type="text" class="input-field" name="name" placeholder="Name"><br>
+					<input type="text" class="input-field" name="address" placeholder="Address"><br>
+					<input type="text" class="input-field" name="phone" placeholder="Phone Number"><br>
+					<a href="/list"><input type="image" class="paw" src="bone-button.png" alt="next"></a>
+
+				</form>
+			</div>
+		</div>
+		<!-- Need to add form elements to walker database -->
+	
+	</div>
+</template>
+
 <template name="adddog">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-4">
-		  		<a href="/addowner"><img id = "back" src = "Back.png"/>Back</a>
+	  	<div class="col-xs-4 back-arrow back-narrow">
+	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
 			</div>
-		</div>
-				
+			<div class="col-xs-6 title" id="add-dog-title"><p>Add Dog Information</p></div>
+  	</div>
 
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
 				<form role="form" id="dog-form">
 					<input type="image" class="paw" src="adddog.png">
-					<input type="text" class="form-control" name="name" placeholder="Name"><br>
-					<input type="text" class="form-control" name="address" placeholder="Breed"><br>
-					<input type="text" class="form-control" name="phone" placeholder="Age (Years)"><br>
-					<input type="text" class="form-control" name="description" placeholder="Description"><br>
-					<select name="Class" class="form-control" >
-						<option  disabled selected>Temperament:</option>
+					<input type="text" class="input-field" name="name" placeholder="Name"><br>
+					<input type="text" class="input-field" name="address" placeholder="Breed"><br>
+					<input type="text" class="input-field" name="phone" placeholder="Age (Years)"><br>
+					<input type="text" class="input-field" id="tagline-field" name="tagline" placeholder="Tagline"><br>
+					<a href="#" class="class-why" data-toggle="modal" data-target="#myModal5"> <img src="infobutton.png" id="tagline-info"></a>
+					<select name="Class" class="input-field-dropdown" >
+						<option  disabled selected>Temperament</option>
   						<option value="Aggressive">Aggressive</option>
   						<option value="Energetic">Energetic</option>
   						<option value="Playful">Playful</option>
  					 	<option value="Calm">Calm</option>
-
-					</select><br>
- 					<textarea class="form-control" name="bio" rows="2" placeholder="Bio"></textarea><br>
+					</select>
+					<img id="dropdown-chevron" src="dropdown.png">
+					<br>
+ 					<textarea class="input-field-long" name="bio" rows="2" placeholder="Bio"></textarea><br>
 
 					<a href="/list"><input type="image" src="finish.png" class="paw" alt="finish"></a>
 				</form>
 			</div>
 		</div>
-		
+	</div>
 
+	<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	        <p>A tagline is a short sentence that summarizes your dog's personality</p>
+	        <br>
+	        <p>This is an example of a dog posting:</p>
+	        <img id="tagline-example" src="tagline-example.png">
+	      </div>
+	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
 	</div>
 </template>
-
-
-
-
-
