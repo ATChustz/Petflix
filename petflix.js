@@ -114,7 +114,10 @@ if (Meteor.isServer) {
     Meteor.publish("all pets", function(){
       return pet_profile.find();
     });
-        Meteor.publish("schedules", function(){
+    Meteor.publish("schedules", function(){
+      return schedules.find();
+    });
+    Meteor.publish("owners", function(){
       return schedules.find();
     });
   });
@@ -274,6 +277,21 @@ if (Meteor.isClient) {
         var pet =  pet_profile.findOne({name: pet_name});
         return pet;
       }
+  });
+
+  Template.addowner.events({
+    "click #owner-form": function (event) {
+      event.preventDefault();
+      var name = event.target.name.value;
+      var address = event.target.address.value;
+      var phone = event.target.phone.value;
+      console.log("here");
+      pet_profile.insert({
+        name: name,
+        address: address,
+        phone: phone,
+      });
+    }
   });
 
   Template.adddog.events({
