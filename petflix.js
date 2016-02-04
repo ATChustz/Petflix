@@ -277,15 +277,12 @@ if (Meteor.isClient) {
   });
 
   Template.adddog.events({
-    "click .name": function (event) {
-      console.log("oiasdjfoisad");
-    },
-    "click #sub2": function (event) {
+    "click #finishbutton": function (event) {
       event.preventDefault();
       var $emptyInputs = [];
       var $hasInput = [];
       $(".doginput :input").each(function() {
-        if (!($(this).val())) {$emptyInputs.push($(this)); console.log($(this).val());}
+        if (!($(this).val())) $emptyInputs.push($(this));
         else $hasInput.push($(this));
       })
       if ($emptyInputs.length) {
