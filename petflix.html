@@ -9,22 +9,32 @@
   
 </body>
 
+<template name="layout">
+	<div class="transitions-container" style="height:100%;">
+		{{> yield}}
+	</div>
+</template>
+
 <template name="login">
-	<div class="container" id="login-screen">
-	  <img id="logo" src="PF&C-logo.png"/>
-	  <div id="button-container">
-	  	<a href="/addowner">
-	  		<button class="btn" id="login">New Dog</button>
-	  	</a>
-	  	<br/>
-	  	<a href="/select">
-	  		<button class="btn" id="signup">Owner Login</button>
-	  	</a>
-	  	<br/>
-	  	<a href="/list">
-	  		<button class="btn" id="signup">Walker Login</button>
-	  	</a>
-	  </div>
+	<div class="transitions-content">
+		<div class="transitions-content login">
+			<div class="container" id="login-screen">
+			  <img id="logo" src="PF&C-logo.png"/>
+			  <div id="button-container">
+			  	<a href="/addowner">
+			  		<button class="btn" id="login" data-transition-out="slideFadeLeftOut" data-transition-in="slideFadeRightIn">New Dog</button>
+			  	</a>
+			  	<br/>
+			  	<a href="/select">
+			  		<button class="btn" id="signup" data-transition-out="slideFadeLeftOut" data-transition-in="slideFadeRightIn">Owner Login</button>
+			  	</a>
+			  	<br/>
+			  	<a href="/list">
+			  		<button class="btn" id="signup" data-transition-out="slideFadeLeftOut" data-transition-in="slideFadeRightIn">Walker Login</button>
+			  	</a>
+			  </div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -44,8 +54,10 @@
 </template>
 
 <template name="list">
-	<div class="container" id="list">
-		{{>dog}}
+	<div class="transitions-content">
+		<div class="container" id="list">
+			{{>dog}}
+		</div>
 	</div>
 </template>
 

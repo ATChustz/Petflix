@@ -20,3 +20,4 @@ insecure                # Allow all DB writes from clients (for prototyping)
 twbs:bootstrap-noglyph
 iron:router
 fortawesome:fontawesome
+jamielob:transitions
