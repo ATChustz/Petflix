@@ -274,52 +274,67 @@
 	  <div class="col-xs-4 back-arrow">
 	  	<a href="/list"><img id = "back" src = "Back.png"/>Back</a>
 		</div>
-		<div class="col-xs-5 title"><p>{{name}} - Detail</p></div>
+		<div class="col-xs-4 title"><p>{{name}}</p></div>
   </div>
 
-  <div class="row">
-  	<div class="col-xs-12">
+  <div class="row image">
 		<img class="detail-dog" src="{{imgURL}}"/>
-		<div class="row pet-info">
-	  	<div class="col-xs-6 about-pet detail-content">About {{name}}</div>
-	  	<div class="col-xs-6 detail-content">Rating: <img id = "stars" src = "{{rating}}"/></div>
-			<div class="col-xs-6 detail-content">Breed: {{breed}}</div>
-			<div class="col-xs-6 detail-content">Class: <img id = "class" src = "{{class}}"/><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"> What's this?</a></div>
-
-			<div class="col-xs-6 detail-content">Age: {{age}}</div>
-			<div class="col-xs-6 detail-content">Proximity: {{distance}}</div>
-
-			<div class="col-xs-12 detail-content">Temperament: {{temperment}}</div>
-
-			<div class="col-xs-12 detail-content" id="last-attribute">Bio: {{bio}}</div>
-						
-			<a id="bone-button" href="/scheduler"><img src="bone-button.png"></a>
-
-			<div class="col-xs-12 detail-content badges-container">
-				<p class="dont">{{name}} asks "please"...</p>
-				{{#each badges}}
-				<p class="badges"><i class="fa {{icon}}"></i>{{ask}}</p>
-				{{/each}}
-			</div>
+		<div class="overlay">
+			<h4 class="distance">{{distance}}</h4>
 		</div>
-		
-		{{#each comments}}
-		<div class="row comments">
-			<div class="row">
-				<div class="col-xs-4 walker-name">{{walker}}</div>
-				<div class="col-xs-3 col-xs-offset-4"><img id = "stars" src = "{{rating}}"/></div>
-			</div>
-			<div class="row">
-				<div class="col-xs-4">{{date}}</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">{{comment}}</div>
-			</div>
-		</div>
-		<hr>
-		{{/each}}
 	</div>
- </div>
+		
+	<div class="row" id="info-bar">
+  	<span id="star-span"><img id ="stars" src = "white-{{rating}}"/></span>
+  	<span id="class-span"><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"><img src="info-bold.png"></a><img id = "class" src = "white-{{class}}"/><p>Class:</p></span>
+  </div>
+
+	<div class="row pet-info">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-4 detail-content">
+			<p>Age</p>
+			<p>Breed</p>
+			<p class="last-attribute">Temperament</p>
+		</div>
+    <div class="col-xs-4 detail-content vertical-line">
+    	<p>{{age}}</p>
+    	<p>{{breed}}</p>
+    	<p class="last-attribute">{{temperament}}</p>
+    </div>
+  </div>
+ 	<div class="row pet-info">
+ 		<div class="col-xs-2"></div>
+		<div class="col-xs-8 detail-content" id="bio">
+			<p class="detail-title">About {{name}}</p>
+			{{bio}}
+		</div>
+ 	</div>
+	<div class="row pet-info">
+	 	<div class="col-xs-2"></div>
+	 	<div class="col-xs-8 detail-content badges-container">
+			<p class="detail-title">{{name}} asks "please"...</p>
+			{{#each badges}}
+			<p class="badges"><i class="fa {{icon}}"></i>{{ask}}</p>
+			{{/each}}
+		</div>
+	</div>
+	<a href="/scheduler"><img id="chill-button" src="bone-button.png"></a>
+	{{#each comments}}
+	<div class="row comments">
+		<div class="row">
+			<hr>
+			<div class="col-xs-4 walker-name">{{walker}}</div>
+			<div class="col-xs-3 col-xs-offset-4"><img id = "stars" src = "{{rating}}"/></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4">{{date}}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">{{comment}}</div>
+		</div>
+	</div>
+	
+	{{/each}}
  {{/with}}
 
 	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -398,7 +413,7 @@
   			<div class="col-xs-4 back-arrow">
   				<a href="/{{name}}"><img id = "back" src = "Back.png"/>Back</a>
 				</div>
-				<div class="col-xs-5 title"><p>{{name}} - Schedule</p></div>
+				<div class="col-xs-5 title"><p>{{name}}</p></div>
 			</div>
 			<div class="row text-center">
 				<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
@@ -552,7 +567,7 @@
 <template name="success">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-4">
+			<div class="col-xs-4 back-arrow">
 			  <a href="/verifier"><img id="back" src="Back.png"/>Back</a>
 			</div>
 		</div>
@@ -575,7 +590,7 @@
 	  	<div class="col-xs-4 back-arrow back-narrow">
 	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
 			</div>
-			<div class="col-xs-6 title" id="add-owner-title"><p>Add Owner Information</p></div>
+			<div class="col-xs-6 signup-title" id="add-owner-title"><p>Add Owner Information</p></div>
   	</div>
 		<div class="row">
 			<div class="col-xs-6 col-xs-offset-3">
@@ -606,7 +621,7 @@
 	  	<div class="col-xs-4 back-arrow back-narrow">
 	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
 			</div>
-			<div class="col-xs-6 title" id="add-walker-title">
+			<div class="col-xs-6 signup-title" id="add-walker-title">
 				<p>Add Walker Information</p>
 			</div>
   	</div>
@@ -639,7 +654,7 @@
 	  	<div class="col-xs-4 back-arrow back-narrow">
 	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
 			</div>
-			<div class="col-xs-6 title" id="add-dog-title"><p>Add Dog Information</p></div>
+			<div class="col-xs-6 signup-title" id="add-dog-title"><p>Add Dog Information</p></div>
   	</div>
 
 		<div class="row">
