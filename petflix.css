@@ -182,7 +182,7 @@ a:hover{
 .walker-name{
 	font-weight: bold;
 }
-#myModal1, #myModal2, #myModal4{
+#myModal1, #myModal2, #myModal4, #myModal5 {
 top:30%;
 outline: none;
 }
@@ -426,6 +426,7 @@ h4, h5 {
 	-webkit-appearance: none;
 	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #F2F2F2 4%);
 	height: 120px;
+	margin-top: 10px;
 }
 
 .input-field-dropdown {
@@ -438,7 +439,7 @@ h4, h5 {
 	background: transparent;
 	color: #595F6E;
 	-webkit-appearance: none;
-	border: none;
+	/*border: none;*/
 	margin-bottom: 10px;
 }
 
@@ -465,6 +466,8 @@ select {
 #dropdown-chevron {
 	position: relative;
 	opacity: 0.6;
+	left: -28px;
+	z-index: -1;
 }
 
 .input-field::-webkit-input-placeholder, .input-field-long::-webkit-input-placeholder {
@@ -485,4 +488,20 @@ select {
 
 p {
 	font-family: 'Montserrat', sans-serif;
+}
+
+#tagline-field {
+	width: 80%;
+	margin-left: 0px;
+	float: left;
+}
+
+#tagline-info {
+	display: inline;
+	float: left;
+	margin: 0 0 25px 10px;
+}
+
+#tagline-example {
+	width: 100%;
 }

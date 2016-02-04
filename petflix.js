@@ -198,10 +198,10 @@ if (Meteor.isClient) {
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
-    },    
+    },
     pet: function() {
       var pet = pet_profile.findOne({name: pet_name});
-      return pet;      
+      return pet;
     }
   });
 
@@ -209,10 +209,10 @@ if (Meteor.isClient) {
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
-    },    
+    },
     pet: function() {
       var pet = pet_profile.findOne({name: pet_name});
-      return pet;      
+      return pet;
     }
   });
 

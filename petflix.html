@@ -570,10 +570,6 @@
 	</div>
 </template>
 
-
-
-
-
 <template name="addowner">
 	<div class="container">
 		<div class="row">
@@ -621,7 +617,8 @@
 					<input type="text" class="input-field" name="name" placeholder="Name"><br>
 					<input type="text" class="input-field" name="address" placeholder="Breed"><br>
 					<input type="text" class="input-field" name="phone" placeholder="Age (Years)"><br>
-					<input type="text" class="input-field" name="tagline" placeholder="Tagline"><br>
+					<input type="text" class="input-field" id="tagline-field" name="tagline" placeholder="Tagline"><br>
+					<a href="#" class="class-why" data-toggle="modal" data-target="#myModal5"> <img src="infobutton.png" id="tagline-info"></a>
 					<select name="Class" class="input-field-dropdown" >
 						<option  disabled selected>Temperament</option>
   						<option value="Aggressive">Aggressive</option>
@@ -637,7 +634,19 @@
 				</form>
 			</div>
 		</div>
-		
+	</div>
 
+	<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	        <p>A tagline is a short sentence that summarizes your dog's personality</p>
+	        <br>
+	        <p>This is an example of a dog posting:</p>
+	        <img id="tagline-example" src="tagline-example.png">
+	      </div>
+	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
 	</div>
 </template>
