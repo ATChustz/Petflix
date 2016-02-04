@@ -455,11 +455,7 @@ h4, h5 {
 	transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
 }
 
-.input-field-long:focus {
-	outline-color: #FF9600;
-}
-
-.input-field-dropdown:focus {
+.input-field-long:focus, .input-field-dropdown:focus {
 	outline-color: #FF9600;
 }
 
@@ -476,19 +472,20 @@ select {
 	z-index: -1;
 }
 
-.input-field::-webkit-input-placeholder, .input-field-long::-webkit-input-placeholder {
+.input-field::-webkit-input-placeholder, .input-field-long::-webkit-input-placeholder, #searchbar::-webkit-input-placeholder {
+  font-family: 'Montserrat', sans-serif;
+  padding: 0 auto;
+}
+
+.input-field:-ms-input-placeholder, .input-field-long:-ms-input-placeholder, #searchbar:-ms-input-placeholder {
   font-family: 'Montserrat', sans-serif;
 }
 
-.input-field:-ms-input-placeholder, .input-field-long:-ms-input-placeholder {
+.input-field:-moz-placeholder, .input-field-long:-moz-placeholder, #searchbar:-moz-placeholder {
   font-family: 'Montserrat', sans-serif;
 }
 
-.input-field:-moz-placeholder, .input-field-long:-moz-placeholder {
-  font-family: 'Montserrat', sans-serif;
-}
-
-.input-field::-moz-placeholder, .input-field-long::-moz-placeholder {
+.input-field::-moz-placeholder, .input-field-long::-moz-placeholder, #searchbar::-moz-placeholder {
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -511,3 +508,31 @@ p {
 #tagline-example {
 	width: 100%;
 }
+
+#search-div {
+	background-color: #ff9600;
+}
+
+#searchbar {
+	margin: 23px auto 10px auto;
+	width: 66%;
+	float: left;
+	z-index: 0;
+}
+
+#searchbar:focus {
+	outline-color: #FF9600;
+}
+
+#search-icon {
+	float: left;
+  margin: 10px -7px 10px 30px;
+  z-index: 1;
+  opacity: .99;
+}
+
+
+
+
+
+

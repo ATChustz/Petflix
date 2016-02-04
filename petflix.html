@@ -335,13 +335,11 @@
 
 <!-- Template for simple dog info -->
 <template name="dog">
-	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
+	<div class="row" id="search-div">
 			<form role="form" class="search">
-				<input type="text" class="form-control" name="text" placeholder="Search by name">
+				<img id="search-icon" src="search.png">
+				<input type="text" class="form-control" id="searchbar" name="text" placeholder="Search by name">
 			</form>
-		  	
-		</div>
 	</div>
 	{{#if bool}}
 	<div class="row">
