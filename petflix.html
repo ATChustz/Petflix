@@ -13,16 +13,16 @@
 	<div class="container" id="login-screen">
 	  <img id="logo" src="PF&C-logo.png"/>
 	  <div id="button-container">
-	  	<a href="/addowner">
-	  		<button class="btn" id="login">New Dog</button>
+	  	<a href="/select">
+	  		<button class="btn login-button" id="signup">Existing Owner Login</button>
 	  	</a>
 	  	<br/>
-	  	<a href="/select">
-	  		<button class="btn" id="signup">Owner Login</button>
+	  	<a href="/addowner">
+	  		<button class="btn login-button" id="signup">New Dog and Owner Signup</button>
 	  	</a>
 	  	<br/>
 	  	<a href="/addwalker">
-	  		<button class="btn" id="signup">Walker Login</button>
+	  		<button class="btn login-button" id="signup">Walker Signup</button>
 	  	</a>
 	  </div>
 	</div>
@@ -40,6 +40,7 @@
 			</a>
 			<br>
 		{{/each}}
+		<p id="select-blurb">This screen will not be part of the final flow, as user accounts will be implemented</p>
 	</div>
 </template>
 
@@ -660,8 +661,7 @@
 					<img id="dropdown-chevron" src="dropdown.png">
 					<br>
  					<textarea class="input-field-long" name="bio" rows="2" placeholder="Bio"></textarea><br>
-
-					<a href="/list"><input type="image" src="finish.png" class="paw" alt="finish"></a>
+					<a href="/list"><input type="image" src="finish.png" class="paw" id="finish-button" alt="finish"></a>
 				</form>
 			</div>
 		</div>

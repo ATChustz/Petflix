@@ -66,17 +66,16 @@ input[type="radio"] {
 	padding-top: 10px;
 	margin-bottom: 10px;
 }
-#login, #signup{
+.login-button {
 	border: 1px solid white;
 	font-family: 'Montserrat', sans-serif;
+	margin-top: 10px;
 }
 
 .verifier-remind{
 	color: grey;
 	margin-top: 30px;
-}
-#signup {
-	margin-top: 10px;
+	margin-bottom: 0;
 }
 
 #home-location {
@@ -182,7 +181,7 @@ a:hover{
 .walker-name{
 	font-weight: bold;
 }
-#myModal1, #myModal2, #myModal4, #myModal5 {
+#myModal1, #myModal2, #myModal4 {
 top:30%;
 outline: none;
 }
@@ -385,10 +384,15 @@ h4, h5 {
 #owner-prompt {
 	font-family: 'Montserrat', sans-serif;
 	text-align: center;
+	margin-bottom: 20px;
 }
 
 .owner-preview h3 {
 	margin-left: 50px;
+}
+
+#finish-button {
+	width: 125px;
 }
 
 #add-owner-title {
@@ -531,7 +535,10 @@ p {
   opacity: .99;
 }
 
-
+#select-blurb {
+	margin-top: 10px;
+	text-align: center;
+}
 
 
 
