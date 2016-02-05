@@ -392,8 +392,9 @@ if (Meteor.isClient) {
         var description = $("#description").val();
         var temperment = $("#temperment").val();
         var bio = $("#bio").val();
-        console.log($("#pID").val());
+        
         var picURL = Images.findOne({ _id: $("#pID").val()}).url;
+        console.log(picURL);
       // now find the dog in the database, and put its url as the imgurl
         pet_profile.insert({
           name: name,
