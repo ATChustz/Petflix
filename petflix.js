@@ -361,6 +361,7 @@ if (Meteor.isClient) {
           else {
             console.log(fileObj._id);
             $("#pID").val(fileObj._id);
+            Images.findOne({_id: fileObj._id});
            // var pic = Images.findOne({ _id: "somejunk"});
            // console.log(pic, "(asdas)");
            // console.log(pet_profile.findOne({name: "Bella"}));
