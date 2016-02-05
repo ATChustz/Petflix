@@ -80,6 +80,7 @@ Router.route('/:_id/schedule/availability', function () {
 var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
 var owners = new Mongo.Collection("owners");
+var walkers = new Mongo.Collection("walkers");
 var pet_name = "Bella";
 var schedule_time = "Thursday 5:00pm";
 var schedule_id;
@@ -117,7 +118,6 @@ if (Meteor.isServer) {
 
     owners.insert({name: "Landay", address: "HCILYFE", phone: "6501234355"});
 
-    owners.insert({name: "James", address: "HCILIFE", phone: "6511234355"});
     Meteor.publish("all pets", function(){
       return pet_profile.find();
     });
@@ -125,6 +125,9 @@ if (Meteor.isServer) {
       return schedules.find();
     });
     Meteor.publish("owners", function(){
+      return owners.find();
+    });
+    Meteor.publish("walkers", function(){
       return owners.find();
     });
   });
@@ -137,6 +140,7 @@ if (Meteor.isClient) {
   Meteor.subscribe("all pets");
   Meteor.subscribe("schedules");
   Meteor.subscribe("owners");
+  Meteor.subscribe("walkers");
 
   Template.registerHelper("profileTab", () => {
     if (Router.current().route.getName().endsWith("profile")) {
@@ -285,21 +289,38 @@ if (Meteor.isClient) {
         return pet;
       }
   });
+  Template.addwalker.events({
+    "click #finishbutton": function (event) {
+      event.preventDefault();
+      var name = $("#name").val();
+      var address = $("#address").val();
+      var phone = $("#phone").val();
+      console.log("fickedaddy");
+      walkers.insert({
+        name: name,
+        address: address,
+        phone: phone,
+      });
+      Router.go('/list');
+    }
+  });
 
   Template.addowner.events({
-    "submit #owner-form": function (event) {
+    "click #finishbutton": function (event) {
       event.preventDefault();
-      var name = event.target.name.value;
-      var address = event.target.address.value;
-      var phone = event.target.phone.value;
-      console.log("here");
+      var name = $("#name").val();
+      var address = $("#address").val();
+      var phone = $("#phone").val();
+      console.log("fickedaddy");
       owners.insert({
         name: name,
         address: address,
         phone: phone,
       });
+      Router.go('/adddog');
     }
   });
+
 
   Template.adddog.events({
     "click #finishbutton": function (event) {
@@ -320,7 +341,6 @@ if (Meteor.isClient) {
       }
       else { // Everything has input - proceed
         var name = $("#name").val();
-        console.log(name);
         var breed = $("#breed").val();
         var age = $("#age").val();
         var description = $("#description").val();

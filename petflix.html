@@ -630,10 +630,10 @@
 		<div class="row">
 			<div class="col-xs-6 col-xs-offset-3">
 				<form role="form" id="dog-form">
-					<input type="text" class="input-field" name="name" placeholder="Name"><br>
-					<input type="text" class="input-field" name="address" placeholder="Address"><br>
-					<input type="text" class="input-field" name="phone" placeholder="Phone Number"><br>
-					<a href="/adddog"><input type="image" class="paw" src="continue-button.png" alt="next"></a>
+					<input type="text" class="input-field" id="name" placeholder="Name"><br>
+					<input type="text" class="input-field" id="address" placeholder="Address"><br>
+					<input type="text" class="input-field" id="phone" placeholder="Phone Number"><br>
+					<a href="/adddog"><input type="image" class="paw" id="finishbutton" src="continue-button.png" alt="next"></a>
 
 				</form>
 			</div>
@@ -662,12 +662,13 @@
 
 		<div class="row">
 			<div class="col-xs-6 col-xs-offset-3">
+				<form role="form" id="dog-form">
+					<input type="text" class="input-field" id="name" placeholder="Name"><br>
+					<input type="text" class="input-field" id="address" placeholder="Address"><br>
+					<input type="text" class="input-field" id="phone" placeholder="Phone Number"><br>
+					<a href="/list"><input type="image" class="paw" id="finishbutton" src="bone-button.png" alt="next"></a>
 
-				<form role="form" id="owner-form">
-					<input type="text" class="input-field" name="name" placeholder="Name"><br>
-					<input type="text" class="input-field" name="address" placeholder="Address"><br>
-					<input type="text" class="input-field" name="phone" placeholder="Phone Number"><br>
-					<a href="/list"><input type="image" class="paw" src="bone-button.png" alt="next"></a>
+
 				</form>
 			</div>
 		</div>
@@ -713,7 +714,7 @@
  					<br>
  					<!-- <input type="image" src="finish.png" class="paw" alt="finish"> -->
 
-					<a href="/list" id="submit"><input type="image" src="finish.png" class="paw" id="finish-button" alt="finish"></a>
+					<a href="/list" id="submit"><input type="image" src="finish.png" class="paw" id="finishbutton" alt="finish"></a>
 				</form>
 			</div>
 		</div>
