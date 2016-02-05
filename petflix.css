@@ -479,6 +479,11 @@ select {
 p {
 	font-family: 'Montserrat', sans-serif;
 }
+#description {
+	width: 80%;
+	margin-left: 0px;
+	float: left;
+}
 
 #tagline-field {
 	width: 80%;
