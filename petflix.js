@@ -85,11 +85,22 @@ var pet_name = "Bella";
 var schedule_time = "Thursday 5:00pm";
 var schedule_id;
 
+var imageStore = new FS.Store.GridFS("images", {
+  // mongoUrl: 'mongodb://127.0.0.1:27017/test/', // optional, defaults to Meteor's local MongoDB // optional, default 5
+  // chunkSize: 1024*1024  // optional, default GridFS chunk size in bytes (can be overridden per file).
+  //                       // Default: 2MB. Reasonable range: 512KB - 4MB
+});
+
+Images = new FS.Collection("images", {
+  stores: [imageStore]
+});
+
 if (Meteor.isServer) {
   Meteor.startup(function () {
     pet_profile.remove({});
     schedules.remove({});
     owners.remove({});
+    imageStore.remove({});
   
     var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"only feed me real meat products", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
     var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
@@ -130,6 +141,24 @@ if (Meteor.isServer) {
     Meteor.publish("walkers", function(){
       return owners.find();
     });
+
+    Meteor.publish("images", function(){ return Images.find(); });
+
+    Images.allow({
+      'insert': function () {
+    // add custom authentication code here
+        return true;
+      },
+      'download': function () {
+        return true;
+      },
+      'remove': function() {
+        return true;
+      },
+      'update': function() {
+        return true;
+      }      
+    }); 
   });
 }
 
@@ -141,6 +170,7 @@ if (Meteor.isClient) {
   Meteor.subscribe("schedules");
   Meteor.subscribe("owners");
   Meteor.subscribe("walkers");
+  Meteor.subscribe("images");
 
   Template.registerHelper("profileTab", () => {
     if (Router.current().route.getName().endsWith("profile")) {
@@ -323,6 +353,22 @@ if (Meteor.isClient) {
 
 
   Template.adddog.events({
+    "change #picture-upload": function(event) {
+      FS.Utility.eachFile(event, function(file) {
+        Images.insert(file, function(err, fileObj) {
+          if (err) {
+          //handle error
+          }
+          else {
+            $("#pID").val(fileObj._id);
+           // var pic = Images.findOne({ _id: "somejunk"});
+           // console.log(pic, "(asdas)");
+           // console.log(pet_profile.findOne({name: "Bella"}));
+          }
+
+        });
+      });      
+    },
     "click #finishbutton": function (event) {
       event.preventDefault();
       var $emptyInputs = [];
@@ -346,7 +392,9 @@ if (Meteor.isClient) {
         var description = $("#description").val();
         var temperment = $("#temperment").val();
         var bio = $("#bio").val();
-      
+
+        var picURL = Images.findOne({ _id: $("#pID").val()}).url;
+      // now find the dog in the database, and put its url as the imgurl
         pet_profile.insert({
           name: name,
           breed: breed,
@@ -356,7 +404,7 @@ if (Meteor.isClient) {
           bio: bio,
           rating: "5star.png",
           distance: "1.7 miles",
-          imgURL: "nala.png",
+          imgURL: picURL,
           class: "C.png",
         });
         Router.go('/list');
