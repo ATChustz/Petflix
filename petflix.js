@@ -341,7 +341,6 @@ if (Meteor.isClient) {
       var name = $("#name").val();
       var address = $("#address").val();
       var phone = $("#phone").val();
-      console.log("fickedaddy");
       owners.insert({
         name: name,
         address: address,
@@ -360,6 +359,7 @@ if (Meteor.isClient) {
           //handle error
           }
           else {
+            console.log(fileObj._id);
             $("#pID").val(fileObj._id);
            // var pic = Images.findOne({ _id: "somejunk"});
            // console.log(pic, "(asdas)");
@@ -392,7 +392,7 @@ if (Meteor.isClient) {
         var description = $("#description").val();
         var temperment = $("#temperment").val();
         var bio = $("#bio").val();
-
+        console.log($("#pID").val());
         var picURL = Images.findOne({ _id: $("#pID").val()}).url;
       // now find the dog in the database, and put its url as the imgurl
         pet_profile.insert({
