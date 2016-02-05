@@ -689,6 +689,7 @@
 			<div class="col-xs-8 col-xs-offset-2">
 				<form role="form" id="dog-form">
 					<input type="image" class="paw" src="adddog.png">
+<<<<<<< HEAD
 					<input type="text" class="input-field" name="name" placeholder="Name"><br>
 					<input type="text" class="input-field" name="address" placeholder="Breed"><br>
 					<input type="text" class="input-field" name="phone" placeholder="Age (Years)"><br>
@@ -702,9 +703,32 @@
  					 	<option value="Calm">Calm</option>
 					</select>
 					<img id="dropdown-chevron" src="dropdown.png">
+=======
+					<div class="doginput"><input type="text" class="form-control" id="name" placeholder="Name"></div><br>
+					<div class="doginput"><input type="text" class="form-control" id="breed" placeholder="Breed"></div><br>
+					<div class="doginput"><input type="text" class="form-control" id="age" placeholder="Age (Years)"></div><br>
+					<div class="doginput"><input type="text" class="form-control" id="description" name="tagline" placeholder="Tagline"></div><br>
+
+					<a href="#" class="class-why" data-toggle="modal" data-target="#myModal5"> <img src="infobutton.png" id="tagline-info"></a><br>
+					<div class="doginput">
+						
+						<select name="Class" id="temperment" class="input-field-dropdown" >
+							<option  disabled selected>Temperament</option>
+	  						<option value="Aggressive">Aggressive</option>
+	  						<option value="Energetic">Energetic</option>
+	  						<option value="Playful">Playful</option>
+	 					 	<option value="Calm">Calm</option>
+						</select>
+						<img id="dropdown-chevron" src="dropdown.png">
+
+					</div>
+>>>>>>> 21-form-validation
 					<br>
- 					<textarea class="input-field-long" name="bio" rows="2" placeholder="Bio"></textarea><br>
-					<a href="/list"><input type="image" src="finish.png" class="paw" id="finish-button" alt="finish"></a>
+ 					<div class="doginput"><textarea class="input-field-long" id="bio" rows="2" placeholder="Bio"></textarea></div>
+ 					<br>
+ 					<!-- <input type="image" src="finish.png" class="paw" alt="finish"> -->
+
+					<a href="/list" id="submit"><input type="image" src="finish.png" class="paw" id="finish-button" alt="finish"></a>
 				</form>
 			</div>
 		</div>

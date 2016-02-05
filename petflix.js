@@ -281,26 +281,45 @@ if (Meteor.isClient) {
   });
 
   Template.adddog.events({
-    "submit .dog-form": function (event) {
+    "click #finishbutton": function (event) {
       event.preventDefault();
-      var name = event.target.name.value;
-      var breed = event.target.breed.value;
-      var age = event.target.age.value;
-      var tagline = event.target.tagline.value;
-      var temperament = event.target.temperament.value;
-      var bio = event.target.bio.value;
-      pet_profile.insert({
-        name: name,
-        breed: breed,
-        age: age,
-        tagline: tagline,
-        temperament: temperament,
-        bio: bio,
-        rating: "5star.png",
-        distance: "1.7 miles",
-        photo: "nala.png",
-        class: "C.png",
-      });
+      var $emptyInputs = [];
+      var $hasInput = [];
+      $(".doginput :input").each(function() {
+        if (!($(this).val())) $emptyInputs.push($(this));
+        else $hasInput.push($(this));
+      })
+      if ($emptyInputs.length) {
+        for (var i = 0; i < $emptyInputs.length; i++) {
+          $emptyInputs[i].parent().addClass("has-error has-feedback");
+        }
+        for (var i = 0; i < $hasInput.length; i++) {
+          $hasInput[i].parent().removeClass("has-error has-feedback");
+        }
+      }
+      else { // Everything has input - proceed
+        var name = $("#name").val();
+        console.log(name);
+        var breed = $("#breed").val();
+        var age = $("#age").val();
+        var description = $("#description").val();
+        var temperment = $("#temperment").val();
+        var bio = $("#bio").val();
+      
+        pet_profile.insert({
+          name: name,
+          breed: breed,
+          age: age,
+          quote: description,
+          temperament: temperment, //fucking jack spelled temperment wrong in the original database and it fucked everything up
+          bio: bio,
+          rating: "5star.png",
+          distance: "1.7 miles",
+          imgURL: "nala.png",
+          class: "C.png",
+        });
+        Router.go('/list');
+      }
     }
   });
 
@@ -316,4 +335,11 @@ if (Meteor.isClient) {
       return pet_profile.find({});
     }
   });
+
+  $("#asd").click(function(event) {
+    event.preventDefault();
+    console.log("awoiejfw");
+  });
+
+
 }
