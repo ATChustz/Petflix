@@ -87,7 +87,7 @@ var schedule_id;
 
 var imageStore = new FS.Store.GridFS("images", {
   // mongoUrl: 'mongodb://127.0.0.1:27017/test/', // optional, defaults to Meteor's local MongoDB // optional, default 5
-  // chunkSize: 1024*1024  // optional, default GridFS chunk size in bytes (can be overridden per file).
+   chunkSize: 1024*1024  // optional, default GridFS chunk size in bytes (can be overridden per file).
   //                       // Default: 2MB. Reasonable range: 512KB - 4MB
 });
 
@@ -399,7 +399,7 @@ if (Meteor.isClient) {
           bio: bio,
           rating: "5star.png",
           distance: "1.7 miles",
-          imgURL: "cfs/files/images/" + $("#pID").val(),
+          imgURL: "cfs/files/images/" + $("#pID").val(), // fuck yeah
           class: "C.png",
         });
         Router.go('/list');
@@ -418,11 +418,6 @@ if (Meteor.isClient) {
     pets: function () {
       return pet_profile.find({});
     }
-  });
-
-  $("#asd").click(function(event) {
-    event.preventDefault();
-    console.log("awoiejfw");
   });
 
 
