@@ -352,7 +352,7 @@ if (Meteor.isClient) {
 
 
   Template.adddog.events({
-    "change #picture-upload": function(event) {
+    "change #picture-upload": function(event, template) {
       FS.Utility.eachFile(event, function(file) {
         Images.insert(file, function(err, fileObj) {
           if (err) {
@@ -361,6 +361,7 @@ if (Meteor.isClient) {
           else {
             console.log(fileObj._id);
             $("#pID").val(fileObj._id);
+            images.findOne({_id: fileObj._id});
             Images.findOne({_id: fileObj._id});
            // var pic = Images.findOne({ _id: "somejunk"});
            // console.log(pic, "(asdas)");
