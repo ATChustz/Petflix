@@ -100,7 +100,7 @@ if (Meteor.isServer) {
     pet_profile.remove({});
     schedules.remove({});
     owners.remove({});
-    imageStore.remove({});
+    Images.remove({});
   
     var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"only feed me real meat products", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
     var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
@@ -359,13 +359,7 @@ if (Meteor.isClient) {
           //handle error
           }
           else {
-            console.log(fileObj._id);
             $("#pID").val(fileObj._id);
-            images.findOne({_id: fileObj._id});
-            Images.findOne({_id: fileObj._id});
-           // var pic = Images.findOne({ _id: "somejunk"});
-           // console.log(pic, "(asdas)");
-           // console.log(pet_profile.findOne({name: "Bella"}));
           }
 
         });
@@ -395,8 +389,6 @@ if (Meteor.isClient) {
         var temperment = $("#temperment").val();
         var bio = $("#bio").val();
         
-        var picURL = Images.findOne({ _id: $("#pID").val()}).url;
-        console.log(picURL);
       // now find the dog in the database, and put its url as the imgurl
         pet_profile.insert({
           name: name,
@@ -407,7 +399,7 @@ if (Meteor.isClient) {
           bio: bio,
           rating: "5star.png",
           distance: "1.7 miles",
-          imgURL: picURL,
+          imgURL: "cfs/files/images/" + $("#pID").val(),
           class: "C.png",
         });
         Router.go('/list');
