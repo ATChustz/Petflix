@@ -386,7 +386,7 @@ if (Meteor.isClient) {
         var breed = $("#breed").val();
         var age = $("#age").val();
         var description = $("#description").val();
-        var temperment = $("#temperment").val();
+        var temperament = $("#temperament").val();
         var bio = $("#bio").val();
         
       // now find the dog in the database, and put its url as the imgurl
@@ -395,7 +395,7 @@ if (Meteor.isClient) {
           breed: breed,
           age: age,
           quote: description,
-          temperament: temperment, //fucking jack spelled temperment wrong in the original database and it fucked everything up
+          temperament: temperament, //fucking jack spelled temperament wrong in the original database and it fucked everything up
           bio: bio,
           rating: "5star.png",
           distance: "1.7 miles",
