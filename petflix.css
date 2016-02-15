@@ -628,3 +628,16 @@ p {
 #doginput-dropdown {
 	display: inline-block;
 }
+
+.mail-logout-bar {
+	padding: 7px 5px 5px 5px;
+}
+
+.mail-symbol {
+	display: inline;
+}
+
+.logout {
+	display: inline;
+	float: right;
+}
