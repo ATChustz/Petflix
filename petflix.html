@@ -79,6 +79,10 @@
 <template name="schedule">
 	<div class="container">
 		{{#with pet}}
+			<div class="row mail-logout-bar">
+				<a href=""><img class="mail-symbol" src="../mail-symbol.png"></a>
+				<a href="/login"><p class="logout">Logout</p></a>
+			</div>
 			<div class="row">
 		  		<div class="col-xs-6 text-center nopadding 2-toggle">
 		  			<a class="{{profileTab}}" href="/{{name}}/profile">
@@ -114,6 +118,10 @@
 	<div class="container">
 		{{#with schedule}}
 		{{#with pet}}
+			<div class="row mail-logout-bar">
+				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
+				<a href="/login"><p class="logout">Logout</p></a>
+			</div>
 			<div class="row">
 		  		<div class="col-xs-6 text-center nopadding 2-toggle">
 		  			<a class="{{profileTab}}" href="/{{name}}/profile">
@@ -160,6 +168,10 @@
 	<div class="container">
 		{{#with schedule}}
 		{{#with pet}}
+			<div class="row mail-logout-bar">
+				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
+				<a href="/login"><p class="logout">Logout</p></a>
+			</div>
 			<div class="row">
 		  		<div class="col-xs-6 text-center nopadding 2-toggle">
 		  			<a class="{{profileTab}}" href="/{{name}}/profile">
@@ -203,6 +215,10 @@
 <template name="availability">
 	<div class="container">
 		{{#with pet}}
+			<div class="row mail-logout-bar">
+				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
+				<a href="/login"><p class="logout">Logout</p></a>
+			</div>
 			<div class="row">
 		  	<div class="col-xs-6 text-center nopadding 2-toggle">
 		  		<a class="{{profileTab}}" href="/{{name}}/profile">
@@ -243,6 +259,10 @@
 <!-- Template for owner view of dog profile -->
 <template name="profile">
 	{{#with pet}}
+	<div class="row mail-logout-bar">
+		<a href=""><img class="mail-symbol" src="../mail-symbol.png"></a>
+		<a href="/login"><p class="logout">Logout</p></a>
+	</div>
 	<div class="row">
 	  <div class="col-xs-6 text-center nopadding 2-toggle">
 	  	<a class="{{profileTab}}" href="/{{name}}/profile">
@@ -260,7 +280,8 @@
 		<img class="profile-dog" src="../{{imgURL}}"/>
 		<div class="row" id="edit-info">
 			<div class="col-xs-9"></div>
-			<div class="col-xs-3" id="edit-button" style="visibility: hidden"><img src="../edit-icon.png"></div>
+			<div class="col-xs-3" id="edit-button"><img src="../edit-icon.png"></div>
+			<!-- <div class="col-xs-3" id="edit-button" style="visibility: hidden"><img src="../edit-icon.png"></div> -->
 		</div>
 		<div class="row pet-info">
 			<div class="col-xs-1 profile-pad"></div>
@@ -386,48 +407,45 @@
 				<img id="search-icon" src="search.png">
 				<input type="text" class="form-control" id="searchbar" name="text" placeholder="Search by name">
 			</form>
+			<!-- This link should go to walker profile -->
+			<a href="#"><img id="profile-button" src="profile-button.png"></a>
 	</div>
+	<div id="fixed">
+  	<a href="#"><img id="filter-popout" src="filter.png"></a>
+  </div>
 	{{#if bool}}
-	<div class="row">
+		<div class="row">
 		{{#each names}}
 			<div class="image">
 				<a href="{{name}}">
 			    <img id="{{name}}" src="{{imgURL}}"/>
-			    	<div class="opq">
-
-				    	<h4 class="distance">{{distance}}</h4>
-				    	<h1 class="pet_name"> {{name}} </h1>
-						<h5 class="breed">The {{breed}}</h5>
-						<h2 class="quote">{{quote}}</h2>
-
-					</div>
-
-				</a>
-			</div>
-		
-		{{/each}}
-	</div>
-	{{else}}
-	<div class="row">
-	{{#each pets}}
-		<div class="image">
-			<a href="{{name}}">
-		    <img id="{{name}}" src="{{imgURL}}"/>
 		    	<div class="opq">
-
 			    	<h4 class="distance">{{distance}}</h4>
 			    	<h1 class="pet_name"> {{name}} </h1>
-					<h5 class="breed">The {{breed}}</h5>
-					<h2 class="quote">{{quote}}</h2>
-
-				</div>
-
-			</a>
+						<h5 class="breed">The {{breed}}</h5>
+						<h2 class="quote">{{quote}}</h2>
+					</div>
+				</a>
+			</div>
+		{{/each}}
 		</div>
-	
-	{{/each}}
+	{{else}}
+		<div class="row">
+		{{#each pets}}
+			<div class="image">
+				<a href="{{name}}">
+		    	<img id="{{name}}" src="{{imgURL}}"/>
+		    	<div class="opq">
+			    	<h4 class="distance">{{distance}}</h4>
+			    	<h1 class="pet_name"> {{name}} </h1>
+						<h5 class="breed">The {{breed}}</h5>
+						<h2 class="quote">{{quote}}</h2>
+					</div>
+				</a>
+			</div>
+		{{/each}}
   	</div>
-  	{{/if}}
+  {{/if}}
 </template>
 
 <template name="search-results">

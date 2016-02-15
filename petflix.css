@@ -525,7 +525,7 @@ p {
 
 #search-icon {
 	float: left;
-  margin: 10px -7px 10px 30px;
+  margin: 10px -7px 10px 10px;
   z-index: 1;
   opacity: .99;
 }
@@ -627,4 +627,34 @@ p {
 
 #doginput-dropdown {
 	display: inline-block;
+}
+
+.mail-logout-bar {
+	padding: 7px 5px 5px 5px;
+}
+
+.mail-symbol {
+	display: inline;
+}
+
+.logout {
+	display: inline;
+	float: right;
+}
+
+#profile-button {
+	margin-left: 15px;
+	margin-top: 23px;
+}
+
+#filter-popout {
+	position: fixed;
+}
+
+#fixed {
+	position: fixed;
+  top: 550px;
+  left: 10px;
+  width: 300px;
+  z-index: 5;
 }
