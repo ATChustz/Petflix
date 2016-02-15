@@ -1,0 +1,625 @@
+/* CSS declarations go here */
+body {
+	font-family: 'Montserrat';
+}
+
+.container {
+width: 375px;
+}
+
+#login-screen {
+	background-image: url('xs-logindog.png');
+	height: 667px;
+	width: 375px;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+}
+#scheduler-dog {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+#form{
+	padding-left: 30px;
+}
+#pickup{
+	padding-bottom: 20px;
+}
+#logo {
+	width: 262px;
+	margin-left: 35px;
+	margin-top: 20px;
+}
+
+#button-container {
+  margin-top: 110%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+button {
+	color: white;
+	background-color: transparent;
+  width:100%;
+  bottom:5px;
+}
+
+hr {
+	border: 1px solid rgb(230,230,230);
+}
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+.at{
+	margin-right: 5px;
+}
+
+.pick-option{
+	margin: 0px;
+
+}
+
+#chill-pet{
+	padding-top: 10px;
+	margin-bottom: 10px;
+}
+.login-button {
+	border: 1px solid white;
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 10px;
+}
+
+.verifier-remind{
+	color: grey;
+	margin-top: 30px;
+	margin-bottom: 0;
+}
+
+#home-location {
+	color:grey;
+	font-size: 0.9em;
+}
+
+#owner-location {
+		color:grey;
+	font-size: 0.9em;
+
+}
+
+#ok-button {
+	color: #FF9600;
+}
+
+
+.detail-content {
+	font-size: 14;
+	padding: 0px;
+}
+.about-pet {
+	font-size: 18;
+	font-weight: bold;
+
+}
+
+
+a {
+    color: #FF9600;
+}
+
+a:hover{
+	color: #FF9600;
+}
+
+
+.verifier-img{
+	width: 200px;
+	border-radius: 100%;
+}
+
+#button-text {
+	color: #FF9600;
+	padding: 0px;
+	margin: 0px;
+}
+
+.dropdown-toggle{
+	background-color: transparent;
+	width: 140px;
+	border: 1px solid #FF9600;
+
+}
+#confirm-button {
+	color: #FF9600;
+
+}
+
+
+.comments{
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 20px;
+}
+
+#bottom-button{
+	margin-top: 30px;
+}
+
+
+.detail-dog{
+	width: 100%;
+}
+
+.profile-dog {
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.walker-name{
+	font-weight: bold;
+}
+#myModal1, #myModal2, #myModal4 {
+top:30%;
+outline: none;
+}
+
+.image {
+	position: relative;
+}
+.highlight{
+	color: #FF9600;
+}
+#dog{
+	margin: 0;
+	padding: 0;
+}
+
+.badges{
+	margin-top: 5px;
+	margin-bottom: 8px;
+}
+.badges i{
+	padding-right: 10px;
+}
+
+.detail-title{
+	padding-bottom: 0px;
+	font-weight: bold;
+	color: #FF9600;
+}
+
+.about-pet, .dont {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.back-arrow {
+	padding-top: 5px;
+	padding-left: 5px;
+	color: #FF9600;
+}
+
+#back{
+	display: inline-block;
+	padding-right: 3px;
+	margin-right: 2px;
+}
+
+.back-narrow {
+	width: 80px;
+
+}
+
+#bone-button, #chill-button {
+	margin-left: 83px;
+}
+
+.title, .signup-title {
+	padding-top: 5px;
+	font-weight: bold;
+}
+
+.title {
+	color: #FF9600;
+	padding-left: 48px;
+}
+
+.signup-title {
+	color: black;
+	opacity: 0.5;
+
+}
+
+.general-button{
+		color: #FF9600;
+	background-color: transparent;
+	width: 140px;
+	border: 1px solid #FF9600;
+}
+
+.general-button:hover{
+  background-color: transparent;
+  border: 1px solid #FF9600;
+}
+
+.general-button:active{
+  background-color: transparent;
+  border: 1px solid #FF9600;
+}
+
+#cancel-button{
+	margin-top: 20px;
+}
+
+
+.opq{
+    background-color: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.distance {
+	font-family: 'Montserrat', sans-serif;
+	text-align: right;
+	color: white;
+	margin: 6px;
+}
+
+
+
+.pet_name {
+	position: absolute;
+	top: 40%;
+	left: 0;
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	margin-top: 0px;
+}
+
+.quote {
+	position: absolute;
+	top: 75%;
+	left: 0;
+	width: 100%;
+	font-family: 'Just Another Hand', cursive;
+	text-align: center;
+	color: white;
+}
+
+.breed{
+	position: absolute;
+	top: 53%;
+	left: 0;
+	width: 100%;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	opacity: .75;
+	margin-top: 0px;
+}
+
+
+h4, h5 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+}
+
+.dogtab {
+	display: block;
+	width: 100%;
+	color: #FF9600;
+	height: 40px;
+	border: 2px solid #FF9600;
+}
+
+.nopadding {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+#tell {
+	font-family: 'Montserrat', sans-serif;
+	color: #FF9600;
+	margin-left: 3px;
+}
+
+.paw {
+	display: block;
+  margin: 10% auto;
+}
+
+.activetab {
+	background-color: #FF9600 !important;
+	color: white;
+	border: none;
+}
+
+#success-text {
+	text-align: center;
+	margin: 30 auto;
+}
+
+#success-heading {
+	font-family: 'Montserrat', sans-serif;
+}
+
+#success-body {
+	font-family: 'Just Another Hand', serif;
+}
+
+#return {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.owner-preview {
+	width: 100px;
+	display: inline;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#owner-prompt {
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.owner-preview h3 {
+	margin-left: 50px;
+}
+
+#finish-button {
+	width: 125px;
+}
+
+#add-owner-title {
+	margin-left: 21px;
+	padding-left: 0;
+}
+
+#add-dog-title {
+	margin-left: 15px;
+}
+
+#add-walker-title {
+	padding-left: 0;
+	width: 190px;
+	margin-left: 23px;
+}
+
+.input-field {
+	display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+	border-radius: 0;
+	background: transparent;
+	color: #595F6E;
+	-webkit-appearance: none;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #F2F2F2 4%);
+	border: none;
+}
+
+.input-field-long {
+	display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+	border-radius: 0;
+	background: transparent;
+	color: #595F6E;
+	-webkit-appearance: none;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #F2F2F2 4%);
+	height: 120px;
+	margin-top: 10px;
+}
+
+.input-field-dropdown {
+	display: inline-block;
+  width: 80%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+	border-radius: 0;
+	background: transparent;
+	color: #595F6E;
+	-webkit-appearance: none;
+	/*border: none;*/
+	margin-bottom: 10px;
+}
+
+.input-field:focus {
+	outline:none;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #FF9600 4%);
+	transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+
+.input-field-long:focus, .input-field-dropdown:focus {
+	outline-color: #FF9600;
+}
+
+select {
+	font-family: 'Montserrat', sans-serif;
+	opacity: .6;
+	color: #595F6E;
+}
+
+#dropdown-chevron {
+	position: relative;
+	opacity: 0.6;
+	left: -28px;
+	z-index: -1;
+}
+
+.input-field::-webkit-input-placeholder, .input-field-long::-webkit-input-placeholder, #searchbar::-webkit-input-placeholder {
+  font-family: 'Montserrat', sans-serif;
+  padding: 0 auto;
+}
+
+.input-field:-ms-input-placeholder, .input-field-long:-ms-input-placeholder, #searchbar:-ms-input-placeholder {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.input-field:-moz-placeholder, .input-field-long:-moz-placeholder, #searchbar:-moz-placeholder {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.input-field::-moz-placeholder, .input-field-long::-moz-placeholder, #searchbar::-moz-placeholder {
+  font-family: 'Montserrat', sans-serif;
+}
+
+p {
+	font-family: 'Montserrat', sans-serif;
+}
+
+#tagline-field {
+	width: 80%;
+	margin-left: 0px;
+	float: left;
+}
+
+#tagline-info {
+	display: inline;
+	float: left;
+	margin: 0 0 25px 10px;
+}
+
+#tagline-example {
+	width: 100%;
+}
+
+#search-div {
+	background-color: #ff9600;
+}
+
+#searchbar {
+	margin: 23px auto 10px auto;
+	width: 66%;
+	float: left;
+	z-index: 0;
+}
+
+#searchbar:focus {
+	outline-color: #FF9600;
+}
+
+#search-icon {
+	float: left;
+  margin: 10px -7px 10px 30px;
+  z-index: 1;
+  opacity: .99;
+}
+
+#select-blurb {
+	margin-top: 10px;
+	text-align: center;
+}
+
+#info-bar {
+	height: 30px;
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #FF9600;
+	margin-bottom: 10px;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#class-span {
+	float: right;
+	width: 120px;
+	padding-top: 4px;
+}
+
+#class-span > p {
+	float: right;
+	color: white;
+}
+
+#stars{
+	height: 22px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+#class {
+	height: 20px;
+	width: 20px;
+	float: right;
+	margin-left: 7px;
+}
+
+.class-why{
+	font-size: 0.7em;
+	color: white;
+	float: right;
+	margin-left: 15px;
+	margin-top: 1px;
+}
+
+.pet-info{
+	padding-left: 15px;
+	padding-right: 0px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+.vertical-line {
+	border-left: 1px solid rgba(0,0,0,.5);
+	padding-left: 20px;
+}
+
+.last-attribute {
+	margin-bottom: 0 !important;
+}
+
+#chill-button {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.2-toggle {
+	border-radius: 0px !important;
+}
+
+.clean-link, .clean-link:visited {
+	text-decoration: none;
+}
+
+.toggle-text {
+	padding-top: 10px;
+}
+
+.profile-pad {
+	margin-right: 26px;
+}
+
+#edit-button {
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+
+
+
+
+
+
