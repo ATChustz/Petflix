@@ -13,20 +13,40 @@
 	<div class="container" id="login-screen">
 	  <img id="logo" src="PF&C-logo.png"/>
 	  <div id="button-container">
-	  	<a href="/list">
-	  		<button class="btn" id="login">Log In</button>
+	  	<a href="/select">
+	  		<button class="btn login-button" id="signup">Existing Owner Login</button>
 	  	</a>
 	  	<br/>
-	  	<a href="/list">
-	  		<button class="btn" id="signup">Sign Up</button>
+	  	<a href="/addowner">
+	  		<button class="btn login-button" id="signup">New Dog and Owner Signup</button>
+	  	</a>
+	  	<br/>
+	  	<a href="/addwalker">
+	  		<button class="btn login-button" id="signup">Walker Signup</button>
 	  	</a>
 	  </div>
 	</div>
 </template>
 
+<template name ="select">
+	<div class="container">
+		<h2 id="owner-prompt">Which dog is yours?</h2>
+		{{#each pets}}
+			<a href="/{{name}}/profile">
+				<div class="row">
+					<img src="{{imgURL}}" class="owner-preview">
+					<h3 class="owner-preview">{{name}}</h3>
+				</div>
+			</a>
+			<br>
+		{{/each}}
+		<p id="select-blurb">This screen will not be part of the final flow, as user accounts will be implemented</p>
+	</div>
+</template>
+
 <template name="list">
 	<div class="container" id="list">
-			{{>dog}}
+		{{>dog}}
 	</div>
 </template>
 
@@ -34,19 +54,247 @@
 	<div class="container" id="detail">
 		{{>pet}}
 	</div>
-
-
 </template>
 
-<!-- Template to confirmation -->
+<template name="dog_profile_ownersv">
+	<div class="container" id="dog_profile_ownersv">
+		{{>profile}}
+	</div>
+</template>
+
+<!-- Template for confirmation -->
 <template name="confirmation">
-	<div class="row">
-		<div class="col-xs-12">
-			{{#with pet}}
-				Congratulations! You have confirmed {{name}}!
-			{{/with}}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				{{#with pet}}
+					Congratulations! You have confirmed {{name}}!
+				{{/with}}
+			</div>
 		</div>
 	</div>
+</template>
+
+<!-- Template for owner view of dog schedule -->
+<template name="schedule">
+	<div class="container">
+		{{#with pet}}
+			<div class="row">
+		  		<div class="col-xs-6 text-center nopadding 2-toggle">
+		  			<a class="{{profileTab}}" href="/{{name}}/profile">
+		  				<p class="toggle-text">Profile</p>
+		  			</a>
+		  		</div>
+		  	<div class="col-xs-6 text-center nopadding 2-toggle">
+					<a class="{{scheduleTab}}" href="/{{name}}/schedule/current">
+						<p class="toggle-text">Schedule</p>
+					</a>
+		  	</div>
+			</div>
+			<div class="row image">
+				<img class="profile-dog" src="../{{imgURL}}"/>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
+				</div>
+			</div>
+		{{/with}}
+	</div>
+</template>
+
+<!-- Template to current schedule -->
+<template name="current">
+	<div class="container">
+		{{#with schedule}}
+		{{#with pet}}
+			<div class="row">
+		  		<div class="col-xs-6 text-center nopadding 2-toggle">
+		  			<a class="{{profileTab}}" href="/{{name}}/profile">
+		  				<p class="toggle-text">Profile</p>
+		  			</a>
+		  		</div>
+		  		<div class="col-xs-6 text-center nopadding 2-toggle">
+					<a class="{{scheduleTab}}" href="/{{name}}/schedule/current">
+						<p class="toggle-text">Schedule</p>
+					</a>
+			  	</div>
+			</div>
+			<div class="row text-center">
+				<img class="profile-dog " src="../../{{imgURL}}"/>
+			</div>
+			<div class="row">
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab activetab" href="/{{name}}/schedule/current">Current</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
+				</div>
+			</div>
+		{{/with}}
+		<br>
+		<div class="row">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<i style="color: red" class="pull-left fa fa-ban"></i>
+					<span style="right:500px" class="text-center">{{time}}</span>
+					<i style="color: green" class="pull-right fa fa-phone"></i>
+				</li>
+			</ul>
+		</div>
+		{{/with}}
+	</div>
+</template>
+
+<!-- Template to pending requests -->
+<template name="requests">
+	<div class="container">
+		{{#with schedule}}
+		{{#with pet}}
+			<div class="row">
+		  		<div class="col-xs-6 text-center nopadding 2-toggle">
+		  			<a class="{{profileTab}}" href="/{{name}}/profile">
+		  				<p class="toggle-text">Profile</p>
+		  			</a>
+		  		</div>
+		  	<div class="col-xs-6 text-center nopadding 2-toggle">
+					<a class="{{scheduleTab}}" href="/{{name}}/schedule/current">
+						<p class="toggle-text">Schedule</p>
+					</a>
+		  	</div>
+			</div>
+			<div class="row">
+				<img class="profile-dog" src="../../{{imgURL}}"/>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab activetab" href="/{{name}}/schedule/requests">Requests</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
+				</div>
+			</div>
+		{{/with}}
+			<br>
+		<div class="row">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<i style="color: red" class="pull-left fa fa-ban"></i>
+					<span style="right:500px" class="text-center">{{time}}</span>
+					<i style="color: green" class="pull-right fa fa-check"></i>
+				</li>
+			</ul>
+		</div>
+		{{/with}}
+	</div>
+</template>
+
+<!-- Template to dog availability -->
+<template name="availability">
+	<div class="container">
+		{{#with pet}}
+			<div class="row">
+		  	<div class="col-xs-6 text-center nopadding 2-toggle">
+		  		<a class="{{profileTab}}" href="/{{name}}/profile">
+		  			<p class="toggle-text">Profile</p>
+		  		</a>
+		  	</div>
+		  	<div class="col-xs-6 text-center nopadding 2-toggle">
+					<a class="{{scheduleTab}}" href="/{{name}}/schedule/current">
+						<p class="toggle-text">Schedule</p>
+					</a>
+		  	</div>
+			</div>
+			<div class="row">
+				<img class="profile-dog" src="../../{{imgURL}}"/>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+				</div>
+				<div class="col-xs-4 text-center nopadding">
+					<a class="btn btn-default dogtab activetab" href="/{{name}}/schedule/availability">Availability</a>
+				</div>
+			</div>
+		{{/with}}
+		<br>
+			<form class="text-center">
+				Start date and time:<br>
+				<input type="datetime-local" name="start"><br><br>
+				End date and time:<br>
+				<input type="datetime-local" name="start"><br><br>
+				<input type="submit" value="Add Availabilty">
+			</form>
+	</div>
+</template>
+
+
+<!-- Template for owner view of dog profile -->
+<template name="profile">
+	{{#with pet}}
+	<div class="row">
+	  <div class="col-xs-6 text-center nopadding 2-toggle">
+	  	<a class="{{profileTab}}" href="/{{name}}/profile">
+	  		<p class="toggle-text">Profile</p>
+	  	</a>
+	  </div>
+	  <div class="col-xs-6 text-center nopadding 2-toggle">
+		<a class="{{scheduleTab}}" href="/{{name}}/schedule/current">
+			<p class="toggle-text">Schedule</p>
+		</a>
+	  </div>
+	</div>
+
+  <div class="row">
+		<img class="profile-dog" src="../{{imgURL}}"/>
+		<div class="row" id="edit-info">
+			<div class="col-xs-9"></div>
+			<div class="col-xs-3" id="edit-button" style="visibility: hidden"><img src="../edit-icon.png"></div>
+		</div>
+		<div class="row pet-info">
+			<div class="col-xs-1 profile-pad"></div>
+			<div class="col-xs-4 detail-content">
+				<p>Name</p>
+				<p>Age</p>
+				<p>Breed</p>
+				<p class="last-attribute">Temperament</p>
+			</div>
+	    <div class="col-xs-6 detail-content vertical-line">
+	    	<p>{{name}}</p>
+	    	<p>{{age}}</p>
+	    	<p>{{breed}}</p>
+	    	<p class="last-attribute">{{temperament}}</p>
+	    </div>
+	  </div>
+	 	<div class="row pet-info">
+	 		<div class="col-xs-1 profile-pad"></div>
+			<div class="col-xs-8 detail-content" id="bio">
+				<p class="detail-title">About {{name}}</p>
+				{{bio}}
+			</div>
+	 	</div>
+		<div class="row pet-info">
+		 	<div class="col-xs-1 profile-pad"></div>
+		 	<div class="col-xs-8 detail-content">
+				<p class="detail-title">{{name}} asks "please"...</p>
+				{{#each badges}}
+				<p class="badges"><i class="fa {{icon}}"></i>{{ask}}</p>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+	{{/with}}
 </template>
 
 <!-- Template to pet information -->
@@ -54,78 +302,113 @@
   {{#with pet}}
   <div class="row">
 	  <div class="col-xs-4 back-arrow">
-	  <a href="/list"><img id = "back" src = "Back.png"/>Back</a>
+	  	<a href="/list"><img id = "back" src = "Back.png"/>Back</a>
 		</div>
-		<div class="col-xs-5 title"><p>{{name}} - Detail</p></div>
-</div>
-
-  <div class="row">
-
-  	<div class="col-xs-12">
-		<img class="detail-dog" src="{{imgURL}}"/>
-		<div class="row pet-info">
-	  	<div class="col-xs-6 about-pet detail-content">About {{name}}</div>
-	  	<div class="col-xs-6 detail-content">Rating: <img id = "stars" src = "{{rating}}"/></div>
-
-			<div class="col-xs-6 detail-content">Breed: {{breed}}</div>
-			<div class="col-xs-6 detail-content">Class: <img id = "class" src = "{{class}}"/><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"> What's this?</a></div>
-
-			<div class="col-xs-6 detail-content">Age: {{age}}</div>
-			<div class="col-xs-6 detail-content">Proximity: {{distance}}</div>
-
-			<div class="col-xs-12 detail-content">Temperament: {{temperment}}</div>
-
-			<div class="col-xs-12 detail-content" id="last-attribute">Bio: {{bio}}</div>
-						
-			<a id="bone-button" href="/scheduler"><img src="bone-button.png"></a>
-
-			<div class="col-xs-12 detail-content badges-container">
-				<p class="dont">{{name}} asks "please"...</p>
-				{{#each badges}}
-
-				<p class="badges"><i class="fa {{icon}}"></i>{{ask}}</p>
-
-				{{/each}}
-
-
-			</div>
-			</div>
-		
-			{{#each comments}}
-			<div class="row comments">
-				<div class="row">
-					<div class="col-xs-4 walker-name">{{walker}}</div>
-					<div class="col-xs-3 col-xs-offset-4"><img id = "stars" src = "{{rating}}"/></div>
-				</div>
-				<div class="row">
-					<div class="col-xs-4">{{date}}</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12">{{comment}}</div>
-				</div>
-			</div>
-			<hr>
-			{{/each}}
-	</div>
+		<div class="col-xs-4 title"><p>{{name}}</p></div>
   </div>
-  {{/with}}
 
-<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog  modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        <p>A dog's <span class="highlight">CLASS</span> represents the relative challenge the walker may experience walking it. The classes range from D, the least challenging dogs, to A, the most challenging dogs. The first time you walk a dog from a class above what you have walked before you must have your ability to walk dogs of that class confirmed by a walker verifier. Each dog's class is determined by a formula that takes into account its breed, age, and temperament.</p>
-      </div>
-        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+  <div class="row image">
+		<img class="detail-dog" src="{{imgURL}}"/>
+		<div class="overlay">
+			<h4 class="distance">{{distance}}</h4>
+		</div>
+	</div>
+		
+	<div class="row" id="info-bar">
+  	<span id="star-span"><img id ="stars" src = "white-{{rating}}"/></span>
+  	<span id="class-span"><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"><img src="info-bold.png"></a><img id = "class" src = "white-{{class}}"/><p>Class:</p></span>
+  </div>
+
+	<div class="row pet-info">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-4 detail-content">
+			<p>Age</p>
+			<p>Breed</p>
+			<p class="last-attribute">Temperament</p>
+		</div>
+    <div class="col-xs-6 detail-content vertical-line">
+    	<p>{{age}}</p>
+    	<p>{{breed}}</p>
+    	<p class="last-attribute">{{temperament}}</p>
     </div>
   </div>
-</div>
+ 	<div class="row pet-info">
+ 		<div class="col-xs-2"></div>
+		<div class="col-xs-8 detail-content" id="bio">
+			<p class="detail-title">About {{name}}</p>
+			{{bio}}
+		</div>
+ 	</div>
+	<div class="row pet-info">
+	 	<div class="col-xs-2"></div>
+	 	<div class="col-xs-8 detail-content">
+			<p class="detail-title">{{name}} asks "please"...</p>
+			{{#each badges}}
+			<p class="badges"><i class="fa {{icon}}"></i>{{ask}}</p>
+			{{/each}}
+		</div>
+	</div>
+	<a href="/scheduler"><img id="chill-button" src="bone-button.png"></a>
+	{{#each comments}}
+	<div class="row comments">
+		<div class="row">
+			<hr>
+			<div class="col-xs-4 walker-name">{{walker}}</div>
+			<div class="col-xs-3 col-xs-offset-4"><img id = "stars" src = "{{rating}}"/></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4">{{date}}</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">{{comment}}</div>
+		</div>
+	</div>
+	
+	{{/each}}
+ {{/with}}
 
+	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	        <p>A dog's <span class="highlight">CLASS</span> represents the relative challenge the walker may experience walking it. The classes range from D, the least challenging dogs, to A, the most challenging dogs. The first time you walk a dog from a class above what you have walked before you must have your ability to walk dogs of that class confirmed by a walker verifier. Each dog's class is determined by a formula that takes into account its breed, age, and temperament.</p>
+	      </div>
+	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
+	</div>
 </template>
 
 <!-- Template for simple dog info -->
 <template name="dog">
-<div class="row">
+	<div class="row" id="search-div">
+			<form role="form" class="search">
+				<img id="search-icon" src="search.png">
+				<input type="text" class="form-control" id="searchbar" name="text" placeholder="Search by name">
+			</form>
+	</div>
+	{{#if bool}}
+	<div class="row">
+		{{#each names}}
+			<div class="image">
+				<a href="{{name}}">
+			    <img id="{{name}}" src="{{imgURL}}"/>
+			    	<div class="opq">
+
+				    	<h4 class="distance">{{distance}}</h4>
+				    	<h1 class="pet_name"> {{name}} </h1>
+						<h5 class="breed">The {{breed}}</h5>
+						<h2 class="quote">{{quote}}</h2>
+
+					</div>
+
+				</a>
+			</div>
+		
+		{{/each}}
+	</div>
+	{{else}}
+	<div class="row">
 	{{#each pets}}
 		<div class="image">
 			<a href="{{name}}">
@@ -143,101 +426,92 @@
 		</div>
 	
 	{{/each}}
-  </div>
+  	</div>
+  	{{/if}}
+</template>
+
+<template name="search-results">
+	{{#each names}}
+    	<h1>{{title}}</h1>
+  	{{/each}}
 </template>
 
 <template name="scheduler">
 	<div class="container">
 		{{#with pet}}
 		  <div class="row">
-  				<div class="col-xs-4 back-arrow">
-  					<a href="/{{name}}"><img id = "back" src = "Back.png"/>Back</a>
+  			<div class="col-xs-4 back-arrow">
+  				<a href="/{{name}}"><img id = "back" src = "Back.png"/>Back</a>
 				</div>
-				<div class="col-xs-5 title"><p>{{name}} - Schedule</p></div>
-		</div>
-		
-		<div class="row text-center">
-			
-			<img id="scheduler-dog" class="img-responsive" src="{{imgURL}}"/>
-			<p class="lead" id="chill-pet"> You are going to chill with {{name}} ...</p>
-			
-	</div>
-	<div class="row" id="form">
-		<form>
-			<div class="row" id="pickup">
-			<div class="col-xs-12 pick-option">
-			  <input type="radio" name="pickup" value="your home" checked>Drop off at my home location<p id="home-location">Panama Mall, Stanford, CA 94305</p>
-			  </div>
-			<div class="col-xs-12 pick-option">
-			  <input type="radio" name="pickup" value="owner's home">Pick up from owner’s location
-			  <br><p id="owner-location">{{location}}</p></div>
-			  <div class="col-xs-12">
-			  <input type="radio" name="pickup" value="">Meet up at <input type="text" name="user-enter" placeholder="Enter a location"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+				<div class="col-xs-5 title"><p>{{name}}</p></div>
 			</div>
+			<div class="row text-center">
+				<img class="profile-dog img-circle center-block" src="{{imgURL}}"/>
+				<p class="lead" id="chill-pet"> You are going to chill with {{name}} ...</p>
 			</div>
-		<div class="row">
-			<div class="col-xs-9 col-xs-offset-2">
-			  <span class="at">At</span>
-			  <div class="btn-group" role="group">
-				    <button type="button" id="chosen" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				      Thursday 5:00pm
-				      <span class="caret"></span>
-				    </button>
-			    <ul class="dropdown-menu">
-			      <li><a href="#">Thursday 5:00pm</a></li>
-			      <li><a href="#">Thursday 5:15pm</a></li>
-			      <li><a href="#">Thursday 5:30pm</a></li>
-			      <li><a href="#">Thursday 5:45pm</a></li>
-			      <li><a href="#">Thursday 6:00pm</a></li>
-			    </ul>
-			  </div>
+			<div class="row" id="form">
+				<form>
+					<div class="row" id="pickup">
+					<div class="col-xs-12 pick-option">
+					  <input type="radio" name="pickup" value="your home" checked>Drop off at my home location<p id="home-location">Panama Mall, Stanford, CA 94305</p>
+					  </div>
+					<div class="col-xs-12 pick-option">
+					  <input type="radio" name="pickup" value="owner's home">Pick up from owner’s location
+					  <br><p id="owner-location">{{location}}</p></div>
+					  <div class="col-xs-12">
+					  <input type="radio" name="pickup" value="">Meet up at <input type="text" name="user-enter" placeholder="Enter a location"/>​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+					</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-9 col-xs-offset-2">
+						  <span class="at">At</span>
+						  <div class="btn-group" role="group">
+							    <button type="button" id="chosen" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							      Thursday 5:00pm
+							      <span class="caret"></span>
+							    </button>
+						    <ul class="dropdown-menu">
+						      <li><a href="#">Thursday 5:00pm</a></li>
+						      <li><a href="#">Thursday 5:15pm</a></li>
+						      <li><a href="#">Thursday 5:30pm</a></li>
+						      <li><a href="#">Thursday 5:45pm</a></li>
+						      <li><a href="#">Thursday 6:00pm</a></li>
+						    </ul>
+						  </div>
+						</div>
+					</div>
+					<div class="row verifier-remind">
+						<div class="col-xs-10 col-xs-offset-1">
+							<p>You need a verifier to walk {{name}}<a href="#" data-toggle="modal" data-target="#myModal3"> Why?</a></p>
+						</div>
+						<div class="col-xs-11">
+							<a id="button-text" href="/verifier"><button type="button" class="btn btn-default btn-lg center-block general-button" id="confirm-button" >Confirm</button></a>
+						</div>
+					</div>
+				</form>
 			</div>
-		</div>
-
-		<div class="row verifier-remind">
-			<div class="col-xs-10 col-xs-offset-1">
-			<p>You need a verifier to walk {{name}}<a href="#" data-toggle="modal" data-target="#myModal3"> Why?</a></p>
-		</div>
-		<div class="col-xs-11">
-				<a id="button-text" href="/verifier"><button type="button" class="btn btn-default btn-lg center-block general-button" id="confirm-button" >Confirm</button></a>
-
-		</div>
+		{{/with}}
 	</div>
-		
-
-		</form>
+	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	{{#with pet}}
+	        <h4>What is a walker verifier?</h4>
+	        <p>A walker verifier is a person certified by <span class="highlight">Petflix & Chill</span> who will ensure that you are able to walk a dog of this class.</p>
+	        <h4>Why do I need a verifier to walk this dog?</h4>
+	        <p>{{name}} belongs to class <img id = "class" src = "{{class}}"/> and you currently have not been verified for dogs of any class. You need to have a verifier to ensure that you do well with dogs of {{name}}'s class.</p>
+	        <h5>You need a verifier if:</h5>
+	        <li>You have not walked a dog of at least this class before. </li>
+	        <li>You are a new user and have not yet completed your first walk.</li>
+	        <h5>You will be exempt from walking with a verifier if you:</h5>
+	        <li>Have walked a dog of this class before. </li>
+	        {{/with}}
+	      </div>
+	      <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
 	</div>
-	{{/with}}
-</div>
-
-<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog  modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-      	{{#with pet}}
-        <h4>What is a walker verifier?</h4>
-        <p>A walker verifier is a person certified by <span class="highlight">Petflix & Chill</span> who will ensure that you are able to walk a dog of this class.</p>
-        <h4>Why do I need a verifier to walk this dog?</h4>
-        <p>{{name}} belongs to class <img id = "class" src = "{{class}}"/> and you currently have not been verified for dogs of any class. You need to have a verifier to ensure that you do well with dogs of {{name}}'s class.</p>
-        <h5>You need a verifier if:</h5>
-        <li>You have not walked a dog of at least this class before. </li>
-        <li>You are a new user and have not yet completed your first walk.</li>
-        <h5>You will be exempt from walking with a verifier if you:</h5>
-        <li>Have walked a dog of this class before. </li>
-
-
-
-        {{/with}}
-
-      </div>
-        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
-    </div>
-  </div>
-</div>
-
-
-
-
 </template>
 
 <template name="verifier">
@@ -254,10 +528,10 @@
 
 
 		
-		<div class="row ">
+		<div class="row">
 			<div class="col-xs-6 text-center">
 				<img class="img-responsive verifier-img" src="verifier.png"/>
-				<p>John</p>
+				<p>Alexa</p>
 
 			</div>
 			{{#with schedule}}
@@ -270,51 +544,45 @@
 			{{/with}}
 
 			<div class="col-xs-10 col-xs-offset-1">
-				<p>Hi! I am John, the verifier for your walk with {{name}}. Pay no attention to the fact that I am also a dog. I will bring {{name}} to {{pickuplocation}} at {{time}} and to assist and evaluate you for your walk with {{name}}. Please call (123)-456-7890 if you have any questions.</p>
+				<p>Hi! I'm Alexa, the verifier for your walk with {{name}}. I will bring {{name}} to {{pickuplocation}} at {{time}} to assist and evaluate you for your walk with {{name}}. Please call (123)-456-7890 if you have any questions.</p>
 
 			</div>
-
-
-
-	{{/with}}
+			
+			{{/with}}
+			
 			<div class="col-xs-8 col-xs-offset-2" id="bottom-button">
-				<a href="/video"><button type="button" class="btn btn-default btn-lg center-block general-button"  id="ok-button" ><p id="button-text">OK</p></button></a>
+				<a href="/success"><button type="button" class="btn btn-default btn-lg center-block general-button"  id="ok-button" ><p id="button-text">OK</p></button></a>
 
 				<button type="button" class="btn btn-default btn-lg center-block general-button" data-toggle="modal" data-target="#myModal2" id="cancel-button" ><p id="button-text">Cancel</p></button>
+			</div>
 		</div>
-	</div>
-	
-
 	</div>
 
 		<!-- Confirmation dialog -->
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog  modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        {{>confirmation}}
-      </div>
-        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	        {{>confirmation}}
+	      </div>
+	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
+	</div>
 
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog  modal-sm" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        {{>cancellation}}
-      </div>
-        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	        {{>cancellation}}
+	      </div>
+	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
+	</div>
+</template>
 
-
-
-	</template>
-
-	<!-- Template to confirmation -->
+<!-- Template for cancellation -->
 <template name="cancellation">
 	<div class="row">
 		<div class="col-xs-12">
@@ -325,15 +593,145 @@
 	</div>
 </template>
 
-<template name="video">
-	<div class="row">
-		<div class="col-xs-4">
-		  <a href="/verifier"><img id = "back" src = "Back.png"/>Back</a>
+
+<template name="success">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4 back-arrow">
+			  <a href="/verifier"><img id="back" src="Back.png"/>Back</a>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		  <iframe width="560" height="315" src="https://www.youtube.com/embed/g-HAt8siG1c?start=120" frameborder="0" allowfullscreen></iframe>
+		{{#with pet}}
+		<div id="success-text">
+			  <h1 id="success-heading">Congratulations!</h1>
+			  <h2 id="success-body">You've successfully confirmed {{name}}</h2>
+		</div>
+		<img class="profile-dog img-circle center-block" src="../{{imgURL}}"/>
+		{{/with}}
+		<div id="return">
+			<a href="/"><h5>Return to menu</h5></a>
+		</div>
 	</div>
 </template>
 
+<template name="addowner">
+	<div class="container">
+		<div class="row">
+	  	<div class="col-xs-4 back-arrow back-narrow">
+	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+			<div class="col-xs-6 signup-title" id="add-owner-title"><p>Add Owner Information</p></div>
+  	</div>
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<img class="paw" src="paw.png">
+				<p id="tell">Tell us about yourself!</p>
+			</div>
+		</div>
 
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<form role="form" id="dog-form">
+					<input type="text" class="input-field" id="name" placeholder="Name"><br>
+					<input type="text" class="input-field" id="address" placeholder="Address"><br>
+					<input type="text" class="input-field" id="phone" placeholder="Phone Number"><br>
+					<a href="/adddog"><input type="image" class="paw" id="finishbutton" src="continue-button.png" alt="next"></a>
+
+				</form>
+			</div>
+		</div>
+		<!-- Need to add form elements to owner database -->
+	
+	</div>
+</template>
+
+<template name="addwalker">
+	<div class="container">
+		<div class="row">
+	  	<div class="col-xs-4 back-arrow back-narrow">
+	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+			<div class="col-xs-6 signup-title" id="add-walker-title">
+				<p>Add Walker Information</p>
+			</div>
+  	</div>
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<img class="paw" src="paw.png">
+				<p id="tell">Tell us about yourself!</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<form role="form" id="dog-form">
+					<input type="text" class="input-field" id="name" placeholder="Name"><br>
+					<input type="text" class="input-field" id="address" placeholder="Address"><br>
+					<input type="text" class="input-field" id="phone" placeholder="Phone Number"><br>
+					<a href="/list"><input type="image" class="paw" id="finishbutton" src="bone-button.png" alt="next"></a>
+
+
+				</form>
+			</div>
+		</div>
+		<!-- Need to add form elements to walker database -->
+	
+	</div>
+</template>
+
+<template name="adddog">
+	<div class="container">
+		<div class="row">
+	  	<div class="col-xs-4 back-arrow back-narrow">
+	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+			<div class="col-xs-6 signup-title" id="add-dog-title"><p>Add Dog Information</p></div>
+  	</div>
+
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<input type="hidden" id="pID" val="" >
+				<form role="form" id="dog-form">
+					<div class="doginput"><input type="file" id="picture-upload" class="paw" src="adddog.png"></div>
+					<div class="doginput"><input type="text" class="form-control" id="name" placeholder="Name"></div><br>
+					<div class="doginput"><input type="text" class="form-control" id="breed" placeholder="Breed"></div><br>
+					<div class="doginput"><input type="text" class="form-control" id="age" placeholder="Age (Years)"></div><br>
+					<div class="doginput"><input type="text" class="form-control" id="description" name="tagline" placeholder="Tagline"></div><br>
+
+					<a href="#" class="class-why" data-toggle="modal" data-target="#myModal5"> <img src="infobutton.png" id="tagline-info"></a><br>
+					<div class="doginput">
+						
+						<select name="Class" id="temperment" class="input-field-dropdown" >
+							<option  disabled selected>Temperament</option>
+	  						<option value="Aggressive">Aggressive</option>
+	  						<option value="Energetic">Energetic</option>
+	  						<option value="Playful">Playful</option>
+	 					 	<option value="Calm">Calm</option>
+						</select>
+						<img id="dropdown-chevron" src="dropdown.png">
+
+					</div>
+
+					<br>
+ 					<div class="doginput"><textarea class="input-field-long" id="bio" rows="2" placeholder="Bio"></textarea></div>
+ 					<br>
+					<a href="/list" id="submit"><input type="image" src="finish.png" class="paw" id="finishbutton" alt="finish"></a>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	        <p>A tagline is a short sentence that summarizes your dog's personality</p>
+	        <br>
+	        <p>This is an example of a dog posting:</p>
+	        <img id="tagline-example" src="tagline-example.png">
+	      </div>
+	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
+	</div>
+</template>
