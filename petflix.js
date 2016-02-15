@@ -122,7 +122,7 @@ if (Meteor.isServer) {
   
     var billy_badges = [{ask: "Why am I here?", icon: "fa-link"},{ask:"I'm a goat!", icon:"fa-frown-o"},{ask: "Fine woof.", icon: "fa-suitcase"}];
     var billy_comments = [{walker: "Alex", rating:"3star.png", date:"Sep 2015", comment:"Billy is a goat! Not a dog."}];
-    pet_profile.insert({name: "Billy", breed: 'The Goat', rating: "3star.png", age: 6, bio: "Billy is a goat.", temperament: 'Goat', imgURL : "billy.png",
+    pet_profile.insert({name: "Billy", breed: 'Goat', rating: "3star.png", age: 6, bio: "Billy is a goat.", temperament: 'Goat', imgURL : "billy.png",
       comments: billy_comments, badges: billy_badges, class: "D.png", distance: "1 miles",location:"500 Mayfield Ave Stanford, CA 94305", quote: "Why am I here? I'm a goat!"});
 
     schedules.insert({name: "Bella", pickuplocation: "Stanford", time: "5:30 P.M."});
@@ -363,7 +363,7 @@ if (Meteor.isClient) {
           }
 
         });
-      });      
+      });
     },
     "click #finishbutton": function (event) {
       event.preventDefault();

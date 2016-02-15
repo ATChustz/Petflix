@@ -525,7 +525,7 @@ p {
 
 #search-icon {
 	float: left;
-  margin: 10px -7px 10px 30px;
+  margin: 10px -7px 10px 10px;
   z-index: 1;
   opacity: .99;
 }
@@ -640,4 +640,21 @@ p {
 .logout {
 	display: inline;
 	float: right;
+}
+
+#profile-button {
+	margin-left: 15px;
+	margin-top: 23px;
+}
+
+#filter-popout {
+	position: fixed;
+}
+
+#fixed {
+	position: fixed;
+  top: 550px;
+  left: 10px;
+  width: 300px;
+  z-index: 5;
 }
