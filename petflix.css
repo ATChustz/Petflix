@@ -652,11 +652,13 @@ p {
 
 .mail-symbol {
 	display: inline;
+	padding-left: 5px;
 }
 
 .logout {
 	display: inline;
 	float: right;
+	padding-right: 5px;
 }
 
 #profile-button {
