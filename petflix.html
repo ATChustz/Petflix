@@ -90,7 +90,7 @@
 		  			</a>
 		  		</div>
 		  	<div class="col-xs-6 text-center nopadding 2-toggle">
-					<a class="{{scheduleTab}}" href="/{{name}}/schedule/current">
+					<a class="{{scheduleTab}}" href="/{{name}}/schedule/today">
 						<p class="toggle-text">Schedule</p>
 					</a>
 		  	</div>
@@ -98,23 +98,23 @@
 			<div class="row image">
 				<img class="profile-dog" src="../{{imgURL}}"/>
 			</div>
-			<div class="row">
-				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+			<div class="row scheduletab-row">
+				<div class="col-xs-4 left-of-center">
+					<a class="scheduletab boldtab" href="/{{name}}/schedule/today"><p>Today</p></a>
 				</div>
 				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+					<a class="scheduletab" href="/{{name}}/schedule/week"><p>Week</p></a>
 				</div>
-				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
+				<div class="col-xs-4 right-of-center">
+					<a class="scheduletab" href="/{{name}}/schedule/month"><p>Month</p></a>
 				</div>
 			</div>
 		{{/with}}
 	</div>
 </template>
 
-<!-- Template to current schedule -->
-<template name="current">
+<!-- Template to today schedule -->
+<template name="today">
 	<div class="container">
 		{{#with schedule}}
 		{{#with pet}}
@@ -129,7 +129,7 @@
 		  			</a>
 		  		</div>
 		  		<div class="col-xs-6 text-center nopadding 2-toggle">
-					<a class="{{scheduleTab}}" href="/{{name}}/schedule/current">
+					<a class="{{scheduleTab}}" href="/{{name}}/schedule/today">
 						<p class="toggle-text">Schedule</p>
 					</a>
 			  	</div>
@@ -137,34 +137,28 @@
 			<div class="row text-center">
 				<img class="profile-dog " src="../../{{imgURL}}"/>
 			</div>
-			<div class="row">
-				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab activetab" href="/{{name}}/schedule/current">Current</a>
+			<div class="row scheduletab-row">
+				<div class="col-xs-4 left-of-center">
+					<a class="scheduletab boldtab" href="/{{name}}/schedule/today"><p>Today</p></a>
 				</div>
 				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+					<a class="scheduletab" href="/{{name}}/schedule/week"><p>Week</p></a>
 				</div>
-				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
+				<div class="col-xs-4 right-of-center">
+					<a class="scheduletab" href="/{{name}}/schedule/month"><p>Month</p></a>
 				</div>
 			</div>
 		{{/with}}
 		<br>
 		<div class="row">
-			<ul class="list-group">
-				<li class="list-group-item">
-					<i style="color: red" class="pull-left fa fa-ban"></i>
-					<span style="right:500px" class="text-center">{{time}}</span>
-					<i style="color: green" class="pull-right fa fa-phone"></i>
-				</li>
-			</ul>
+					<h4>Should probably do something with {{time}}</h4>
 		</div>
 		{{/with}}
 	</div>
 </template>
 
-<!-- Template to pending requests -->
-<template name="requests">
+<!-- Template to week schedule -->
+<template name="week">
 	<div class="container">
 		{{#with schedule}}
 		{{#with pet}}
@@ -179,41 +173,38 @@
 		  			</a>
 		  		</div>
 		  	<div class="col-xs-6 text-center nopadding 2-toggle">
-					<a class="{{scheduleTab}}" href="/{{name}}/schedule/current">
+					<a class="{{scheduleTab}}" href="/{{name}}/schedule/today">
 						<p class="toggle-text">Schedule</p>
 					</a>
 		  	</div>
 			</div>
 			<div class="row">
 				<img class="profile-dog" src="../../{{imgURL}}"/>
-				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+			</div>
+			<div class="row scheduletab-row">
+				<div class="col-xs-4 left-of-center">
+					<a class="scheduletab" href="/{{name}}/schedule/today"><p>Today</p></a>
 				</div>
 				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab activetab" href="/{{name}}/schedule/requests">Requests</a>
+					<a class="scheduletab boldtab" href="/{{name}}/schedule/week"><p>Week</p></a>
 				</div>
-				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab" href="/{{name}}/schedule/availability">Availability</a>
+				<div class="col-xs-4 right-of-center">
+					<a class="scheduletab" href="/{{name}}/schedule/month"><p>Month</p></a>
 				</div>
 			</div>
 		{{/with}}
 			<br>
 		<div class="row">
-			<ul class="list-group">
-				<li class="list-group-item">
-					<i style="color: red" class="pull-left fa fa-ban"></i>
-					<span style="right:500px" class="text-center">{{time}}</span>
-					<i style="color: green" class="pull-right fa fa-check"></i>
-				</li>
-			</ul>
+					<h4>Should probably do something with {{time}}</h4>
 		</div>
 		{{/with}}
 	</div>
 </template>
 
-<!-- Template to dog availability -->
-<template name="availability">
+<!-- Template to month schedule -->
+<template name="month">
 	<div class="container">
+		{{#with schedule}}
 		{{#with pet}}
 			<div class="row mail-logout-bar">
 				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
@@ -226,32 +217,31 @@
 		  		</a>
 		  	</div>
 		  	<div class="col-xs-6 text-center nopadding 2-toggle">
-					<a class="{{scheduleTab}}" href="/{{name}}/schedule/current">
+					<a class="{{scheduleTab}}" href="/{{name}}/schedule/today">
 						<p class="toggle-text">Schedule</p>
 					</a>
 		  	</div>
 			</div>
 			<div class="row">
 				<img class="profile-dog" src="../../{{imgURL}}"/>
-				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab" href="/{{name}}/schedule/current">Current</a>
+			</div>
+			<div class="row scheduletab-row">
+				<div class="col-xs-4 left-of-center">
+					<a class="scheduletab" href="/{{name}}/schedule/today"><p>Today</p></a>
 				</div>
 				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab" href="/{{name}}/schedule/requests">Requests</a>
+					<a class="scheduletab" href="/{{name}}/schedule/week"><p>Week</p></a>
 				</div>
-				<div class="col-xs-4 text-center nopadding">
-					<a class="btn btn-default dogtab activetab" href="/{{name}}/schedule/availability">Availability</a>
+				<div class="col-xs-4 right-of-center">
+					<a class="scheduletab boldtab" href="/{{name}}/schedule/month"><p>Month</p></a>
 				</div>
 			</div>
 		{{/with}}
 		<br>
-			<form class="text-center">
-				Start date and time:<br>
-				<input type="datetime-local" name="start"><br><br>
-				End date and time:<br>
-				<input type="datetime-local" name="start"><br><br>
-				<input type="submit" value="Add Availabilty">
-			</form>
+			<div class="row">
+					<h4>Should probably do something with {{time}}</h4>
+			</div>
+		{{/with}}
 	</div>
 </template>
 
@@ -270,7 +260,7 @@
 	  	</a>
 	  </div>
 	  <div class="col-xs-6 text-center nopadding 2-toggle">
-		<a class="{{scheduleTab}}" href="/{{name}}/schedule/current">
+		<a class="{{scheduleTab}}" href="/{{name}}/schedule/today">
 			<p class="toggle-text">Schedule</p>
 		</a>
 	  </div>

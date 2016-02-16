@@ -658,3 +658,40 @@ p {
   width: 300px;
   z-index: 5;
 }
+
+.scheduletab > p {
+	font-weight: 400;
+}
+
+.boldtab > p {
+	font-weight: 700;
+}
+
+.scheduletab-row {
+	height: 35px;
+	padding-top: 7px;
+	border-bottom: 1px solid #E4E1E1;
+	border-top: 1px solid #E4E1E1;
+}
+
+
+.left-of-center {
+	padding-right: 0;
+	padding-left: 80px;
+}
+
+.right-of-center {
+	padding-right: 80px;
+	padding-left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
