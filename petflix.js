@@ -56,25 +56,25 @@ Router.route('/:_id/profile', function() {
   this.render('dog_profile_ownersv');
 });
 
-Router.route('/:_id/schedule/current', function () {
+Router.route('/:_id/schedule/today', function () {
   var params = this.params; // { _id: "bella" }
   var id = params._id; // "5"
   pet_name = id;
-  this.render('current');
+  this.render('today');
 });
 
-Router.route('/:_id/schedule/requests', function () {
+Router.route('/:_id/schedule/week', function () {
   var params = this.params; // { _id: "bella" }
   var id = params._id; // "5"
   pet_name = id;
-  this.render('requests');
+  this.render('week');
 });
 
-Router.route('/:_id/schedule/availability', function () {
+Router.route('/:_id/schedule/month', function () {
   var params = this.params; // { _id: "bella" }
   var id = params._id; // "5"
   pet_name = id;
-  this.render('availability');
+  this.render('month');
 });
 
 var pet_profile = new Mongo.Collection("pet profile");
@@ -227,7 +227,7 @@ if (Meteor.isClient) {
     }
   })
 
-  Template.current.helpers({
+  Template.today.helpers({
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
@@ -238,7 +238,7 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.requests.helpers({
+  Template.week.helpers({
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
@@ -249,7 +249,7 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.availability.helpers({
+  Template.month.helpers({
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
