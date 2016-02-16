@@ -303,7 +303,39 @@ if (Meteor.isClient) {
       }
       schedule_id = schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time});
 
-    }
+    },
+    'keypress #message-textarea': function (event) {
+      if (event.which === 13) {
+        var $messagesContainer = $("#messages-box");
+        var $message = $("#message-textarea");
+        if (!$message.val()) return;
+
+        if ($messagesContainer.hasClass("has-messages")) {
+          $messagesContainer.append("<br>You: " + $message.val());
+          $message.val('');
+        }
+        else {
+          $messagesContainer.html("You: " + $message.val());
+          $messagesContainer.addClass("has-messages");
+          $message.val('');
+        }
+      }
+    },
+    'click #message-send': function (event) {
+        var $messagesContainer = $("#messages-box");
+        var $message = $("#message-textarea");
+        if (!$message.val()) return;
+
+        if ($messagesContainer.hasClass("has-messages")) {
+          $messagesContainer.append("<br>You: " + $message.val());
+          $message.val('');
+        }
+        else {
+          $messagesContainer.html("You: " + $message.val());
+          $messagesContainer.addClass("has-messages");
+          $message.val('');
+        }
+    }    
   });
 
   Template.verifier.helpers({
