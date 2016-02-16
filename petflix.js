@@ -34,6 +34,10 @@ Router.route('/select', function () {
   this.render('select');
 });
 
+Router.route('/list/filter', function() {
+  this.render('filter');
+})
+
 // given a url like "/post/5"
 Router.route('/:_id', function () {
   var params = this.params; // { _id: "bella" }

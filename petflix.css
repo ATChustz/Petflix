@@ -628,3 +628,15 @@ p {
 #doginput-dropdown {
 	display: inline-block;
 }
+
+.filter-img-padding-top {
+	padding-top: 19px; 
+}
+
+.orange-background {
+	background-color: #FF9600 !important;
+}
+
+.white-font {
+	color: white !important;
+}

@@ -686,7 +686,7 @@
 	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
 			</div>
 			<div class="col-xs-6 signup-title" id="add-dog-title"><p>Add Dog Information</p></div>
-  	</div>
+  		</div>
 
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
@@ -702,7 +702,7 @@
 					<div class="doginput" id="doginput-dropdown">
 						
 						<select name="Class" id="temperament" class="input-field-dropdown" >
-							<option  disabled selected>Temperament</option>
+							<option disabled selected>Temperament</option>
 	  						<option value="Aggressive">Aggressive</option>
 	  						<option value="Energetic">Energetic</option>
 	  						<option value="Playful">Playful</option>
@@ -733,5 +733,88 @@
 	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
 	    </div>
 	  </div>
+	</div>
+</template>
+
+<template name="filter">
+	<div class="container">
+		<div class="row orange-background">
+			<div class="col-xs-4 back-arrow">
+	  			<a href="/list"><img id = "back" src = "/exit-button-white-x.png"/></a>
+			</div>
+			<div class="col-xs-4 title"><p class="white-font">Filter</p></div>
+			<div class="col-xs-4 title"><a href="/list" class="white-font pull-right">Apply</a></div>
+   		</div>
+   		<br>
+   		<div class="row">
+			<div class="col-xs-4 col-xs-offset-1">
+				<img src="/dog-breed-icon.png">
+			</div>
+			<div class="col-xs-6">
+			  <select class="form-control" id="breed-form">
+			  	<option disabled selected>Select One</option>
+			    <option value="corgi">Corgi</option>
+			    <option value="labrador">Labrador</option>
+			    <option value="goldenretriever">Golden Retriever</option>
+			    <option value="goat">Goat</option>
+			  </select>				
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-1">
+				<img class="filter-img-padding-top" src="/cake-age-icon.png">
+			</div>
+			<div class="col-xs-6">
+				<div class="checkbox">
+					<label><input type="checkbox" value="1">> 1</label>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" value="2">1-5</label>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" value="3">6+</label>
+				</div>				
+			</div>			
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-1">
+				<img class="filter-img-padding-top" src="/size-icon.png">
+			</div>
+			<div class="col-xs-6">
+				<div class="checkbox">
+					<label><input type="checkbox" value="medium">Small</label>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" value="small">Medium</label>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" value="large">Large</label>
+				</div>				
+			</div>			
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-1">
+				<img src="/Hypoallergenic.png">
+			</div>
+			<div class="col-xs-2 col-xs-offset-2">
+				<div class="checkbox">
+					<label><input type="checkbox" value="hypoallergenic"></label>
+				</div>
+			</div>			
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-1">
+				<img src="/have-walked-icon.png">
+			</div>
+			<div class="col-xs-2 col-xs-offset-2">
+				<div class="checkbox">
+					<label><input type="checkbox" value="walked"></label>
+				</div>
+			</div>			
+		</div>		
 	</div>
 </template>
