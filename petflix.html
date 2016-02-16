@@ -397,7 +397,7 @@
 				<input type="text" class="form-control" id="searchbar" name="text" placeholder="Search by name">
 			</form>
 			<!-- This link should go to walker profile -->
-			<a href="#"><img id="profile-button" src="profile-button.png"></a>
+			<a href="/walker-dashboard"><img id="profile-button" src="profile-button.png"></a>
 	</div>
 	<div id="fixed">
   	<a href="#"><img id="filter-popout" src="filter.png"></a>
@@ -775,5 +775,57 @@
 		</div>
 		<!-- Need to integrate form elements with user database -->
 		<a href="/select"><p id="temp-select-link">Temporary link to "select" view. In case you want to test scheduling</p></a>
+	</div>
+</template>
+
+<!-- Template for walker dashboard - schedule -->
+<template name="walker-dashboard">
+	<div class="container">
+		<div class="row mail-logout-bar">
+			<a href="/list"><img class="doghome" src="../doghouse-home.png"></a>
+			<a href="#"><img class="mail-symbol" src="../mail-symbol.png"></a>
+			<a href="/"><p class="logout">Logout</p></a>
+		</div>
+		<div class="row">
+		  <div class="col-xs-6 text-center nopadding 2-toggle">
+		  	<a class="{{profileTab}}" href="/walker-dashboard">
+		  		<p class="toggle-text">Schedule</p>
+		  	</a>
+		  </div>
+		  <div class="col-xs-6 text-center nopadding 2-toggle">
+			<a class="{{scheduleTab}}" href="/walker-pastwalks">
+				<p class="toggle-text">Past Walks</p>
+			</a>
+		  </div>
+		</div>
+	  <div class="row">
+			<img class="profile-dog" src="dog-stock-photo.png"/>
+		</div>
+	</div>
+</template>
+
+<!-- Template for walker dashboard - past walks -->
+<template name="walker-pastwalks">
+	<div class="container">
+		<div class="row mail-logout-bar">
+			<a href=""><img class="doghome" src="../doghouse-home.png"></a>
+			<a href=""><img class="mail-symbol" src="../mail-symbol.png"></a>
+			<a href="/"><p class="logout">Logout</p></a>
+		</div>
+		<div class="row">
+		  <div class="col-xs-6 text-center nopadding 2-toggle">
+		  	<a class="{{profileTab}}" href="/walker-dashboard">
+		  		<p class="toggle-text">Schedule</p>
+		  	</a>
+		  </div>
+		  <div class="col-xs-6 text-center nopadding 2-toggle">
+			<a class="{{scheduleTab}}" href="/walker-pastwalks">
+				<p class="toggle-text">Past Walks</p>
+			</a>
+		  </div>
+		</div>
+	  <div class="row">
+			<img class="profile-dog" src="dog-stock-photo.png"/>
+		</div>
 	</div>
 </template>

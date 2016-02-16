@@ -38,6 +38,14 @@ Router.route('/login', function () {
   this.render('login');
 });
 
+Router.route('/walker-dashboard', function () {
+  this.render('walker-dashboard');
+});
+
+Router.route('/walker-pastwalks', function () {
+  this.render('walker-pastwalks');
+});
+
 // given a url like "/post/5"
 Router.route('/:_id', function () {
   var params = this.params; // { _id: "bella" }
@@ -167,8 +175,8 @@ if (Meteor.isServer) {
       },
       'update': function() {
         return true;
-      }      
-    }); 
+      }
+    });
   });
 }
 
@@ -185,12 +193,16 @@ if (Meteor.isClient) {
   Template.registerHelper("profileTab", () => {
     if (Router.current().route.getName().endsWith("profile")) {
       return "btn-default dogtab activetab clean-link";
+    } else if (Router.current().route.getName().endsWith("walker-dashboard")) {
+      return "btn-default dogtab activetab clean-link";
     }
     return "btn-default dogtab clean-link";
   });
 
   Template.registerHelper("scheduleTab", () => {
     if (Router.current().route.getName().indexOf("schedule") > -1) {
+      return "btn-default dogtab activetab clean-link";
+    } else if (Router.current().route.getName().endsWith("walker-pastwalks")) {
       return "btn-default dogtab activetab clean-link";
     }
     return "btn-default dogtab clean-link";
