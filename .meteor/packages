@@ -23,3 +23,6 @@ fortawesome:fontawesome
 cfs:standard-packages
 cfs:gridfs
 cfs:filesystem
+accounts-ui
+accounts-password
+accounts-facebook
