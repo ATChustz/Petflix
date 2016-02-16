@@ -737,6 +737,26 @@ p {
 #about-row {
 	padding-bottom: 0;
 }
+.small-profile-dog {
+	width: 50%;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.orange-curved-border {
+    border-radius: 5px;
+    border: 2px solid #FF9600;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    width: 75%;
+}
+
+#messages-box {
+	height: 500px;
+}
+
 
 #about-title {
 	margin-bottom: 15px;
