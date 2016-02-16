@@ -312,26 +312,22 @@
 <template name="pet">
   {{#with pet}}
   <div class="row">
-	  <div class="col-xs-4 back-arrow">
-	  	<a href="/list"><img id = "back" src = "Back.png"/>Back</a>
+	  <div class="col-xs-4">
+	  	<a href="/list"><img id="doghome" src = "doghouse-home.png"/></a>
 		</div>
 		<div class="col-xs-4 title"><p>{{name}}</p></div>
   </div>
 
   <div class="row image">
 		<img class="detail-dog" src="{{imgURL}}"/>
-		<div class="overlay">
-			<h4 class="distance">{{distance}}</h4>
-		</div>
 	</div>
 		
 	<div class="row" id="info-bar">
-  	<span id="star-span"><img id ="stars" src = "white-{{rating}}"/></span>
+  	<span id="distance-span"><p id="profile-distance">{{distance}} away</p></span>
   	<span id="class-span"><a href="#" class="class-why" data-toggle="modal" data-target="#myModal4"><img src="info-bold.png"></a><img id = "class" src = "white-{{class}}"/><p>Class:</p></span>
   </div>
-
-	<div class="row pet-info">
-		<div class="col-xs-2"></div>
+	<div class="row pet-info" id="about-row">
+	<h4 class="detail-title" id="about-title">About {{name}}</h4>
 		<div class="col-xs-4 detail-content">
 			<p>Age</p>
 			<p>Breed</p>
@@ -343,17 +339,17 @@
     	<p class="last-attribute">{{temperament}}</p>
     </div>
   </div>
+  <hr id="attribute-border">
  	<div class="row pet-info">
- 		<div class="col-xs-2"></div>
-		<div class="col-xs-8 detail-content" id="bio">
-			<p class="detail-title">About {{name}}</p>
-			{{bio}}
+		<div class="col-xs-12 detail-content" id="bio">
+			<h4 class="detail-title">{{name}}'s Bio</h4>
+			<p>{{bio}}</p>
 		</div>
  	</div>
+ 	<hr id="attribute-border">
 	<div class="row pet-info">
-	 	<div class="col-xs-2"></div>
 	 	<div class="col-xs-8 detail-content">
-			<p class="detail-title">{{name}} asks "please"...</p>
+			<h4 class="detail-title">{{name}} asks please...</h4>
 			{{#each badges}}
 			<p class="badges"><i class="fa {{icon}}"></i>{{ask}}</p>
 			{{/each}}

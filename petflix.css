@@ -550,6 +550,16 @@ p {
     height: 100%;
 }
 
+#distance-span {
+	display: inline;
+	padding-top: 4px;
+	float: left;
+}
+
+#distance-span > p {
+	display: inline;
+}
+
 #class-span {
 	float: right;
 	width: 120px;
@@ -558,6 +568,13 @@ p {
 
 #class-span > p {
 	float: right;
+	color: white;
+}
+
+#profile-distance{
+	height: 22px;
+	margin-top: 7px;
+	margin-bottom: 4px;
 	color: white;
 }
 
@@ -590,8 +607,9 @@ p {
 }
 
 .vertical-line {
-	border-left: 1px solid rgba(0,0,0,.5);
+	border-left: 1px solid rgb(229,229,229);
 	padding-left: 20px;
+	padding-bottom: 10px;
 }
 
 .last-attribute {
@@ -710,4 +728,22 @@ p {
 	border-radius: 5px;
 }
 
+#doghome {
+	padding-top: 3px;
+}
 
+#about-row {
+	padding-bottom: 0;
+}
+
+#about-title {
+	margin-bottom: 15px;
+}
+
+#attribute-border {
+	margin-top: 0;
+	margin-bottom: 0;
+	background-color: rgb(229,229,229);
+	border-color: rgb(229,229,229);
+	color: rgb(229,229,229);
+}
