@@ -130,10 +130,12 @@ if (Meteor.isServer) {
     pet_profile.insert({name: "Billy", breed: 'Goat', rating: "3star.png", age: 6, bio: "Billy is a goat.", temperament: 'Goat', imgURL : "billy.png",
       comments: billy_comments, badges: billy_badges, class: "D.png", distance: "1 miles",location:"500 Mayfield Ave Stanford, CA 94305", quote: "Why am I here? I'm a goat!"});
 
-    schedules.insert({name: "Bella", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay"});
-    schedules.insert({name: "Max", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay"});
-    schedules.insert({name: "Lily", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay"});
-    schedules.insert({name: "Billy", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay"});
+    schedules.insert({name: "Bella", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "yes"});
+    /* change owner to walker and such */
+    schedules.insert({name: "Bella", pickuplocation: "California Ava", time: "6:30 P.M.", owner: "Landay", confirmed: "yes"});
+    schedules.insert({name: "Max", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
+    schedules.insert({name: "Lily", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
+    schedules.insert({name: "Billy", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
 
     owners.insert({name: "Landay", address: "HCILYFE", phone: "6501234355"});
 
@@ -305,7 +307,7 @@ if (Meteor.isClient) {
       if(schedule_id!=null){
         schedules.remove({_id: schedule_id});
       }
-      schedule_id = schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time});
+      schedule_id = schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time, confirmed: "no"});
 
     }
   });
