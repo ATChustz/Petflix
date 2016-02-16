@@ -9,12 +9,12 @@
   
 </body>
 
-<template name="login">
+<template name="index">
 	<div class="container" id="login-screen">
 	  <img id="logo" src="PF&C-logo.png"/>
 	  <div id="button-container">
-	  	<a href="/select">
-	  		<button class="btn login-button" id="signup">Existing Owner Login</button>
+	  	<a href="/login">
+	  		<button class="btn login-button" id="signup">Existing User Login</button>
 	  	</a>
 	  	<br/>
 	  	<a href="/addowner">
@@ -81,7 +81,7 @@
 		{{#with pet}}
 			<div class="row mail-logout-bar">
 				<a href=""><img class="mail-symbol" src="../mail-symbol.png"></a>
-				<a href="/login"><p class="logout">Logout</p></a>
+				<a href="/"><p class="logout">Logout</p></a>
 			</div>
 			<div class="row">
 		  		<div class="col-xs-6 text-center nopadding 2-toggle">
@@ -120,7 +120,7 @@
 		{{#with pet}}
 			<div class="row mail-logout-bar">
 				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
-				<a href="/login"><p class="logout">Logout</p></a>
+				<a href="/"><p class="logout">Logout</p></a>
 			</div>
 			<div class="row">
 		  		<div class="col-xs-6 text-center nopadding 2-toggle">
@@ -164,7 +164,7 @@
 		{{#with pet}}
 			<div class="row mail-logout-bar">
 				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
-				<a href="/login"><p class="logout">Logout</p></a>
+				<a href="/"><p class="logout">Logout</p></a>
 			</div>
 			<div class="row">
 		  		<div class="col-xs-6 text-center nopadding 2-toggle">
@@ -208,7 +208,7 @@
 		{{#with pet}}
 			<div class="row mail-logout-bar">
 				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
-				<a href="/login"><p class="logout">Logout</p></a>
+				<a href="/"><p class="logout">Logout</p></a>
 			</div>
 			<div class="row">
 		  	<div class="col-xs-6 text-center nopadding 2-toggle">
@@ -251,7 +251,7 @@
 	{{#with pet}}
 	<div class="row mail-logout-bar">
 		<a href=""><img class="mail-symbol" src="../mail-symbol.png"></a>
-		<a href="/login"><p class="logout">Logout</p></a>
+		<a href="/"><p class="logout">Logout</p></a>
 	</div>
 	<div class="row">
 	  <div class="col-xs-6 text-center nopadding 2-toggle">
@@ -643,6 +643,8 @@
 					<input type="text" class="input-field" id="name" placeholder="Name"><br>
 					<input type="text" class="input-field" id="address" placeholder="Address"><br>
 					<input type="text" class="input-field" id="phone" placeholder="Phone Number"><br>
+					<input type="text" class="input-field" id="username" placeholder="Username"><br>
+					<input type="text" class="input-field" id="password" placeholder="Password"><br>
 					<a href="/adddog"><input type="image" class="paw" id="finishbutton" src="continue-button.png" alt="next"></a>
 
 				</form>
@@ -676,6 +678,8 @@
 					<input type="text" class="input-field" id="name" placeholder="Name"><br>
 					<input type="text" class="input-field" id="address" placeholder="Address"><br>
 					<input type="text" class="input-field" id="phone" placeholder="Phone Number"><br>
+					<input type="text" class="input-field" id="username" placeholder="Username"><br>
+					<input type="text" class="input-field" id="password" placeholder="Password"><br>
 					<a href="/list"><input type="image" class="paw" id="finishbutton" src="bone-button.png" alt="next"></a>
 
 
@@ -741,5 +745,36 @@
 	        <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
 	    </div>
 	  </div>
+	</div>
+</template>
+
+<template name="login">
+	<div class="container">
+		<div class="row bordered-header">
+	  	<div class="col-xs-4 back-arrow back-narrow">
+	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+			<div class="col-xs-6 signup-title" id="login-title">
+				<p>Login</p>
+			</div>
+  	</div>
+		<div class="row" id="login-ornament">
+			<div class="col-xs-6 col-xs-offset-3">
+				<img class="paw" src="paw.png">
+				<p id="tell">Login</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<form role="form" id="dog-form">
+					<input type="text" class="input-field" id="username" placeholder="Username"><br>
+					<input type="text" class="input-field" id="password" placeholder="Password"><br>
+					<a href="/list"><input type="image" class="paw" id="login-finishbutton" src="bone-button.png" alt="next"></a>
+				</form>
+			</div>
+		</div>
+		<!-- Need to integrate form elements with user database -->
+		<a href="/select"><p id="temp-select-link">Temporary link to "select" view. In case you want to test scheduling</p></a>
 	</div>
 </template>

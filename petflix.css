@@ -334,7 +334,6 @@ h4, h5 {
 #tell {
 	font-family: 'Montserrat', sans-serif;
 	color: #FF9600;
-	margin-left: 3px;
 }
 
 .paw {
@@ -674,7 +673,6 @@ p {
 	border-top: 1px solid #E4E1E1;
 }
 
-
 .left-of-center {
 	padding-right: 0;
 	padding-left: 80px;
@@ -685,13 +683,31 @@ p {
 	padding-left: 0;
 }
 
+#login-title {
+	text-align: center;
+	margin-left: 13px;
+}
 
+#login-ornament {
+	margin-top: 70px;
+	text-align: center;
+	margin-bottom: 10px;
+}
 
+.bordered-header {
+	border-bottom: 1px solid #E4E1E1;
+}
 
+#login-finishbutton {
+	width: 120px;
+}
 
-
-
-
-
+#temp-select-link {
+	text-align: center;
+	margin-top: 20px;
+	color: red;
+	border: 1px solid red;
+	border-radius: 5px;
+}
 
 

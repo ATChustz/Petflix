@@ -1,5 +1,5 @@
 Router.route('/', function () {
-  this.render('login');
+  this.render('index');
 });
 
 Router.route('/list', function () {
@@ -32,6 +32,10 @@ Router.route('/addwalker', function () {
 
 Router.route('/select', function () {
   this.render('select');
+});
+
+Router.route('/login', function () {
+  this.render('login');
 });
 
 // given a url like "/post/5"
