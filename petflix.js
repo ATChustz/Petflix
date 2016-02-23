@@ -8,6 +8,9 @@ Router.route('/list', function () {
 
 Router.route('/scheduler', function () {
   this.render('scheduler');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
 });
 
 Router.route('/verifier', function () {
@@ -52,6 +55,9 @@ Router.route('/:_id', function () {
   var id = params._id; // "5"
   pet_name = id;
   this.render('detail');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
 });
 
 Router.route('/:_id/schedule', function () {
@@ -59,6 +65,9 @@ Router.route('/:_id/schedule', function () {
   var id = params._id; // "5"
   pet_name = id;
   this.render('schedule');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
 });
 
 Router.route('/:_id/profile', function() {
@@ -66,6 +75,9 @@ Router.route('/:_id/profile', function() {
   var id = params._id;
   pet_name = id;
   this.render('dog_profile_ownersv');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
 });
 
 Router.route('/:_id/schedule/today', function () {
@@ -88,6 +100,14 @@ Router.route('/:_id/schedule/month', function () {
   pet_name = id;
   this.render('month');
 });
+/*
+Tracker.autorun(function () {
+  var current = Router.current();
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
+});
+from: http://www.curtismlarson.com/blog/2015/11/11/iron-router-scroll-to-top/ */
 
 var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
