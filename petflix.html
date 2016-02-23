@@ -411,7 +411,7 @@
 		{{#each names}}
 			<div class="image">
 				<a href="{{name}}">
-			    <img id="{{name}}" src="{{imgURL}}"/>
+			    <img id="{{name}}" src="{{imgURL}}" class="profle-dog"/>
 		    	<div class="opq">
 			    	<h4 class="distance">{{distance}}</h4>
 			    	<h1 class="pet_name"> {{name}} </h1>
@@ -421,13 +421,14 @@
 				</a>
 			</div>
 		{{/each}}
+			<img src="end.png" class="profle-dog"/>
 		</div>
 	{{else}}
 		<div class="row">
 		{{#each pets}}
 			<div class="image">
 				<a href="{{name}}">
-		    	<img id="{{name}}" src="{{imgURL}}"/>
+		    	<img id="{{name}}" src="{{imgURL}}" class="profile-dog"/>
 		    	<div class="opq">
 			    	<h4 class="distance">{{distance}}</h4>
 			    	<h1 class="pet_name"> {{name}} </h1>
@@ -437,6 +438,7 @@
 				</a>
 			</div>
 		{{/each}}
+		<img src="end.png" class="profle-dog"/>
   	</div>
   {{/if}}
 </template>
@@ -730,7 +732,7 @@
 					<br>
  					<div class="doginput"><textarea class="input-field-long" id="bio" rows="2" placeholder="Bio"></textarea></div>
  					<br>
-					<a href="/list" id="submit"><input type="image" src="finish.png" class="paw" id="finishbutton" alt="finish"></a>
+					<a href="/{{name}}/profile" id="submit"><input type="image" src="finish.png" class="paw" id="finishbutton" alt="finish"></a>
 				</form>
 			</div>
 		</div>
