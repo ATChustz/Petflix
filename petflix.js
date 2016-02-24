@@ -71,6 +71,7 @@ Router.route('/:_id/schedule', function () {
 });
 
 Router.route('/:_id/profile', function() {
+  
   var params = this.params;
   var id = params._id;
   pet_name = id;
@@ -78,6 +79,8 @@ Router.route('/:_id/profile', function() {
   Tracker.afterFlush(function () {
     $(window).scrollTop(0);
   });
+}, {
+  name: 'profile'
 });
 
 Router.route('/:_id/schedule/today', function () {
@@ -476,7 +479,7 @@ if (Meteor.isClient) {
           imgURL: "cfs/files/images/" + $("#pID").val(), // fuck yeah
           class: "C.png",
         });
-        Router.go('/list');
+        Router.go('profile', {_id: name});
       }
     }
   });
