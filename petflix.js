@@ -72,6 +72,8 @@ Router.route('/:_id/schedule', function () {
   Tracker.afterFlush(function () {
     $(window).scrollTop(0);
   });
+}, {
+  name: 'schedule'
 });
 
 Router.route('/:_id/profile', function() {
@@ -138,9 +140,8 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     pet_profile.remove({});
     schedules.remove({});
-    owners.remove({});
     Images.remove({});
-    walkers.remove({});
+    owners.remove({});
   
     var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"only feed me real meat products", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
     var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
@@ -172,7 +173,6 @@ if (Meteor.isServer) {
     schedules.insert({name: "Lily", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
     schedules.insert({name: "Billy", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
 
-    owners.insert({name: "Landay", address: "HCILYFE", phone: "6501234355"});
 
     Meteor.publish("all pets", function(){
       return pet_profile.find();
@@ -184,7 +184,7 @@ if (Meteor.isServer) {
       return owners.find();
     });
     Meteor.publish("walkers", function(){
-      return owners.find();
+      return walkers.find();
     });
 
     Meteor.publish("images", function(){ return Images.find(); });
@@ -256,6 +256,7 @@ if (Meteor.isClient) {
       return Session.get('bool');
     }
   });
+
 
   Template.dog.events({
     "submit .search": function (event) {
@@ -400,17 +401,40 @@ if (Meteor.isClient) {
         return pet;
       }
   });
+
+  Template.index.events({
+    "click #signup": function (event) {
+
+      if(walkers.findOne({owner: Meteor.userId()})){
+          Router.go('/list');
+      } else {
+        Router.go('/addwalker');
+      }
+    }, 
+    
+    "click #signupown": function (event) {
+      var profile = pet_profile.findOne({owner: Meteor.userId()});
+
+      if(profile){
+        Router.go('profile', {_id: profile.name});
+      } else {
+        Router.go('/addowner');
+      }
+    } 
+  });
+
   Template.addwalker.events({
+    
     "click #finishbutton": function (event) {
       event.preventDefault();
       var name = $("#name").val();
       var address = $("#address").val();
       var phone = $("#phone").val();
-      console.log("fickedaddy");
       walkers.insert({
         name: name,
         address: address,
         phone: phone,
+        owner: Meteor.userId(), 
       });
       Router.go('/list');
     }
@@ -426,6 +450,7 @@ if (Meteor.isClient) {
         name: name,
         address: address,
         phone: phone,
+        owner: Meteor.userId(), 
       });
       Router.go('/adddog');
     }
@@ -482,6 +507,7 @@ if (Meteor.isClient) {
           distance: "1.7 miles",
           imgURL: "cfs/files/images/" + $("#pID").val(), // fuck yeah
           class: "C.png",
+          owner: Meteor.userId(), 
         });
         Router.go('profile', {_id: name});
       }
