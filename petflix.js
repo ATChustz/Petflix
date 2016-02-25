@@ -45,8 +45,8 @@ Router.route('/login', function () {
   this.render('login');
 });
 
-Router.route('/walker-dashboard', function () {
-  this.render('walker-dashboard');
+Router.route('/walkerdashboard', function () {
+  this.render('walkerdashboard');
 });
 
 Router.route('/walker-pastwalks', function () {
@@ -94,6 +94,9 @@ Router.route('/:_id/schedule/today', function () {
   var id = params._id; // "5"
   pet_name = id;
   this.render('today');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
 });
 
 Router.route('/:_id/schedule/week', function () {
@@ -220,7 +223,7 @@ if (Meteor.isClient) {
   Template.registerHelper("profileTab", () => {
     if (Router.current().route.getName().endsWith("profile")) {
       return "btn-default dogtab activetab clean-link";
-    } else if (Router.current().route.getName().endsWith("walker-dashboard")) {
+    } else if (Router.current().route.getName().endsWith("walkerdashboard")) {
       return "btn-default dogtab activetab clean-link";
     }
     return "btn-default dogtab clean-link";
@@ -303,6 +306,10 @@ if (Meteor.isClient) {
       schedules.update(this._id, {
         $set: {confirmed: true}
       });
+    },
+
+    'click #reject': function (event) {
+      schedules.remove(this._id)
     }
   });
 
@@ -369,7 +376,7 @@ if (Meteor.isClient) {
         dogname: pet_name,
         confirmed: false,
       });
-      Router.go('/verifier');
+      Router.go('/success');
 
     },
     'keypress #message-textarea': function (event) {
@@ -546,6 +553,23 @@ if (Meteor.isClient) {
   Template.select.helpers({
     pets: function () {
       return pet_profile.find({});
+    }
+  });
+
+  Template.walkerdashboard.helpers({
+    confirmed: function() {
+      var schedule =  schedules.find({
+                owner: Meteor.userId(),
+                confirmed: true
+              });
+      return schedule;
+    },
+    schedule: function() {
+      var schedule =  schedules.find({
+                owner: Meteor.userId(),
+                confirmed: false
+              });
+      return schedule;
     }
   });
 

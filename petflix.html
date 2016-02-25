@@ -419,7 +419,7 @@
 				<input type="text" class="form-control" id="searchbar" name="text" placeholder="Search by name">
 			</form>
 			<!-- This link should go to walker profile -->
-			<a href="/walker-dashboard"><img id="profile-button" src="profile-button.png"></a>
+			<a href="/walkerdashboard"><img id="profile-button" src="profile-button.png"></a>
 	</div>
 	<div id="fixed">
   	<a href="list/filter"><img id="filter-popout" src="filter.png"></a>
@@ -516,7 +516,7 @@
 								<p>You need a verifier to walk {{name}}<a href="#" data-toggle="modal" data-target="#myModal3"> Why?</a></p>
 							</div>
 							<div class="col-xs-11">
-								<a id="button-text" href="/verifier"><button type="button" class="btn btn-default btn-lg center-block general-button" id="confirm-button" >Confirm</button></a>
+								<a id="button-text" href="/success"><button type="button" class="btn btn-default btn-lg center-block general-button" id="confirm-button" >Confirm</button></a>
 							</div>
 						</div>
 					</form>
@@ -640,7 +640,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-4 back-arrow">
-			  <a href="/verifier"><img id="back" src="Back.png"/>Back</a>
+			  <a href="/list"><img id="back" src="Back.png"/>Back to List</a>
 			</div>
 		</div>
 		{{#with pet}}
@@ -893,7 +893,7 @@
 </template>
 
 <!-- Template for walker dashboard - schedule -->
-<template name="walker-dashboard">
+<template name="walkerdashboard">
 	<div class="container">
 		<div class="row mail-logout-bar">
 			<a href="/list"><img class="doghome" src="../doghouse-home.png"></a>
@@ -902,7 +902,7 @@
 		</div>
 		<div class="row">
 		  <div class="col-xs-6 text-center nopadding 2-toggle">
-		  	<a class="{{profileTab}}" href="/walker-dashboard">
+		  	<a class="{{profileTab}}" href="/walkerdashboard">
 		  		<p class="toggle-text">Schedule</p>
 		  	</a>
 		  </div>
@@ -915,6 +915,28 @@
 	  <div class="row">
 			<img class="profile-dog" src="dog-stock-photo.png"/>
 		</div>
+		{{#each confirmed}}
+			<div class="row">
+				<div class="col-xs-10">
+						<h5>Walk confirmed at {{time}} on {{date}} with {{dowownername}}.</h5>
+				</div>
+			</div>
+		{{/each}}
+		{{#each schedule}}
+		<br>
+		<div class="row">
+			<div class="row scheduletab-row">
+				<div class="col-xs-4 text-center nopadding">
+					<a class="scheduletab"><p>Requests</p></a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-10">
+					<h5>Walk requested at {{time}} on {{date}} with {{dogownername}}.</h5>
+			</div>
+		</div>
+		{{/each}}
 	</div>
 </template>
 
@@ -928,7 +950,7 @@
 		</div>
 		<div class="row">
 		  <div class="col-xs-6 text-center nopadding 2-toggle">
-		  	<a class="{{profileTab}}" href="/walker-dashboard">
+		  	<a class="{{profileTab}}" href="/walkerdashboard">
 		  		<p class="toggle-text">Schedule</p>
 		  	</a>
 		  </div>
@@ -941,5 +963,6 @@
 	  <div class="row">
 			<img class="profile-dog" src="dog-stock-photo.png"/>
 		</div>
+		
 	</div>
 </template>
