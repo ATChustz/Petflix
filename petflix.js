@@ -53,6 +53,14 @@ Router.route('/walker-pastwalks', function () {
   this.render('walker-pastwalks');
 });
 
+Router.route('/chats', function() {
+  this.render('chats');
+});
+
+Router.route('/chats/:id', function() {
+  var params = this.params;
+});
+
 // given a url like "/post/5"
 Router.route('/:_id', function () {
   var params = this.params; // { _id: "bella" }
@@ -117,7 +125,7 @@ Tracker.autorun(function () {
   });
 });
 from: http://www.curtismlarson.com/blog/2015/11/11/iron-router-scroll-to-top/ */
-
+var chats = new Mongo.Collection("chats");
 var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
 var owners = new Mongo.Collection("owners");
@@ -141,7 +149,24 @@ if (Meteor.isServer) {
     pet_profile.remove({});
     schedules.remove({});
     Images.remove({});
-    owners.remove({});
+    chats.remove({});
+
+    var people = {
+      imgURL: "bella.png", 
+      date: "2/24/16", 
+      users: ["fbfLdECMTb4mjqRHn",  "iMPpTvn4QXx5buLrk"],
+      messages: [
+        {
+          id: "fbfLdECMTb4mjqRHn",
+          message: "How's 2:00 PM tomorrow?"
+        },
+        {
+          id: "iMPpTvn4QXx5buLrk",
+          message: "Sure!"
+        }        
+      ]
+    };
+    chats.insert(people);
   
     var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"only feed me real meat products", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
     var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
@@ -187,7 +212,8 @@ if (Meteor.isServer) {
       return walkers.find();
     });
 
-    Meteor.publish("images", function(){ return Images.find(); });
+    Meteor.publish("chats", function(){ return Images.find(); });
+    Meteor.publish("images", function(){ return chats.find(); });
 
     Images.allow({
       'insert': function () {
@@ -216,6 +242,11 @@ if (Meteor.isClient) {
   Meteor.subscribe("owners");
   Meteor.subscribe("walkers");
   Meteor.subscribe("images");
+  Meteor.subscribe("chats");
+
+  Template.registerHelper('equals', function (a, b) {
+    return a === b;
+  });  
 
   Template.registerHelper("profileTab", () => {
     if (Router.current().route.getName().endsWith("profile")) {
@@ -326,8 +357,15 @@ if (Meteor.isClient) {
 
   Template.scheduler.helpers({
     pet: function() {
+      Meteor.call('random', "faweofjoi");
       var pet =  pet_profile.findOne({name: pet_name});
       return pet;
+    }
+  });
+
+  Template.chats.events({
+    'click .conversation': function (event) {
+
     }
   });
 
@@ -527,5 +565,19 @@ if (Meteor.isClient) {
     }
   });
 
-
+  Template.chats.helpers({
+    chats: function() {    
+      var userChats = chats.find({users: Meteor.userId()});
+      // userChats.forEach(function(obj) {
+      //   console.log(obj);
+      // });
+      return userChats;
+    }
+  });
 }
+
+Meteor.methods({
+  random: function(msg) {
+    console.log(msg);
+  }
+});

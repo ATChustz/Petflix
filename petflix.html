@@ -453,7 +453,7 @@
 		  <div class="row">
   			<div class="col-xs-4 back-arrow">
   				<a href="/{{name}}"><img id = "back" src = "Back.png"/>Back</a>
-				</div>
+			</div>
 				<div class="col-xs-5 title"><p>{{name}}</p></div>
 			</div>
 			<br>
@@ -872,7 +872,7 @@
 	<div class="container">
 		<div class="row mail-logout-bar">
 			<a href="/list"><img class="doghome" src="../doghouse-home.png"></a>
-			<a href="#"><img class="mail-symbol" src="../mail-symbol.png"></a>
+			<a href="/chats"><img class="mail-symbol" src="../mail-symbol.png"></a>
 			<a href="/"><p class="logout">Logout</p></a>
 		</div>
 		<div class="row">
@@ -916,5 +916,34 @@
 	  <div class="row">
 			<img class="profile-dog" src="dog-stock-photo.png"/>
 		</div>
+	</div>
+</template>
+
+<template name="chats">
+	<div class="container">
+		<div class="row border-bottom-thin">
+  			<div class="col-xs-4 back-arrow">
+  				<a href="/walker-dashboard"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+			<div class="col-xs-5 title">
+				<p>Messages</p>
+			</div>
+		</div>
+		{{#each chats}}
+			<a href="#">	
+				<div class="row border-bottom-thin message-list-padding conversation">
+					<div class="col-xs-3">
+						<img class="profile-dog img-circle" src="../{{imgURL}}"/>
+					</div>
+					<div class="col-xs-7 message-info-padding">
+						<span class="pull-left">asdf</span>
+					</div>
+					<div class="col-xs-2 message-info-padding">
+						<span class="pull-right">{{date}}</span>
+					</div>
+					<input type="hidden" id="pID" val="other">
+				</div>
+			</a>
+		{{/each}}
 	</div>
 </template>
