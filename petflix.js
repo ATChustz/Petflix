@@ -150,23 +150,6 @@ if (Meteor.isServer) {
     schedules.remove({});
     Images.remove({});
     chats.remove({});
-
-    var people = {
-      imgURL: "bella.png", 
-      date: "2/24/16", 
-      users: ["FtetuhKp3qDxGDmcj",  "iMPpTvn4QXx5buLrk"],
-      messages: [
-        {
-          id: "FtetuhKp3qDxGDmcj",
-          message: "How's 2:00 PM tomorrow?"
-        },
-        {
-          id: "iMPpTvn4QXx5buLrk",
-          message: "Sure!"
-        }        
-      ]
-    };
-    chats.insert(people);
   
     var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"only feed me real meat products", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
     var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
