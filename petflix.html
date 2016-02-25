@@ -118,7 +118,6 @@
 <!-- Template to today schedule -->
 <template name="today">
 	<div class="container">
-		{{#with schedule}}
 		{{#with pet}}
 			<div class="row mail-logout-bar">
 				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
@@ -137,7 +136,7 @@
 			  	</div>
 			</div>
 			<div class="row text-center">
-				<img class="profile-dog " src="../../{{imgURL}}"/>
+				<img class="profile-dog" src="../../{{imgURL}}"/>
 			</div>
 			<div class="row scheduletab-row">
 				<div class="col-xs-4 left-of-center">
@@ -151,21 +150,40 @@
 				</div>
 			</div>
 		{{/with}}
+		{{#each confirmed}}
+			<div class="row">
+				<div class="col-xs-10">
+						<h5>Walk confirmed at {{time}} on {{date}} with {{walkername}}.</h5>
+				</div>
+			</div>
+		{{/each}}
+		{{#each schedule}}
 		<br>
 		<div class="row">
-					<h5>Walk requested today at {{time}} with {{owner}}. The dropoff location is: {{pickuplocation}}</h5>
+			<div class="row scheduletab-row">
+				<div class="col-xs-4 text-center nopadding">
+					<a class="scheduletab"><p>Requests</p></a>
+				</div>
+			</div>
 		</div>
 		<div class="row">
-					<h5>Confirm<a href="/success"> Here</a></h5>
+			<div class="col-xs-10">
+					<h5>Walk requested at {{time}} on {{date}} with {{walkername}}.</h5>
+			</div>
 		</div>
-		{{/with}}
+		<div class="row">
+			<div class="col-xs-10">
+				<button class="btn schedule-button" id="confirm">Confirm</button><button class="btn schedule-button" id="reject">Reject</button>
+			</div>
+		</div>
+		{{/each}}
 	</div>
 </template>
 
 <!-- Template to week schedule -->
 <template name="week">
 	<div class="container">
-		{{#with schedule}}
+		
 		{{#with pet}}
 			<div class="row mail-logout-bar">
 				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
@@ -198,6 +216,7 @@
 				</div>
 			</div>
 		{{/with}}
+		{{#with schedule}}
 			<br>
 		<div class="row">
 					<h4>None this week</h4>
@@ -209,7 +228,7 @@
 <!-- Template to month schedule -->
 <template name="month">
 	<div class="container">
-		{{#with schedule}}
+		
 		{{#with pet}}
 			<div class="row mail-logout-bar">
 				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
@@ -242,6 +261,7 @@
 				</div>
 			</div>
 		{{/with}}
+		{{#with schedule}}
 		<br>
 			<div class="row">
 					<h4>None this month</h4>
@@ -484,8 +504,13 @@
 					</div>
 				</div>
 				<div class="row" id="form">
-					<form>
-
+					<form role="form" id="dog-form">
+						<div class="row">
+							<div class="col-xs-10 col-xs-offset-3">
+								<input type="time" id="time"> <br>
+								<input type="date" id="date"> <br>
+							</div>
+						</div>
 						<div class="row verifier-remind">
 							<div class="col-xs-10 col-xs-offset-1">
 								<p>You need a verifier to walk {{name}}<a href="#" data-toggle="modal" data-target="#myModal3"> Why?</a></p>
