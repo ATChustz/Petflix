@@ -146,10 +146,10 @@ Images = new FS.Collection("images", {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    pet_profile.remove({});
-    schedules.remove({});
-    Images.remove({});
-    chats.remove({});
+    // pet_profile.remove({});
+    // schedules.remove({});
+    // Images.remove({});
+    // chats.remove({});
 
     var people = {
       imgURL: "bella.png", 
@@ -166,37 +166,37 @@ if (Meteor.isServer) {
         }        
       ]
     };
-    chats.insert(people);
+    // chats.insert(people);
   
-    var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"only feed me real meat products", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
-    var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
-    var bella_comments = [{walker: "Leonard", rating:"5star.png", date:"Oct 2015", comment:"Bella was so energetic and fun to have out with me! She made my day!"},
-    {walker:"Sheldon",rating:"4halfstar.png", date:"Nov 2015", comment:"Bella is awesome, but she's a bit too curious of everything."}];
-    pet_profile.insert({name: "Bella", breed: 'Labrador', rating: "5star.png", age: 4, bio: bell_bio, temperament: 'Mild', imgURL : "bella.png",
-      comments: bella_comments,badges: bella_badges, class: "C.png", distance: "1.7 miles", location:"658 Escondido Rd, Stanford, CA 94305", quote: "I can stand on both my hind legs!"});
+    // var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"only feed me real meat products", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
+    // var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
+    // var bella_comments = [{walker: "Leonard", rating:"5star.png", date:"Oct 2015", comment:"Bella was so energetic and fun to have out with me! She made my day!"},
+    // {walker:"Sheldon",rating:"4halfstar.png", date:"Nov 2015", comment:"Bella is awesome, but she's a bit too curious of everything."}];
+    // pet_profile.insert({name: "Bella", breed: 'Labrador', rating: "5star.png", age: 4, bio: bell_bio, temperament: 'Mild', imgURL : "bella.png",
+    //   comments: bella_comments,badges: bella_badges, class: "C.png", distance: "1.7 miles", location:"658 Escondido Rd, Stanford, CA 94305", quote: "I can stand on both my hind legs!"});
     
-    var max_badges = [{ask: "don't put me in a bag", icon: "fa-suitcase"},{ask:"only feed me real meat products", icon:"fa-cutlery"}];
-    var max_bio = "Max loves people";
-    var max_comments = [{walker:"Howard",rating:"4halfstar.png", date:"Dec 2015", comment:"Trust me, Max will be your best friend."}];
-    pet_profile.insert({name: "Max", breed: 'Golden Retriever', rating: "4star.png", age: 3, bio: max_bio, temperament: 'Energetic', imgURL : "max.png",
-      comments:max_comments, badges: max_badges, class: "D.png", distance: "0.5 miles", location:"473 Via Ortega, Stanford, CA 94305", quote: "I just love people.", owner: "iMPpTvn4QXx5buLrk"});
+    // var max_badges = [{ask: "don't put me in a bag", icon: "fa-suitcase"},{ask:"only feed me real meat products", icon:"fa-cutlery"}];
+    // var max_bio = "Max loves people";
+    // var max_comments = [{walker:"Howard",rating:"4halfstar.png", date:"Dec 2015", comment:"Trust me, Max will be your best friend."}];
+    // pet_profile.insert({name: "Max", breed: 'Golden Retriever', rating: "4star.png", age: 3, bio: max_bio, temperament: 'Energetic', imgURL : "max.png",
+    //   comments:max_comments, badges: max_badges, class: "D.png", distance: "0.5 miles", location:"473 Via Ortega, Stanford, CA 94305", quote: "I just love people.", owner: "iMPpTvn4QXx5buLrk"});
 
-    var lily_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"don't leave me alone", icon:"fa-frown-o"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
-    var lily_comments = [{walker: "Penny", rating:"5star.png", date:"Aug 2015", comment:"Lily is such an amazing girl! I can't wait to see her again!"}];
-    pet_profile.insert({name: "Lily", breed: 'Labrador', rating: "5star.png", age: 4, bio: "Lily is the best dog in the world.", temperament: 'Crazy', imgURL : "lily.png",
-      comments: lily_comments, badges: lily_badges, class: "B.png", distance: "1.3 miles",location:"557 Mayfield Ave Stanford, CA 94305", quote: "I'll run laps around you!"});
+    // var lily_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"don't leave me alone", icon:"fa-frown-o"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
+    // var lily_comments = [{walker: "Penny", rating:"5star.png", date:"Aug 2015", comment:"Lily is such an amazing girl! I can't wait to see her again!"}];
+    // pet_profile.insert({name: "Lily", breed: 'Labrador', rating: "5star.png", age: 4, bio: "Lily is the best dog in the world.", temperament: 'Crazy', imgURL : "lily.png",
+    //   comments: lily_comments, badges: lily_badges, class: "B.png", distance: "1.3 miles",location:"557 Mayfield Ave Stanford, CA 94305", quote: "I'll run laps around you!"});
   
-    var billy_badges = [{ask: "Why am I here?", icon: "fa-link"},{ask:"I'm a goat!", icon:"fa-frown-o"},{ask: "Fine woof.", icon: "fa-suitcase"}];
-    var billy_comments = [{walker: "Alex", rating:"3star.png", date:"Sep 2015", comment:"Billy is a goat! Not a dog."}];
-    pet_profile.insert({name: "Billy", breed: 'Goat', rating: "3star.png", age: 6, bio: "Billy is a goat.", temperament: 'Goat', imgURL : "billy.png",
-      comments: billy_comments, badges: billy_badges, class: "D.png", distance: "1 miles",location:"500 Mayfield Ave Stanford, CA 94305", quote: "Why am I here? I'm a goat!"});
+    // var billy_badges = [{ask: "Why am I here?", icon: "fa-link"},{ask:"I'm a goat!", icon:"fa-frown-o"},{ask: "Fine woof.", icon: "fa-suitcase"}];
+    // var billy_comments = [{walker: "Alex", rating:"3star.png", date:"Sep 2015", comment:"Billy is a goat! Not a dog."}];
+    // pet_profile.insert({name: "Billy", breed: 'Goat', rating: "3star.png", age: 6, bio: "Billy is a goat.", temperament: 'Goat', imgURL : "billy.png",
+    //   comments: billy_comments, badges: billy_badges, class: "D.png", distance: "1 miles",location:"500 Mayfield Ave Stanford, CA 94305", quote: "Why am I here? I'm a goat!"});
 
-    schedules.insert({name: "Bella", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "yes"});
-    /* change owner to walker and such */
-    schedules.insert({name: "Bella", pickuplocation: "California Ava", time: "6:30 P.M.", owner: "Landay", confirmed: "yes"});
-    schedules.insert({name: "Max", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
-    schedules.insert({name: "Lily", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
-    schedules.insert({name: "Billy", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
+    // schedules.insert({name: "Bella", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "yes"});
+    // /* change owner to walker and such */
+    // schedules.insert({name: "Bella", pickuplocation: "California Ava", time: "6:30 P.M.", owner: "Landay", confirmed: "yes"});
+    // schedules.insert({name: "Max", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
+    // schedules.insert({name: "Lily", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
+    // schedules.insert({name: "Billy", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
 
 
     Meteor.publish("all pets", function(){
@@ -384,14 +384,9 @@ if (Meteor.isClient) {
 
   Template.chats.events({
     'click .conversation': function (event) {
-
-      var inputs = $(':input');
-      Session.set('user1', inputs.get(0).value);
-      Session.set('user2', inputs.get(1).value);
-      Session.set('dogID', inputs.get(2).value);
-      // console.log(Session.get('user1'));
-      // console.log(Session.get('user2'));
-      // console.log(Session.get('dogID'));
+      Session.set('user1', this.users[0]);
+      Session.set('user2', this.users[1]);
+      Session.set('dogID', this.dogID);
     }
   });
 
