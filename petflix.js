@@ -1,5 +1,5 @@
 Router.route('/', function () {
-  this.render('login');
+  this.render('index');
 });
 
 Router.route('/list', function () {
@@ -8,6 +8,9 @@ Router.route('/list', function () {
 
 Router.route('/scheduler', function () {
   this.render('scheduler');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
 });
 
 Router.route('/verifier', function () {
@@ -34,9 +37,23 @@ Router.route('/select', function () {
   this.render('select');
 });
 
+<<<<<<< HEAD
 Router.route('/list/filter', function() {
   this.render('filter');
 })
+=======
+Router.route('/login', function () {
+  this.render('login');
+});
+
+Router.route('/walker-dashboard', function () {
+  this.render('walker-dashboard');
+});
+
+Router.route('/walker-pastwalks', function () {
+  this.render('walker-pastwalks');
+});
+>>>>>>> sprint-field
 
 // given a url like "/post/5"
 Router.route('/:_id', function () {
@@ -44,6 +61,9 @@ Router.route('/:_id', function () {
   var id = params._id; // "5"
   pet_name = id;
   this.render('detail');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
 });
 
 Router.route('/:_id/schedule', function () {
@@ -51,35 +71,52 @@ Router.route('/:_id/schedule', function () {
   var id = params._id; // "5"
   pet_name = id;
   this.render('schedule');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
 });
 
 Router.route('/:_id/profile', function() {
+  
   var params = this.params;
   var id = params._id;
   pet_name = id;
   this.render('dog_profile_ownersv');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
+}, {
+  name: 'profile'
 });
 
-Router.route('/:_id/schedule/current', function () {
+Router.route('/:_id/schedule/today', function () {
   var params = this.params; // { _id: "bella" }
   var id = params._id; // "5"
   pet_name = id;
-  this.render('current');
+  this.render('today');
 });
 
-Router.route('/:_id/schedule/requests', function () {
+Router.route('/:_id/schedule/week', function () {
   var params = this.params; // { _id: "bella" }
   var id = params._id; // "5"
   pet_name = id;
-  this.render('requests');
+  this.render('week');
 });
 
-Router.route('/:_id/schedule/availability', function () {
+Router.route('/:_id/schedule/month', function () {
   var params = this.params; // { _id: "bella" }
   var id = params._id; // "5"
   pet_name = id;
-  this.render('availability');
+  this.render('month');
 });
+/*
+Tracker.autorun(function () {
+  var current = Router.current();
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
+});
+from: http://www.curtismlarson.com/blog/2015/11/11/iron-router-scroll-to-top/ */
 
 var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
@@ -105,6 +142,7 @@ if (Meteor.isServer) {
     schedules.remove({});
     owners.remove({});
     Images.remove({});
+    walkers.remove({});
   
     var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"only feed me real meat products", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
     var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
@@ -126,10 +164,15 @@ if (Meteor.isServer) {
   
     var billy_badges = [{ask: "Why am I here?", icon: "fa-link"},{ask:"I'm a goat!", icon:"fa-frown-o"},{ask: "Fine woof.", icon: "fa-suitcase"}];
     var billy_comments = [{walker: "Alex", rating:"3star.png", date:"Sep 2015", comment:"Billy is a goat! Not a dog."}];
-    pet_profile.insert({name: "Billy", breed: 'The Goat', rating: "3star.png", age: 6, bio: "Billy is a goat.", temperament: 'Goat', imgURL : "billy.png",
+    pet_profile.insert({name: "Billy", breed: 'Goat', rating: "3star.png", age: 6, bio: "Billy is a goat.", temperament: 'Goat', imgURL : "billy.png",
       comments: billy_comments, badges: billy_badges, class: "D.png", distance: "1 miles",location:"500 Mayfield Ave Stanford, CA 94305", quote: "Why am I here? I'm a goat!"});
 
-    schedules.insert({name: "Bella", pickuplocation: "Stanford", time: "5:30 P.M."});
+    schedules.insert({name: "Bella", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "yes"});
+    /* change owner to walker and such */
+    schedules.insert({name: "Bella", pickuplocation: "California Ava", time: "6:30 P.M.", owner: "Landay", confirmed: "yes"});
+    schedules.insert({name: "Max", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
+    schedules.insert({name: "Lily", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
+    schedules.insert({name: "Billy", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
 
     owners.insert({name: "Landay", address: "HCILYFE", phone: "6501234355"});
 
@@ -161,8 +204,8 @@ if (Meteor.isServer) {
       },
       'update': function() {
         return true;
-      }      
-    }); 
+      }
+    });
   });
 }
 
@@ -179,12 +222,16 @@ if (Meteor.isClient) {
   Template.registerHelper("profileTab", () => {
     if (Router.current().route.getName().endsWith("profile")) {
       return "btn-default dogtab activetab clean-link";
+    } else if (Router.current().route.getName().endsWith("walker-dashboard")) {
+      return "btn-default dogtab activetab clean-link";
     }
     return "btn-default dogtab clean-link";
   });
 
   Template.registerHelper("scheduleTab", () => {
     if (Router.current().route.getName().indexOf("schedule") > -1) {
+      return "btn-default dogtab activetab clean-link";
+    } else if (Router.current().route.getName().endsWith("walker-pastwalks")) {
       return "btn-default dogtab activetab clean-link";
     }
     return "btn-default dogtab clean-link";
@@ -231,7 +278,7 @@ if (Meteor.isClient) {
     }
   })
 
-  Template.current.helpers({
+  Template.today.helpers({
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
@@ -242,7 +289,7 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.requests.helpers({
+  Template.week.helpers({
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
@@ -253,7 +300,7 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.availability.helpers({
+  Template.month.helpers({
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
@@ -301,9 +348,41 @@ if (Meteor.isClient) {
       if(schedule_id!=null){
         schedules.remove({_id: schedule_id});
       }
-      schedule_id = schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time});
+      schedule_id = schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time, confirmed: "no"});
 
-    }
+    },
+    'keypress #message-textarea': function (event) {
+      if (event.which === 13) {
+        var $messagesContainer = $("#messages-box");
+        var $message = $("#message-textarea");
+        if (!$message.val()) return;
+
+        if ($messagesContainer.hasClass("has-messages")) {
+          $messagesContainer.append("<br>You: " + $message.val());
+          $message.val('');
+        }
+        else {
+          $messagesContainer.html("You: " + $message.val());
+          $messagesContainer.addClass("has-messages");
+          $message.val('');
+        }
+      }
+    },
+    'click #message-send': function (event) {
+        var $messagesContainer = $("#messages-box");
+        var $message = $("#message-textarea");
+        if (!$message.val()) return;
+
+        if ($messagesContainer.hasClass("has-messages")) {
+          $messagesContainer.append("<br>You: " + $message.val());
+          $message.val('');
+        }
+        else {
+          $messagesContainer.html("You: " + $message.val());
+          $messagesContainer.addClass("has-messages");
+          $message.val('');
+        }
+    }    
   });
 
   Template.verifier.helpers({
@@ -367,7 +446,7 @@ if (Meteor.isClient) {
           }
 
         });
-      });      
+      });
     },
     "click #finishbutton": function (event) {
       event.preventDefault();
@@ -406,7 +485,7 @@ if (Meteor.isClient) {
           imgURL: "cfs/files/images/" + $("#pID").val(), // fuck yeah
           class: "C.png",
         });
-        Router.go('/list');
+        Router.go('profile', {_id: name});
       }
     }
   });
