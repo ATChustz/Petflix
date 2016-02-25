@@ -454,7 +454,7 @@
   			<div class="col-xs-4 back-arrow">
   				<a href="/{{name}}"><img id = "back" src = "Back.png"/>Back</a>
 			</div>
-				<div class="col-xs-5 title"><p>{{name}}</p></div>
+				<div class="col-xs-5 title"><p id="name">{{name}}</p></div>
 			</div>
 			<br>
 			<div id="messages-box">
@@ -919,6 +919,7 @@
 	</div>
 </template>
 
+
 <template name="chats">
 	<div class="container">
 		<div class="row border-bottom-thin">
@@ -930,18 +931,21 @@
 			</div>
 		</div>
 		{{#each chats}}
-			<a href="#">	
+			<a href="/scheduler">	
 				<div class="row border-bottom-thin message-list-padding conversation">
 					<div class="col-xs-3">
 						<img class="profile-dog img-circle" src="../{{imgURL}}"/>
 					</div>
 					<div class="col-xs-7 message-info-padding">
-						<span class="pull-left">asdf</span>
+						<span class="pull-left">{{dogID}}</span>
 					</div>
 					<div class="col-xs-2 message-info-padding">
 						<span class="pull-right">{{date}}</span>
 					</div>
-					<input type="hidden" id="pID" val="other">
+					{{#each users}}
+						<input type="hidden" value={{this}}>
+					{{/each}}
+					<input type="hidden" value={{dogID}}>
 				</div>
 			</a>
 		{{/each}}
