@@ -436,8 +436,7 @@ if (Meteor.isClient) {
           chats.update(chat._id, {
             $set: {messages: updatedMessages}
           });
-
-          $messagesContainer.append("<br>" + $message.val());
+          $messagesContainer.append('<br><div class="row"><div class="col-xs-offset-5 col-xs-6 grey-curved-border">' + newMessage.message + '</div></div>');
           $message.val('');
         }
         else {
@@ -454,7 +453,7 @@ if (Meteor.isClient) {
             ]
           };
           chats.insert(newChat);
-          $messagesContainer.html($message.val());
+          $messagesContainer.html('<br><div class="row"><div class="col-xs-offset-5 col-xs-6 grey-curved-border">' + $message.val() + '</div></div>');
           $messagesContainer.addClass("has-messages");
           $message.val('');
         }
