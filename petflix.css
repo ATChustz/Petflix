@@ -75,6 +75,13 @@ input[type="radio"] {
 	font-family: 'Montserrat', sans-serif;
 	margin-top: 10px;
 }
+.schedule-button {
+	border: 1px solid black;
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 10px;
+	color: black;
+}
+
 
 .verifier-remind{
 	color: grey;

@@ -45,8 +45,8 @@ Router.route('/login', function () {
   this.render('login');
 });
 
-Router.route('/walker-dashboard', function () {
-  this.render('walker-dashboard');
+Router.route('/walkerdashboard', function () {
+  this.render('walkerdashboard');
 });
 
 Router.route('/walker-pastwalks', function () {
@@ -94,6 +94,9 @@ Router.route('/:_id/schedule/today', function () {
   var id = params._id; // "5"
   pet_name = id;
   this.render('today');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
 });
 
 Router.route('/:_id/schedule/week', function () {
@@ -138,10 +141,8 @@ Images = new FS.Collection("images", {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    pet_profile.remove({});
-    schedules.remove({});
-    Images.remove({});
-    owners.remove({});
+   /*pet_profile.remove({});
+    
   
     var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"only feed me real meat products", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
     var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
@@ -167,11 +168,11 @@ if (Meteor.isServer) {
       comments: billy_comments, badges: billy_badges, class: "D.png", distance: "1 miles",location:"500 Mayfield Ave Stanford, CA 94305", quote: "Why am I here? I'm a goat!"});
 
     schedules.insert({name: "Bella", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "yes"});
-    /* change owner to walker and such */
+  
     schedules.insert({name: "Bella", pickuplocation: "California Ava", time: "6:30 P.M.", owner: "Landay", confirmed: "yes"});
     schedules.insert({name: "Max", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
     schedules.insert({name: "Lily", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
-    schedules.insert({name: "Billy", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
+    schedules.insert({name: "Billy", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});*/
 
 
     Meteor.publish("all pets", function(){
@@ -187,7 +188,9 @@ if (Meteor.isServer) {
       return walkers.find();
     });
 
-    Meteor.publish("images", function(){ return Images.find(); });
+    Meteor.publish("images", function(){ 
+      return Images.find(); 
+    });
 
     Images.allow({
       'insert': function () {
@@ -220,7 +223,7 @@ if (Meteor.isClient) {
   Template.registerHelper("profileTab", () => {
     if (Router.current().route.getName().endsWith("profile")) {
       return "btn-default dogtab activetab clean-link";
-    } else if (Router.current().route.getName().endsWith("walker-dashboard")) {
+    } else if (Router.current().route.getName().endsWith("walkerdashboard")) {
       return "btn-default dogtab activetab clean-link";
     }
     return "btn-default dogtab clean-link";
@@ -278,8 +281,18 @@ if (Meteor.isClient) {
   })
 
   Template.today.helpers({
+    confirmed: function() {
+      var schedule =  schedules.find({
+                owner: Meteor.userId(),
+                confirmed: true
+              });
+      return schedule;
+    },
     schedule: function() {
-      var schedule =  schedules.findOne({name: pet_name});
+      var schedule =  schedules.find({
+                owner: Meteor.userId(),
+                confirmed: false
+              });
       return schedule;
     },
     pet: function() {
@@ -288,9 +301,21 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.today.events({
+    'click #confirm': function (event) {
+      schedules.update(this._id, {
+        $set: {confirmed: true}
+      });
+    },
+
+    'click #reject': function (event) {
+      schedules.remove(this._id)
+    }
+  });
+
   Template.week.helpers({
     schedule: function() {
-      var schedule =  schedules.findOne({name: pet_name});
+      var schedule =  schedules.findOne({owner: Meteor.userId()});
       return schedule;
     },
     pet: function() {
@@ -301,7 +326,7 @@ if (Meteor.isClient) {
 
   Template.month.helpers({
     schedule: function() {
-      var schedule =  schedules.findOne({name: pet_name});
+      var schedule =  schedules.findOne({owner: Meteor.userId()});
       return schedule;
     },
     pet: function() {
@@ -339,15 +364,19 @@ if (Meteor.isClient) {
 
     'click #confirm-button': function (event) {
 
-      var pickup = $('input:radio[name=pickup]:checked').val();
-
-      if (pickup == ""){
-        pickup = $('input:text[name=user-enter]').val();
-      }
-      if(schedule_id!=null){
-        schedules.remove({_id: schedule_id});
-      }
-      schedule_id = schedules.insert({name: pet_name, pickuplocation: pickup, time: schedule_time, confirmed: "no"});
+      event.preventDefault();
+      var time = $("#time").val();
+      var date = $("#date").val();
+      schedules.insert({
+        time: time,
+        date: date,
+        owner: Meteor.userId(),
+        dogownername: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner}).name,
+        walkername: walkers.findOne({owner: Meteor.userId()}).name,
+        dogname: pet_name,
+        confirmed: false,
+      });
+      Router.go('/success');
 
     },
     'keypress #message-textarea': function (event) {
@@ -516,7 +545,7 @@ if (Meteor.isClient) {
 
   Template.schedule.helpers({
     pet: function() {
-      var pet =  pet_profile.findOne({name: pet_name});
+      var pet =  pet_profile.findOne({owner: Meteor.userId()});
       return pet;
     }
   });
@@ -524,6 +553,23 @@ if (Meteor.isClient) {
   Template.select.helpers({
     pets: function () {
       return pet_profile.find({});
+    }
+  });
+
+  Template.walkerdashboard.helpers({
+    confirmed: function() {
+      var schedule =  schedules.find({
+                owner: Meteor.userId(),
+                confirmed: true
+              });
+      return schedule;
+    },
+    schedule: function() {
+      var schedule =  schedules.find({
+                owner: Meteor.userId(),
+                confirmed: false
+              });
+      return schedule;
     }
   });
 
