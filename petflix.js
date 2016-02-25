@@ -37,11 +37,10 @@ Router.route('/select', function () {
   this.render('select');
 });
 
-<<<<<<< HEAD
 Router.route('/list/filter', function() {
   this.render('filter');
 })
-=======
+
 Router.route('/login', function () {
   this.render('login');
 });
@@ -53,7 +52,6 @@ Router.route('/walker-dashboard', function () {
 Router.route('/walker-pastwalks', function () {
   this.render('walker-pastwalks');
 });
->>>>>>> sprint-field
 
 // given a url like "/post/5"
 Router.route('/:_id', function () {

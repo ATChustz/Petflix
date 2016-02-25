@@ -646,7 +646,6 @@ p {
 	display: inline-block;
 }
 
-<<<<<<< HEAD
 .filter-img-padding-top {
 	padding-top: 19px; 
 }
@@ -657,7 +656,8 @@ p {
 
 .white-font {
 	color: white !important;
-=======
+}
+
 .mail-logout-bar {
 	padding: 7px 5px 5px 5px;
 }
@@ -780,5 +780,4 @@ p {
 	background-color: rgb(229,229,229);
 	border-color: rgb(229,229,229);
 	color: rgb(229,229,229);
->>>>>>> sprint-field
 }
