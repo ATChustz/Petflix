@@ -774,6 +774,7 @@ p {
 
 #messages-box {
 	height: 500px;
+	overflow:auto;
 }
 
 
@@ -787,4 +788,33 @@ p {
 	background-color: rgb(229,229,229);
 	border-color: rgb(229,229,229);
 	color: rgb(229,229,229);
+}
+
+.border-bottom-thin {
+	border-bottom: solid 1px #808080;
+}
+
+.message-list-padding {
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.message-info-padding {
+	padding-top: 20px !important;
+}
+
+.grey-rectangle-curved {
+    border-radius: 5px;
+    border: 3px solid #E2DFDF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #E2DFDF;
+}
+
+.grey-curved-border {
+    border-radius: 5px;
+    border: 3px solid #E2DFDF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
 }

@@ -275,7 +275,7 @@
 <template name="profile">
 	{{#with pet}}
 	<div class="row mail-logout-bar">
-		<a href=""><img class="mail-symbol" src="../mail-symbol.png"></a>
+		<a href="/chats"><img class="mail-symbol" src="../mail-symbol.png"></a>
 		<a href="/"><p class="logout">Logout</p></a>
 	</div>
 	<div class="row">
@@ -472,9 +472,9 @@
 		{{#with pet}}
 		  <div class="row">
   			<div class="col-xs-4 back-arrow">
-  				<a href="/{{name}}"><img id = "back" src = "Back.png"/>Back</a>
-				</div>
-				<div class="col-xs-5 title"><p>{{name}}</p></div>
+  				<a href="/"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+				<div class="col-xs-5 title"><p id="name">{{name}}</p></div>
 			</div>
 			<br>
 			<div id="messages-box">
@@ -897,7 +897,7 @@
 	<div class="container">
 		<div class="row mail-logout-bar">
 			<a href="/list"><img class="doghome" src="../doghouse-home.png"></a>
-			<a href="#"><img class="mail-symbol" src="../mail-symbol.png"></a>
+			<a href="/chats"><img class="mail-symbol" src="../mail-symbol.png"></a>
 			<a href="/"><p class="logout">Logout</p></a>
 		</div>
 		<div class="row">
@@ -918,7 +918,7 @@
 		{{#each confirmed}}
 			<div class="row">
 				<div class="col-xs-10">
-						<h5>Walk confirmed at {{time}} on {{date}} with {{dowownername}}.</h5>
+						<h5>Walk confirmed at {{time}} on {{date}} with {{dogownername}}.</h5>
 				</div>
 			</div>
 		{{/each}}
@@ -964,5 +964,38 @@
 			<img class="profile-dog" src="dog-stock-photo.png"/>
 		</div>
 		
+	</div>
+</template>
+
+
+<template name="chats">
+	<div class="container">
+		<div class="row border-bottom-thin">
+  			<div class="col-xs-4 back-arrow">
+  				<a href="/walkerdashboard"><img id = "back" src = "Back.png"/>Back</a>
+			</div>
+			<div class="col-xs-5 title">
+				<p>Messages</p>
+			</div>
+		</div>
+		{{#each chats}}
+			<a href="/scheduler">	
+				<div class="row border-bottom-thin message-list-padding conversation">
+					<div class="col-xs-3">
+						<img class="profile-dog img-circle" src="../{{imgURL}}"/>
+					</div>
+					<div class="col-xs-7 message-info-padding">
+						<span class="pull-left">{{dogID}}</span>
+					</div>
+					<div class="col-xs-2 message-info-padding">
+						<span class="pull-right">{{date}}</span>
+					</div>
+					{{#each users}}
+						<input type="hidden" value={{this}}>
+					{{/each}}
+					<input type="hidden" value={{dogID}}>
+				</div>
+			</a>
+		{{/each}}
 	</div>
 </template>
