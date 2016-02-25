@@ -376,8 +376,14 @@ if (Meteor.isClient) {
       $messagesContainer.html("");
       $messagesContainer.addClass("has-messages");
       for (var i = 0; i < chat.messages.length; i++) {
-        var messageClass = " ";
-        $messagesContainer.append("<br>" + chat.messages[i].message);
+        var messageClass = "";
+        if (chat.messages[i].id == Meteor.userId()) {
+          messageClass = "col-xs-offset-5 col-xs-6 grey-curved-border"
+        }
+        else {
+          messageClass = "col-xs-offset-1 col-xs-6 grey-rectangle-curved"
+        }
+        $messagesContainer.append('<br><div class="row"><div class="' + messageClass + '">' + chat.messages[i].message + '</div></div>');
       }
     }
   }
@@ -459,12 +465,39 @@ if (Meteor.isClient) {
         var $message = $("#message-textarea");
         if (!$message.val()) return;
 
+        var pet =  pet_profile.findOne({name: pet_name});
+
+
         if ($messagesContainer.hasClass("has-messages")) {
-          $messagesContainer.append("<br>You: " + $message.val());
+          var chat = chats.findOne({users: { $all: [Session.get('user2'), Session.get('user1')]}});
+          var updatedMessages = chat.messages;
+          var newMessage = {
+            id: Meteor.userId(),
+            message: $message.val()
+          };
+          updatedMessages.push(newMessage);
+          chats.update(chat._id, {
+            $set: {messages: updatedMessages}
+          });
+
+          $messagesContainer.append("<br>" + $message.val());
           $message.val('');
         }
         else {
-          $messagesContainer.html("You: " + $message.val());
+          var newChat = {
+            imgURL: pet.imgURL,
+            date: "2/26/16",
+            users: [Meteor.userId(), pet.owner],
+            dogID: pet.name,
+            messages: [
+              {
+                id: Meteor.userId(),
+                message: $message.val()
+              }
+            ]
+          };
+          chats.insert(newChat);
+          $messagesContainer.html($message.val());
           $messagesContainer.addClass("has-messages");
           $message.val('');
         }
