@@ -1,6 +1,6 @@
 /* CSS declarations go here */
 body {
-	font-family: helvetica;
+	font-family: 'Montserrat';
 }
 
 .container {
@@ -34,8 +34,9 @@ width: 375px;
 }
 
 #button-container {
-  margin-top: 130%;
+  margin-top: 110%;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 button {
@@ -45,7 +46,11 @@ button {
   bottom:5px;
 }
 
-hr{
+#temperament {
+ width: 176px;
+}
+
+hr {
 	border: 1px solid rgb(230,230,230);
 }
 input[type="radio"] {
@@ -65,17 +70,23 @@ input[type="radio"] {
 	padding-top: 10px;
 	margin-bottom: 10px;
 }
-#login, #signup{
+.login-button {
 	border: 1px solid white;
 	font-family: 'Montserrat', sans-serif;
+	margin-top: 10px;
 }
+.schedule-button {
+	border: 1px solid black;
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 10px;
+	color: black;
+}
+
 
 .verifier-remind{
 	color: grey;
 	margin-top: 30px;
-}
-#signup {
-	margin-top: 10px;
+	margin-bottom: 0;
 }
 
 #home-location {
@@ -104,12 +115,6 @@ input[type="radio"] {
 
 }
 
-#back{
-	display: inline-block;
-	padding-right: 3px;
-	margin-right: 2px;
-}
-
 
 a {
     color: #FF9600;
@@ -122,6 +127,7 @@ a:hover{
 
 .verifier-img{
 	width: 200px;
+	border-radius: 100%;
 }
 
 #button-text {
@@ -141,46 +147,33 @@ a:hover{
 
 }
 
-#stars{
-	height: 15px;
-	padding-bottom: 3px;
-
-}
-
-#class {
-	height: 20px;
-	width: 20px;
-}
 
 .comments{
 	padding-top: 20px;
-	padding-bottom: 20px;
 	padding-left: 20px;
 	padding-right: 20px;
-	margin: 0px;
+	margin-bottom: 20px;
 }
 
 #bottom-button{
 	margin-top: 30px;
 }
 
-.pet-info{
-	background-color: rgb(242,242,242);
-	padding-left: 0px;
-	padding-right: 0px;
-	margin: 0px;
-	padding-bottom: 10px;
-	padding-top: 5px;
-}
 
 .detail-dog{
 	width: 100%;
 }
 
+.profile-dog {
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+
 .walker-name{
 	font-weight: bold;
 }
-#myModal1, #myModal2, #myModal4{
+#myModal1, #myModal2, #myModal4 {
 top:30%;
 outline: none;
 }
@@ -196,48 +189,61 @@ outline: none;
 	padding: 0;
 }
 
-.class-why{
-	font-size: 0.7em;
-}
-
-
 .badges{
-	margin: 0px;
+	margin-top: 5px;
+	margin-bottom: 8px;
 }
 .badges i{
 	padding-right: 10px;
 }
 
-.dont{
+.detail-title{
 	padding-bottom: 0px;
 	font-weight: bold;
+	color: #FF9600;
 }
 
 .about-pet, .dont {
 	font-family: 'Montserrat', sans-serif;
 }
 
-.badges-container{
-	padding-top: 20px;
-}
-
-.back-arrow{
+.back-arrow {
 	padding-top: 5px;
+	padding-left: 5px;
 	color: #FF9600;
 }
 
-#last-attribute {
-	padding-bottom: 20px;
+#back{
+	display: inline-block;
+	padding-right: 3px;
+	margin-right: 2px;
 }
 
-#bone-button {
+.back-narrow {
+	width: 80px;
+
+}
+
+#bone-button, #chill-button {
 	margin-left: 83px;
 }
 
-.title{
+.title, .signup-title {
 	padding-top: 5px;
 	font-weight: bold;
 }
+
+.title {
+	color: #FF9600;
+	padding-left: 48px;
+}
+
+.signup-title {
+	color: black;
+	opacity: 0.5;
+
+}
+
 .general-button{
 		color: #FF9600;
 	background-color: transparent;
@@ -319,4 +325,496 @@ h4, h5 {
 	font-weight: bold;
 }
 
+.dogtab {
+	display: block;
+	width: 100%;
+	color: #FF9600;
+	height: 40px;
+	border: 2px solid #FF9600;
+}
 
+.nopadding {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+#tell {
+	font-family: 'Montserrat', sans-serif;
+	color: #FF9600;
+}
+
+.paw {
+	display: block;
+  margin: 10% auto;
+}
+
+.activetab {
+	background-color: #FF9600 !important;
+	color: white;
+	/*border: none;*/
+}
+
+#success-text {
+	text-align: center;
+	margin: 30 auto;
+}
+
+#success-heading {
+	font-family: 'Montserrat', sans-serif;
+}
+
+#success-body {
+	font-family: 'Just Another Hand', serif;
+}
+
+#return {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.owner-preview {
+	width: 100px;
+	display: inline;
+	font-family: 'Montserrat', sans-serif;
+}
+
+#owner-prompt {
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.owner-preview h3 {
+	margin-left: 50px;
+}
+
+#finish-button {
+	width: 125px;
+}
+
+#add-owner-title {
+	margin-left: 21px;
+	padding-left: 0;
+}
+
+#add-dog-title {
+	margin-left: 15px;
+}
+
+#add-walker-title {
+	padding-left: 0;
+	width: 190px;
+	margin-left: 23px;
+}
+
+.input-field {
+	display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+	border-radius: 0;
+	background: transparent;
+	color: #595F6E;
+	-webkit-appearance: none;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #F2F2F2 4%);
+	border: none;
+}
+
+.input-field-long {
+	display: block;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+	border-radius: 0;
+	background: transparent;
+	color: #595F6E;
+	-webkit-appearance: none;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #F2F2F2 4%);
+	height: 120px;
+	margin-top: 10px;
+}
+
+.input-field-dropdown {
+	display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+	border-radius: 0;
+	background: transparent;
+	color: #595F6E;
+	-webkit-appearance: none;
+	/*border: none;*/
+	margin-bottom: 10px;
+}
+
+.input-field:focus {
+	outline:none;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #FF9600 4%);
+	transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+
+.input-field-long:focus, .input-field-dropdown:focus {
+	outline-color: #FF9600;
+}
+
+select {
+	font-family: 'Montserrat', sans-serif;
+	opacity: .6;
+	color: #595F6E;
+}
+
+#dropdown-chevron {
+	position: relative;
+	opacity: 0.6;
+	left: -28px;
+	z-index: -1;
+}
+
+.input-field::-webkit-input-placeholder, .input-field-long::-webkit-input-placeholder, #searchbar::-webkit-input-placeholder {
+  font-family: 'Montserrat', sans-serif;
+  padding: 0 auto;
+}
+
+.input-field:-ms-input-placeholder, .input-field-long:-ms-input-placeholder, #searchbar:-ms-input-placeholder {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.input-field:-moz-placeholder, .input-field-long:-moz-placeholder, #searchbar:-moz-placeholder {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.input-field::-moz-placeholder, .input-field-long::-moz-placeholder, #searchbar::-moz-placeholder {
+  font-family: 'Montserrat', sans-serif;
+}
+
+p {
+	font-family: 'Montserrat', sans-serif;
+}
+#description {
+	width: 80%;
+	margin-left: 0px;
+	float: left;
+}
+
+#tagline-field {
+	width: 80%;
+	margin-left: 0px;
+	float: left;
+}
+
+#tagline-info {
+	display: inline;
+	float: left;
+	margin: 0 0 25px 10px;
+}
+
+#tagline-example {
+	width: 100%;
+}
+
+#search-div {
+	background-color: #ff9600;
+}
+
+#searchbar {
+	margin: 23px auto 10px auto;
+	width: 66%;
+	float: left;
+	z-index: 0;
+}
+
+#searchbar:focus {
+	outline-color: #FF9600;
+}
+
+#search-icon {
+	float: left;
+  margin: 10px -7px 10px 10px;
+  z-index: 1;
+  opacity: .99;
+}
+
+#select-blurb {
+	margin-top: 10px;
+	text-align: center;
+}
+
+#info-bar {
+	height: 30px;
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #FF9600;
+	margin-bottom: 10px;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#distance-span {
+	display: inline;
+	padding-top: 4px;
+	float: left;
+}
+
+#distance-span > p {
+	display: inline;
+}
+
+#class-span {
+	float: right;
+	width: 120px;
+	padding-top: 4px;
+}
+
+#class-span > p {
+	float: right;
+	color: white;
+}
+
+#profile-distance{
+	height: 22px;
+	margin-top: 7px;
+	margin-bottom: 4px;
+	color: white;
+}
+
+#stars{
+	height: 22px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+#class {
+	height: 20px;
+	width: 20px;
+	float: right;
+	margin-left: 7px;
+}
+
+.class-why{
+	font-size: 0.7em;
+	color: white;
+	float: right;
+	margin-left: 15px;
+	margin-top: 1px;
+}
+
+.pet-info{
+	padding-left: 15px;
+	padding-right: 0px;
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+.vertical-line {
+	border-left: 1px solid rgb(229,229,229);
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+
+.last-attribute {
+	margin-bottom: 0 !important;
+}
+
+#chill-button {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.2-toggle {
+	border-radius: 0px !important;
+}
+
+.clean-link, .clean-link:visited {
+	text-decoration: none;
+}
+
+.toggle-text {
+	padding-top: 10px;
+}
+
+.profile-pad {
+	margin-right: 26px;
+}
+
+#edit-button {
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+#doginput-dropdown {
+	display: inline-block;
+}
+
+.filter-img-padding-top {
+	padding-top: 19px; 
+}
+
+.orange-background {
+	background-color: #FF9600 !important;
+}
+
+.white-font {
+	color: white !important;
+}
+
+.mail-logout-bar {
+	padding: 7px 5px 5px 5px;
+}
+
+.mail-symbol {
+	display: inline;
+	padding-left: 5px;
+}
+
+.logout {
+	display: inline;
+	float: right;
+	padding-right: 5px;
+}
+
+#profile-button {
+	margin-left: 15px;
+	margin-top: 23px;
+}
+
+#filter-popout {
+	position: fixed;
+}
+
+#fixed {
+	position: fixed;
+  top: 550px;
+  left: 10px;
+  width: 300px;
+  z-index: 5;
+}
+
+.scheduletab > p {
+	font-weight: 400;
+}
+
+.boldtab > p {
+	font-weight: 700;
+}
+
+.scheduletab-row {
+	height: 35px;
+	padding-top: 7px;
+	border-bottom: 1px solid #E4E1E1;
+	border-top: 1px solid #E4E1E1;
+}
+
+.left-of-center {
+	padding-right: 0;
+	padding-left: 80px;
+}
+
+.right-of-center {
+	padding-right: 80px;
+	padding-left: 0;
+}
+
+#login-title {
+	text-align: center;
+	margin-left: 13px;
+}
+
+#login-ornament {
+	margin-top: 70px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.bordered-header {
+	border-bottom: 1px solid #E4E1E1;
+}
+
+#login-finishbutton {
+	width: 120px;
+}
+
+#temp-select-link {
+	text-align: center;
+	margin-top: 20px;
+	color: red;
+	border: 1px solid red;
+	border-radius: 5px;
+}
+
+#doghome {
+	padding-top: 3px;
+}
+
+#about-row {
+	padding-bottom: 0;
+}
+.small-profile-dog {
+	width: 50%;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.orange-curved-border {
+    border-radius: 5px;
+    border: 2px solid #FF9600;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    width: 75%;
+}
+
+#messages-box {
+	height: 500px;
+	overflow:auto;
+}
+
+
+#about-title {
+	margin-bottom: 15px;
+}
+
+#attribute-border {
+	margin-top: 0;
+	margin-bottom: 0;
+	background-color: rgb(229,229,229);
+	border-color: rgb(229,229,229);
+	color: rgb(229,229,229);
+}
+
+.border-bottom-thin {
+	border-bottom: solid 1px #808080;
+}
+
+.message-list-padding {
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.message-info-padding {
+	padding-top: 20px !important;
+}
+
+.grey-rectangle-curved {
+    border-radius: 5px;
+    border: 3px solid #E2DFDF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #E2DFDF;
+}
+
+.grey-curved-border {
+    border-radius: 5px;
+    border: 3px solid #E2DFDF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
