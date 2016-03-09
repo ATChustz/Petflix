@@ -53,11 +53,19 @@ Router.route('/walker-pastwalks', function () {
   this.render('walker-pastwalks');
 });
 
-Router.route('/chats', function() {
-  this.render('chats');
+Router.route('/chatsowner', function() {
+  this.render('chatsowner');
 });
 
-Router.route('/chats/:id', function() {
+Router.route('/chatswalker', function() {
+  this.render('chatswalker');
+});
+
+Router.route('/chatsowner/:id', function() {
+  var params = this.params;
+});
+
+Router.route('/chatswalker/:id', function() {
   var params = this.params;
 });
 
@@ -97,6 +105,32 @@ Router.route('/:_id/profile', function() {
   name: 'profile'
 });
 
+Router.route('/:_id/message', function() {
+  
+  var params = this.params;
+  var id = params._id;
+  schedule_id = id;
+  this.render('message');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
+}, {
+  name: 'message'
+});
+
+Router.route('/:_id/messenger', function() {
+  
+  var params = this.params;
+  var id = params._id;
+  schedule_id = id;
+  this.render('messenger');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
+}, {
+  name: 'messenger'
+});
+
 Router.route('/:_id/schedule/today', function () {
   var params = this.params; // { _id: "bella" }
   var id = params._id; // "5"
@@ -120,15 +154,9 @@ Router.route('/:_id/schedule/month', function () {
   pet_name = id;
   this.render('month');
 });
-/*
-Tracker.autorun(function () {
-  var current = Router.current();
-  Tracker.afterFlush(function () {
-    $(window).scrollTop(0);
-  });
-});
-from: http://www.curtismlarson.com/blog/2015/11/11/iron-router-scroll-to-top/ */
-var chats = new Mongo.Collection("chats");
+
+
+var messages = new Mongo.Collection("messages");
 var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
 var owners = new Mongo.Collection("owners");
@@ -149,8 +177,6 @@ Images = new FS.Collection("images", {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-
-    chats.remove({});
 
    /*pet_profile.remove({});
     
@@ -199,11 +225,11 @@ if (Meteor.isServer) {
     Meteor.publish("walkers", function(){
       return walkers.find();
     });
-    Meteor.publish("chats", function(){ 
-      return images.find(); 
+    Meteor.publish("messages", function(){ 
+      return messages.find(); 
     });
     Meteor.publish("images", function(){ 
-      return chats.find(); 
+      return images.find(); 
     });
 
 
@@ -233,8 +259,8 @@ if (Meteor.isClient) {
   Meteor.subscribe("schedules");
   Meteor.subscribe("owners");
   Meteor.subscribe("walkers");
+  Meteor.subscribe("messages");
   Meteor.subscribe("images");
-  Meteor.subscribe("chats");
 
   Template.registerHelper('equals', function (a, b) {
     return a === b;
@@ -374,46 +400,83 @@ if (Meteor.isClient) {
       var pet =  pet_profile.findOne({name: pet_name});
       // var users = [Meteor.userId(), pet.owner];
       return pet;
-    }
+    },
+
+    
   });
 
   Template.scheduler.rendered = function() {
 
     var pet =  pet_profile.findOne({name: Session.get('dogID')});
-    var chat = chats.findOne({users: { $all: [Session.get('user2'), Session.get('user1')]}});
-    if (chat == null) {
-        //
-    }
-    else {
-      $('#name').html(pet.name);
-      var $messagesContainer = $("#messages-box");
-      $messagesContainer.html("");
-      $messagesContainer.addClass("has-messages");
-      for (var i = 0; i < chat.messages.length; i++) {
-        var messageClass = "";
-        if (chat.messages[i].id == Meteor.userId()) {
-          messageClass = "col-xs-offset-5 col-xs-6 grey-curved-border"
-        }
-        else {
-          messageClass = "col-xs-offset-1 col-xs-6 grey-rectangle-curved"
-        }
-        $messagesContainer.append('<br><div class="row"><div class="' + messageClass + '">' + chat.messages[i].message + '</div></div>');
-      }
-    }
   }
 
-  Template.chats.events({
-    'click .conversation': function (event) {
-      Session.set('user1', this.users[0]);
-      Session.set('user2', this.users[1]);
-      Session.set('dogID', this.dogID);
-    }
+  Template.scheduler.events({
+    'click #button-text': function (event) {
+      event.preventDefault();
+      var id = owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id;
+      Router.go('messenger', {_id: id});
+
+    },
+
+    'click #backbutton': function (event) {
+      event.preventDefault();
+      Router.go('/' + pet_name);
+
+    },
   });
 
-  Template.scheduler.events({
-    'click .dropdown-menu': function (event) {
-      $('#chosen').text( $(event.target).text());
-      schedule_time = $(event.target).text();
+  Template.messenger.helpers({
+    chats: function() {
+      var chats = messages.find({
+        walkername: walkers.findOne({owner: Meteor.userId()}).name,
+        dogownerid: owners.findOne({_id: schedule_id})._id,
+
+      }, { sort: { time: 1}});
+      return chats;
+    },
+  });
+
+  Template.chatswalker.helpers({
+    message: function() {
+      var temp = walkers.findOne({owner: Meteor.userId()}).chats;
+      return temp;
+    },
+    
+
+    pet: function() {
+      var pet =  pet_profile.findOne({name: pet_name});
+      return pet;
+    }
+
+  });
+
+  Template.chatswalker.events({
+    'click #message-send': function (event) {
+      event.preventDefault();
+
+      walkers.update({
+        _id: walkers.findOne({owner: Meteor.userId()})._id
+      }, {
+        $push: {chats: {chat: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id}
+      }});
+
+      owners.update({
+        _id: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id
+      }, {
+        $push: {chats: {chat: walkers.findOne({owner: Meteor.userId()})._id}
+      }});
+
+      var message = $("#message-textarea").val();
+      $("#message-textarea").val('');
+      messages.insert({
+        message: message,
+        time: Date.now(),
+        dogownername: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner}).name,
+        dogownerid: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id,
+        walkername: walkers.findOne({owner: Meteor.userId()}).name,
+        dogname: pet_name,
+        walker: true,
+      });
     },
 
     'click #confirm-button': function (event) {
@@ -421,6 +484,7 @@ if (Meteor.isClient) {
       event.preventDefault();
       var time = $("#time").val();
       var date = $("#date").val();
+
       schedules.insert({
         time: time,
         date: date,
@@ -431,96 +495,85 @@ if (Meteor.isClient) {
         dogname: pet_name,
         confirmed: false,
       });
-      Router.go('/success');
+      Router.go('/walkerdashboard');
 
-    },
-    'keypress #message-textarea': function (event) {
-      if (event.which === 13) {
-        event.preventDefault();
-        var $messagesContainer = $("#messages-box");
-        var $message = $("#message-textarea");
-        if (!$message.val()) return;
+    }
 
-        var pet =  pet_profile.findOne({name: pet_name});
-
-
-        if ($messagesContainer.hasClass("has-messages")) {
-          var chat = chats.findOne({users: { $all: [Session.get('user2'), Session.get('user1')]}});
-          var updatedMessages = chat.messages;
-          var newMessage = {
-            id: Meteor.userId(),
-            message: $message.val()
-          };
-          updatedMessages.push(newMessage);
-          chats.update(chat._id, {
-            $set: {messages: updatedMessages}
-          });
-          $messagesContainer.append('<br><div class="row"><div class="col-xs-offset-5 col-xs-6 grey-curved-border">' + newMessage.message + '</div></div>');
-          $message.val('');
-        }
-        else {
-          var newChat = {
-            imgURL: pet.imgURL,
-            date: "2/26/16",
-            users: [Meteor.userId(), pet.owner],
-            dogID: pet.name,
-            messages: [
-              {
-                id: Meteor.userId(),
-                message: $message.val()
-              }
-            ]
-          };
-          chats.insert(newChat);
-          $messagesContainer.html('<br><div class="row"><div class="col-xs-offset-5 col-xs-6 grey-curved-border">' + $message.val() + '</div></div>');
-          $messagesContainer.addClass("has-messages");
-          $message.val('');
-        }
-      }
-    },
-    'click #message-send': function (event) {
-        var $messagesContainer = $("#messages-box");
-        var $message = $("#message-textarea");
-        if (!$message.val()) return;
-
-        var pet =  pet_profile.findOne({name: pet_name});
-
-
-        if ($messagesContainer.hasClass("has-messages")) {
-          var chat = chats.findOne({users: { $all: [Session.get('user2'), Session.get('user1')]}});
-          var updatedMessages = chat.messages;
-          var newMessage = {
-            id: Meteor.userId(),
-            message: $message.val()
-          };
-          updatedMessages.push(newMessage);
-          chats.update(chat._id, {
-            $set: {messages: updatedMessages}
-          });
-
-          $messagesContainer.append("<br>" + $message.val());
-          $message.val('');
-        }
-        else {
-          var newChat = {
-            imgURL: pet.imgURL,
-            date: "2/26/16",
-            users: [Meteor.userId(), pet.owner],
-            dogID: pet.name,
-            messages: [
-              {
-                id: Meteor.userId(),
-                message: $message.val()
-              }
-            ]
-          };
-          chats.insert(newChat);
-          $messagesContainer.html($message.val());
-          $messagesContainer.addClass("has-messages");
-          $message.val('');
-        }
-    }    
   });
+
+  Template.chatsowner.helpers({
+    message: function() {
+      var temp = owners.findOne({owner: Meteor.userId()}).chats;
+      return temp;
+    },
+
+    getName: function(id) {
+      return walkers.findOne({_id: id}).name;
+    },
+
+    pet: function() {
+      var pet =  pet_profile.findOne({name: pet_name});
+      return pet;
+    }
+
+  });
+
+  Template.chatsowner.events({
+    'click #backbutton': function (event) {
+      event.preventDefault();
+      var name = pet_profile.findOne({owner: Meteor.userId()}).name;
+      Router.go('profile', {_id: name});
+
+    },
+
+    'click #message-send': function (event) {
+      event.preventDefault();
+      var message = $("#message-textarea").val();
+      $("#message-textarea").val('');
+      messages.insert({
+        message: message,
+        time: Date.now(),
+        dogownername: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner}).name,
+        dogownerid: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id,
+        walkername: walkers.findOne({owner: Meteor.userId()}).name,
+        dogname: pet_name,
+        walker: true,
+      });
+    },
+
+
+  });
+
+  Template.message.helpers({
+    chats: function() {
+      var chats = messages.find({
+        dogownerid: owners.findOne({owner: Meteor.userId()})._id,
+        walkername: walkers.findOne({_id: schedule_id}).name,
+      }, { sort: { time: 1}});
+      return chats;
+    },
+  });
+
+  Template.message.events({
+    'click #message-send': function (event) {
+      event.preventDefault();
+      var message = $("#message-textarea").val();
+      $("#message-textarea").val('');
+      messages.insert({
+        message: message,
+        time: Date.now(),
+        dogownername: owners.findOne({owner: Meteor.userId()}).name,
+        dogownerid: owners.findOne({owner: Meteor.userId()})._id,
+        walkername: walkers.findOne({_id: schedule_id}).name,
+        dogname: pet_profile.findOne({owner: Meteor.userId()}).name,
+        walker: false,
+      });
+    },
+
+  });
+
+
+
 
   Template.verifier.helpers({
     schedule: function() {
@@ -652,25 +705,6 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.schedule.helpers({
-    pet: function() {
-      var pet =  pet_profile.findOne({owner: Meteor.userId()});
-      return pet;
-    }
-  });
-
-  Template.select.helpers({
-    pets: function () {
-      return pet_profile.find({});
-    }
-  });
-
-  Template.chats.helpers({
-    chats: function() {    
-      var userChats = chats.find({users: Meteor.userId()});
-      return userChats;
-    }
-  });
 
   Template.walkerdashboard.helpers({
     confirmed: function() {
