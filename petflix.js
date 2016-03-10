@@ -53,11 +53,19 @@ Router.route('/walker-pastwalks', function () {
   this.render('walker-pastwalks');
 });
 
-Router.route('/chats', function() {
-  this.render('chats');
+Router.route('/chatsowner', function() {
+  this.render('chatsowner');
 });
 
-Router.route('/chats/:id', function() {
+Router.route('/chatswalker', function() {
+  this.render('chatswalker');
+});
+
+Router.route('/chatsowner/:id', function() {
+  var params = this.params;
+});
+
+Router.route('/chatswalker/:id', function() {
   var params = this.params;
 });
 
@@ -97,6 +105,45 @@ Router.route('/:_id/profile', function() {
   name: 'profile'
 });
 
+Router.route('/:_id/message', function() {
+  
+  var params = this.params;
+  var id = params._id;
+  schedule_id = id;
+  this.render('message');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
+}, {
+  name: 'message'
+});
+
+Router.route('/:_id/messenger', function() {
+  
+  var params = this.params;
+  var id = params._id;
+  schedule_id = id;
+  this.render('messenger');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
+}, {
+  name: 'messenger'
+});
+
+Router.route('/:_id/messengeradded', function() {
+  
+  var params = this.params;
+  var id = params._id;
+  schedule_id = id;
+  this.render('messengeradded');
+  Tracker.afterFlush(function () {
+    $(window).scrollTop(0);
+  });
+}, {
+  name: 'messengeradded'
+});
+
 Router.route('/:_id/schedule/today', function () {
   var params = this.params; // { _id: "bella" }
   var id = params._id; // "5"
@@ -120,15 +167,9 @@ Router.route('/:_id/schedule/month', function () {
   pet_name = id;
   this.render('month');
 });
-/*
-Tracker.autorun(function () {
-  var current = Router.current();
-  Tracker.afterFlush(function () {
-    $(window).scrollTop(0);
-  });
-});
-from: http://www.curtismlarson.com/blog/2015/11/11/iron-router-scroll-to-top/ */
-var chats = new Mongo.Collection("chats");
+
+
+var messages = new Mongo.Collection("messages");
 var pet_profile = new Mongo.Collection("pet profile");
 var schedules = new Mongo.Collection("schedules");
 var owners = new Mongo.Collection("owners");
@@ -150,43 +191,6 @@ Images = new FS.Collection("images", {
 if (Meteor.isServer) {
   Meteor.startup(function () {
 
-    chats.remove({});
-
-   /*pet_profile.remove({});
-    
->>>>>>> sprint-field
-  
-    var bella_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"only feed me real meat products", icon:"fa-cutlery"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
-    var bell_bio = "Bella comes from a dog loving family with two young kids. Bella is always excited for a friend to hang out with.";
-    var bella_comments = [{walker: "Leonard", rating:"5star.png", date:"Oct 2015", comment:"Bella was so energetic and fun to have out with me! She made my day!"},
-    {walker:"Sheldon",rating:"4halfstar.png", date:"Nov 2015", comment:"Bella is awesome, but she's a bit too curious of everything."}];
-    pet_profile.insert({name: "Bella", breed: 'Labrador', rating: "5star.png", age: 4, bio: bell_bio, temperament: 'Mild', imgURL : "bella.png",
-      comments: bella_comments,badges: bella_badges, class: "C.png", distance: "1.7 miles", location:"658 Escondido Rd, Stanford, CA 94305", quote: "I can stand on both my hind legs!"});
-    
-    var max_badges = [{ask: "don't put me in a bag", icon: "fa-suitcase"},{ask:"only feed me real meat products", icon:"fa-cutlery"}];
-    var max_bio = "Max loves people";
-    var max_comments = [{walker:"Howard",rating:"4halfstar.png", date:"Dec 2015", comment:"Trust me, Max will be your best friend."}];
-    pet_profile.insert({name: "Max", breed: 'Golden Retriever', rating: "4star.png", age: 3, bio: max_bio, temperament: 'Energetic', imgURL : "max.png",
-      comments:max_comments, badges: max_badges, class: "D.png", distance: "0.5 miles", location:"473 Via Ortega, Stanford, CA 94305", quote: "I just love people.", owner: "iMPpTvn4QXx5buLrk"});
-
-    var lily_badges = [{ask: "don't tie me up", icon: "fa-link"},{ask:"don't leave me alone", icon:"fa-frown-o"},{ask: "don't put me in a bag", icon: "fa-suitcase"}];
-    var lily_comments = [{walker: "Penny", rating:"5star.png", date:"Aug 2015", comment:"Lily is such an amazing girl! I can't wait to see her again!"}];
-    pet_profile.insert({name: "Lily", breed: 'Labrador', rating: "5star.png", age: 4, bio: "Lily is the best dog in the world.", temperament: 'Crazy', imgURL : "lily.png",
-      comments: lily_comments, badges: lily_badges, class: "B.png", distance: "1.3 miles",location:"557 Mayfield Ave Stanford, CA 94305", quote: "I'll run laps around you!"});
-  
-    var billy_badges = [{ask: "Why am I here?", icon: "fa-link"},{ask:"I'm a goat!", icon:"fa-frown-o"},{ask: "Fine woof.", icon: "fa-suitcase"}];
-    var billy_comments = [{walker: "Alex", rating:"3star.png", date:"Sep 2015", comment:"Billy is a goat! Not a dog."}];
-    pet_profile.insert({name: "Billy", breed: 'Goat', rating: "3star.png", age: 6, bio: "Billy is a goat.", temperament: 'Goat', imgURL : "billy.png",
-      comments: billy_comments, badges: billy_badges, class: "D.png", distance: "1 miles",location:"500 Mayfield Ave Stanford, CA 94305", quote: "Why am I here? I'm a goat!"});
-
-    schedules.insert({name: "Bella", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "yes"});
-  
-    schedules.insert({name: "Bella", pickuplocation: "California Ava", time: "6:30 P.M.", owner: "Landay", confirmed: "yes"});
-    schedules.insert({name: "Max", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
-    schedules.insert({name: "Lily", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});
-    schedules.insert({name: "Billy", pickuplocation: "Stanford", time: "5:30 P.M.", owner: "Landay", confirmed: "no"});*/
-
-
     Meteor.publish("all pets", function(){
       return pet_profile.find();
     });
@@ -199,11 +203,11 @@ if (Meteor.isServer) {
     Meteor.publish("walkers", function(){
       return walkers.find();
     });
-    Meteor.publish("chats", function(){ 
-      return images.find(); 
+    Meteor.publish("messages", function(){ 
+      return messages.find(); 
     });
     Meteor.publish("images", function(){ 
-      return chats.find(); 
+      return images.find(); 
     });
 
 
@@ -233,8 +237,8 @@ if (Meteor.isClient) {
   Meteor.subscribe("schedules");
   Meteor.subscribe("owners");
   Meteor.subscribe("walkers");
+  Meteor.subscribe("messages");
   Meteor.subscribe("images");
-  Meteor.subscribe("chats");
 
   Template.registerHelper('equals', function (a, b) {
     return a === b;
@@ -374,53 +378,159 @@ if (Meteor.isClient) {
       var pet =  pet_profile.findOne({name: pet_name});
       // var users = [Meteor.userId(), pet.owner];
       return pet;
-    }
+    },
+
+    
   });
 
   Template.scheduler.rendered = function() {
 
     var pet =  pet_profile.findOne({name: Session.get('dogID')});
-    var chat = chats.findOne({users: { $all: [Session.get('user2'), Session.get('user1')]}});
-    if (chat == null) {
-        //
-    }
-    else {
-      $('#name').html(pet.name);
-      var $messagesContainer = $("#messages-box");
-      $messagesContainer.html("");
-      $messagesContainer.addClass("has-messages");
-      for (var i = 0; i < chat.messages.length; i++) {
-        var messageClass = "";
-        if (chat.messages[i].id == Meteor.userId()) {
-          messageClass = "col-xs-offset-5 col-xs-6 grey-curved-border"
-        }
-        else {
-          messageClass = "col-xs-offset-1 col-xs-6 grey-rectangle-curved"
-        }
-        $messagesContainer.append('<br><div class="row"><div class="' + messageClass + '">' + chat.messages[i].message + '</div></div>');
-      }
-    }
   }
 
-  Template.chats.events({
-    'click .conversation': function (event) {
-      Session.set('user1', this.users[0]);
-      Session.set('user2', this.users[1]);
-      Session.set('dogID', this.dogID);
-    }
-  });
-
   Template.scheduler.events({
-    'click .dropdown-menu': function (event) {
-      $('#chosen').text( $(event.target).text());
-      schedule_time = $(event.target).text();
+    'click #button-message': function (event) {
+      event.preventDefault();
+      var id = owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id;
+      Router.go('messenger', {_id: id});
+
     },
 
+    'click #backbutton': function (event) {
+      event.preventDefault();
+      Router.go('/'+ pet_name);
+
+    },
+  });
+
+  Template.messengeradded.helpers({
+    /* list of messages with dog owner*/ /**/
+    chats: function() {
+      var chats = messages.find({
+        walkername: walkers.findOne({owner: Meteor.userId()}).name,
+        dogownerid: owners.findOne({_id: schedule_id})._id,
+
+      }, { sort: { time: 1}});
+      return chats;
+    },
+    /* for modal */
+    pet: function() {
+      var pet =  et_profile.findOne({owner: owners.findOne({_id: schedule_id}).owner});
+      return pet;
+    }
+
+  });
+
+
+  Template.messengeradded.events({
+    /*send message - add message to message database*/
+    'click #message-send': function (event) {
+      event.preventDefault();
+      var message = $("#message-textarea").val();
+      $("#message-textarea").val('');
+      messages.insert({
+        message: message,
+        time: Date.now(),
+        dogownername: owners.findOne({_id: schedule_id}).name,
+        dogownerid: schedule_id,
+        walkername: walkers.findOne({owner: Meteor.userId()}).name,
+        dogname: pet_profile.findOne({owner: owners.findOne({_id: schedule_id}).owner}).name,
+        walker: true,
+      });
+    },
+    /*add walk time*/
     'click #confirm-button': function (event) {
 
       event.preventDefault();
       var time = $("#time").val();
       var date = $("#date").val();
+
+      schedules.insert({
+        time: time,
+        date: date,
+        owner: Meteor.userId(),
+        dogownername: owners.findOne({_id: schedule_id}).name,
+        dogownerid: schedule_id,
+        walkername: walkers.findOne({owner: Meteor.userId()}).name,
+        dogname: pet_profile.findOne({owner: owners.findOne({_id: schedule_id}).owner}).name,
+        confirmed: false,
+      });
+      Router.go('/walkerdashboard');
+
+    }
+  });
+
+  Template.messenger.helpers({
+    chats: function() {
+      var chats = messages.find({
+        walkername: walkers.findOne({owner: Meteor.userId()}).name,
+        dogownerid: owners.findOne({_id: schedule_id})._id,
+
+      }, { sort: { time: 1}});
+      return chats;
+    },
+
+    pet: function() {
+      var pet =  pet_profile.findOne({name: pet_name});
+      return pet;
+    }
+
+  });
+
+
+  Template.messenger.events({
+    'click #message-send': function (event) {
+      event.preventDefault();
+      /*checks if there is an existing chat happening*/
+      var chatslist = owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner}).chats;
+      var bool;
+      if(chatslist){
+        bool = chatslist.indexOf(chatslist.filter(function (val) {
+          return val.chat === walkers.findOne({owner: Meteor.userId()})._id;
+        })[0]);
+      } else {
+        bool = -1;
+      }
+      /*if there isn't one creates a new one*/
+      if(bool == -1){
+        walkers.update({
+          _id: walkers.findOne({owner: Meteor.userId()})._id
+        }, {
+          $push: {chats: {
+            chat: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id,
+            name: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner}).name
+          }
+        }});
+
+        owners.update({
+          _id: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id
+        }, {
+          $push: {chats: {
+            chat: walkers.findOne({owner: Meteor.userId()})._id,
+            name: walkers.findOne({owner: Meteor.userId()}).name,
+          }
+        }});
+      }
+      /*adds message*/
+      var message = $("#message-textarea").val();
+      $("#message-textarea").val('');
+      messages.insert({
+        message: message,
+        time: Date.now(),
+        dogownername: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner}).name,
+        dogownerid: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id,
+        walkername: walkers.findOne({owner: Meteor.userId()}).name,
+        dogname: pet_name,
+        walker: true,
+      });
+    },
+    /*request walk*/
+    'click #confirm-button': function (event) {
+
+      event.preventDefault();
+      var time = $("#time").val();
+      var date = $("#date").val();
+
       schedules.insert({
         time: time,
         date: date,
@@ -431,98 +541,85 @@ if (Meteor.isClient) {
         dogname: pet_name,
         confirmed: false,
       });
-      Router.go('/success');
+      Router.go('/walkerdashboard');
+
+    }
+  });
+
+  Template.chatswalker.helpers({
+    message: function() {
+      var temp = walkers.findOne({owner: Meteor.userId()}).chats;
+      return temp;
+    },
+    
+    /*for modal*/
+    pet: function() {
+      var pet =  pet_profile.findOne({name: pet_name});
+      return pet;
+    }
+
+  });
+
+  Template.chatswalker.events({
+
+
+  });
+
+  Template.chatsowner.helpers({
+    message: function() {
+      var temp = owners.findOne({owner: Meteor.userId()}).chats;
+      return temp;
+    },
+
+    pet: function() {
+      var pet =  pet_profile.findOne({name: pet_name});
+      return pet;
+    }
+
+  });
+
+  Template.chatsowner.events({
+    /*router override */
+    'click #backbutton': function (event) {
+      event.preventDefault();
+      var name = pet_profile.findOne({owner: Meteor.userId()}).name;
+      Router.go('profile', {_id: name});
 
     },
-    'keypress #message-textarea': function (event) {
-      if (event.which === 13) {
-        event.preventDefault();
-        var $messagesContainer = $("#messages-box");
-        var $message = $("#message-textarea");
-        if (!$message.val()) return;
+  });
 
-        var pet =  pet_profile.findOne({name: pet_name});
-
-
-        if ($messagesContainer.hasClass("has-messages")) {
-          var chat = chats.findOne({users: { $all: [Session.get('user2'), Session.get('user1')]}});
-          var updatedMessages = chat.messages;
-          var newMessage = {
-            id: Meteor.userId(),
-            message: $message.val()
-          };
-          updatedMessages.push(newMessage);
-          chats.update(chat._id, {
-            $set: {messages: updatedMessages}
-          });
-          $messagesContainer.append('<br><div class="row"><div class="col-xs-offset-5 col-xs-6 grey-curved-border">' + newMessage.message + '</div></div>');
-          $message.val('');
-        }
-        else {
-          var newChat = {
-            imgURL: pet.imgURL,
-            date: "2/26/16",
-            users: [Meteor.userId(), pet.owner],
-            dogID: pet.name,
-            messages: [
-              {
-                id: Meteor.userId(),
-                message: $message.val()
-              }
-            ]
-          };
-          chats.insert(newChat);
-          $messagesContainer.html('<br><div class="row"><div class="col-xs-offset-5 col-xs-6 grey-curved-border">' + $message.val() + '</div></div>');
-          $messagesContainer.addClass("has-messages");
-          $message.val('');
-        }
-      }
+  Template.message.helpers({
+    /*finds all messages between owner and walker*/
+    chats: function() {
+      var chats = messages.find({
+        dogownerid: owners.findOne({owner: Meteor.userId()})._id,
+        walkername: walkers.findOne({_id: schedule_id}).name,
+      }, { sort: { time: 1}});
+      return chats;
     },
+  });
+
+  Template.message.events({
+    /*send message from owner side*/
     'click #message-send': function (event) {
-        var $messagesContainer = $("#messages-box");
-        var $message = $("#message-textarea");
-        if (!$message.val()) return;
+      event.preventDefault();
+      var message = $("#message-textarea").val();
+      $("#message-textarea").val('');
+      messages.insert({
+        message: message,
+        time: Date.now(),
+        dogownername: owners.findOne({owner: Meteor.userId()}).name,
+        dogownerid: owners.findOne({owner: Meteor.userId()})._id,
+        walkername: walkers.findOne({_id: schedule_id}).name,
+        dogname: pet_profile.findOne({owner: Meteor.userId()}).name,
+        walker: false,
+      });
+    },
 
-        var pet =  pet_profile.findOne({name: pet_name});
-
-
-        if ($messagesContainer.hasClass("has-messages")) {
-          var chat = chats.findOne({users: { $all: [Session.get('user2'), Session.get('user1')]}});
-          var updatedMessages = chat.messages;
-          var newMessage = {
-            id: Meteor.userId(),
-            message: $message.val()
-          };
-          updatedMessages.push(newMessage);
-          chats.update(chat._id, {
-            $set: {messages: updatedMessages}
-          });
-
-          $messagesContainer.append("<br>" + $message.val());
-          $message.val('');
-        }
-        else {
-          var newChat = {
-            imgURL: pet.imgURL,
-            date: "2/26/16",
-            users: [Meteor.userId(), pet.owner],
-            dogID: pet.name,
-            messages: [
-              {
-                id: Meteor.userId(),
-                message: $message.val()
-              }
-            ]
-          };
-          chats.insert(newChat);
-          $messagesContainer.html($message.val());
-          $messagesContainer.addClass("has-messages");
-          $message.val('');
-        }
-    }    
   });
 
   Template.verifier.helpers({
+    /*finds schedules*/
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
@@ -533,14 +630,8 @@ if (Meteor.isClient) {
       }
   });
 
-  Template.success.helpers({
-      pet: function() {
-        var pet =  pet_profile.findOne({name: pet_name});
-        return pet;
-      }
-  });
-
   Template.index.events({
+    /*if not a walker then add walker. If a walker route to list*/
     "click #signup": function (event) {
 
       if(walkers.findOne({owner: Meteor.userId()})){
@@ -549,7 +640,7 @@ if (Meteor.isClient) {
         Router.go('/addwalker');
       }
     }, 
-    
+    /*if not an owner route to add owner. If an owner route to profile of their pet*/
     "click #signupown": function (event) {
       var profile = pet_profile.findOne({owner: Meteor.userId()});
 
@@ -561,8 +652,8 @@ if (Meteor.isClient) {
     } 
   });
 
+  /*adds walker*/
   Template.addwalker.events({
-    
     "click #finishbutton": function (event) {
       event.preventDefault();
       var name = $("#name").val();
@@ -577,7 +668,7 @@ if (Meteor.isClient) {
       Router.go('/list');
     }
   });
-
+  /*adds owner*/
   Template.addowner.events({
     "click #finishbutton": function (event) {
       event.preventDefault();
@@ -594,8 +685,9 @@ if (Meteor.isClient) {
     }
   });
 
-
+  /*adds dog*/
   Template.adddog.events({
+    /*image uploading*/
     "change #picture-upload": function(event, template) {
       FS.Utility.eachFile(event, function(file) {
         Images.insert(file, function(err, fileObj) {
@@ -609,6 +701,7 @@ if (Meteor.isClient) {
         });
       });
     },
+    /*adds dog with validation*/
     "click #finishbutton": function (event) {
       event.preventDefault();
       var $emptyInputs = [];
@@ -652,25 +745,6 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.schedule.helpers({
-    pet: function() {
-      var pet =  pet_profile.findOne({owner: Meteor.userId()});
-      return pet;
-    }
-  });
-
-  Template.select.helpers({
-    pets: function () {
-      return pet_profile.find({});
-    }
-  });
-
-  Template.chats.helpers({
-    chats: function() {    
-      var userChats = chats.find({users: Meteor.userId()});
-      return userChats;
-    }
-  });
 
   Template.walkerdashboard.helpers({
     confirmed: function() {

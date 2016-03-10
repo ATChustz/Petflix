@@ -30,22 +30,6 @@
 	</div>
 </template>
 
-<template name ="select">
-	<div class="container">
-		<h2 id="owner-prompt">Which dog is yours?</h2>
-		{{#each pets}}
-			<a href="/{{name}}/profile">
-				<div class="row">
-					<img src="{{imgURL}}" class="owner-preview">
-					<h3 class="owner-preview">{{name}}</h3>
-				</div>
-			</a>
-			<br>
-		{{/each}}
-		<p id="select-blurb">This screen will not be part of the final flow, as user accounts will be implemented</p>
-	</div>
-</template>
-
 <template name="list">
 	<div class="container" id="list">
 		{{>dog}}
@@ -82,7 +66,7 @@
 	<div class="container">
 		{{#with pet}}
 			<div class="row mail-logout-bar">
-				<a href=""><img class="mail-symbol" src="../mail-symbol.png"></a>
+				<a href="/chatsowner"><img class="mail-symbol" src="/mail-symbol.png"></a>
 				<a href="/"><p class="logout">Logout</p></a>
 			</div>
 			<div class="row">
@@ -98,7 +82,7 @@
 		  	</div>
 			</div>
 			<div class="row image">
-				<img class="profile-dog" src="../{{imgURL}}"/>
+				<img class="profile-dog" src="/{{imgURL}}"/>
 			</div>
 			<div class="row scheduletab-row">
 				<div class="col-xs-4 left-of-center">
@@ -120,7 +104,7 @@
 	<div class="container">
 		{{#with pet}}
 			<div class="row mail-logout-bar">
-				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
+				<a href="/chatsowner"><img class="mail-symbol" src="/mail-symbol.png"></a>
 				<a href="/"><p class="logout">Logout</p></a>
 			</div>
 			<div class="row">
@@ -136,7 +120,7 @@
 			  	</div>
 			</div>
 			<div class="row text-center">
-				<img class="profile-dog" src="../../{{imgURL}}"/>
+				<img class="profile-dog" src="/{{imgURL}}"/>
 			</div>
 			<div class="row scheduletab-row">
 				<div class="col-xs-4 left-of-center">
@@ -156,6 +140,7 @@
 						<h5>Walk confirmed at {{time}} on {{date}} with {{walkername}}.</h5>
 				</div>
 			</div>
+			<hr>
 		{{/each}}
 		{{#each schedule}}
 		<br>
@@ -176,6 +161,7 @@
 				<button class="btn schedule-button" id="confirm">Confirm</button><button class="btn schedule-button" id="reject">Reject</button>
 			</div>
 		</div>
+		<hr>
 		{{/each}}
 	</div>
 </template>
@@ -186,7 +172,7 @@
 		
 		{{#with pet}}
 			<div class="row mail-logout-bar">
-				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
+				<a href="/chatsowner"><img class="mail-symbol" src="/mail-symbol.png"></a>
 				<a href="/"><p class="logout">Logout</p></a>
 			</div>
 			<div class="row">
@@ -202,7 +188,7 @@
 		  	</div>
 			</div>
 			<div class="row">
-				<img class="profile-dog" src="../../{{imgURL}}"/>
+				<img class="profile-dog" src="/{{imgURL}}"/>
 			</div>
 			<div class="row scheduletab-row">
 				<div class="col-xs-4 left-of-center">
@@ -231,8 +217,9 @@
 		
 		{{#with pet}}
 			<div class="row mail-logout-bar">
-				<a href=""><img class="mail-symbol" src="../../mail-symbol.png"></a>
+				<a href="/chatsowner"><img class="mail-symbol" src="/mail-symbol.png"></a>
 				<a href="/"><p class="logout">Logout</p></a>
+
 			</div>
 			<div class="row">
 		  	<div class="col-xs-6 text-center nopadding 2-toggle">
@@ -247,7 +234,7 @@
 		  	</div>
 			</div>
 			<div class="row">
-				<img class="profile-dog" src="../../{{imgURL}}"/>
+				<img class="profile-dog" src="/{{imgURL}}"/>
 			</div>
 			<div class="row scheduletab-row">
 				<div class="col-xs-4 left-of-center">
@@ -275,7 +262,7 @@
 <template name="profile">
 	{{#with pet}}
 	<div class="row mail-logout-bar">
-		<a href="/chats"><img class="mail-symbol" src="../mail-symbol.png"></a>
+		<a href="/chatsowner"><img class="mail-symbol" src="/mail-symbol.png"></a>
 		<a href="/"><p class="logout">Logout</p></a>
 	</div>
 	<div class="row">
@@ -292,10 +279,10 @@
 	</div>
 
   <div class="row">
-		<img class="profile-dog" src="../{{imgURL}}"/>
+		<img class="profile-dog" src="/{{imgURL}}"/>
 		<div class="row" id="edit-info">
 			<div class="col-xs-9"></div>
-			<div class="col-xs-3" id="edit-button"><img src="../edit-icon.png"></div>
+			<div class="col-xs-3" id="edit-button"><img src="/edit-icon.png"></div>
 			<!-- <div class="col-xs-3" id="edit-button" style="visibility: hidden"><img src="../edit-icon.png"></div> -->
 		</div>
 		<div class="row pet-info">
@@ -386,7 +373,7 @@
 		<div class="row">
 			<hr>
 			<div class="col-xs-4 walker-name">{{walker}}</div>
-			<div class="col-xs-3 col-xs-offset-4"><img id = "stars" src = "{{rating}}"/></div>
+			<div class="col-xs-3 col-xs-offset-4"><img id = "stars" src = "/{{rating}}"/></div>
 		</div>
 		<div class="row">
 			<div class="col-xs-4">{{date}}</div>
@@ -429,7 +416,7 @@
 		{{#each names}}
 			<div class="image">
 				<a href="{{name}}">
-			    <img id="{{name}}" src="{{imgURL}}" class="profle-dog"/>
+			    <img id="{{name}}" src="{{imgURL}}" class="profile-dog"/>
 		    	<div class="opq">
 			    	<h4 class="distance">{{distance}}</h4>
 			    	<h1 class="pet_name"> {{name}} </h1>
@@ -472,7 +459,7 @@
 		{{#with pet}}
 		  <div class="row">
   			<div class="col-xs-4 back-arrow">
-  				<a href="/"><img id = "back" src = "Back.png"/>Back</a>
+  				<a href="/" id="backbutton"><img id = "back" src = "/Back.png"/>Back</a>
 			</div>
 				<div class="col-xs-5 title"><p id="name">{{name}}</p></div>
 			</div>
@@ -481,7 +468,7 @@
 				<div class="row text-center">
 					<img class="small-profile-dog img-circle center-block" src="{{imgURL}}"/>
 					<br>
-					<p class="lead" id="chill-pet"> Send a message to {{name}}'s owner to suggest...</p>
+					<p class="lead" id="chill-pet"> Message {{name}}'s owner to suggest...</p>
 					<br>
 					<div class="orange-curved-border center-block">
 						<div class="row">
@@ -503,55 +490,17 @@
 						</div>
 					</div>
 				</div>
-				<div class="row" id="form">
-					<form role="form" id="dog-form">
-						<div class="row">
-							<div class="col-xs-10 col-xs-offset-3">
-								<input type="time" id="time"> <br>
-								<input type="date" id="date"> <br>
-							</div>
-						</div>
-						<div class="row verifier-remind">
-							<div class="col-xs-10 col-xs-offset-1">
-								<p>You need a verifier to walk {{name}}<a href="#" data-toggle="modal" data-target="#myModal3"> Why?</a></p>
-							</div>
-							<div class="col-xs-11">
-								<a id="button-text" href="/success"><button type="button" class="btn btn-default btn-lg center-block general-button" id="confirm-button" >Confirm</button></a>
-							</div>
-						</div>
-					</form>
-				</div>
+				
+					<br>
+					<div class="text-center">
+						<a href="/messenger" id="button-message" class="btn btn-default">Message {{name}}'s owner</a>
+					</div>
+				
+
+
 			</div>
 			<br>			
 		{{/with}}
-	</div>
-	<div class="container">
-		 <div class="row">
-			 <div class="form-group">
-			    <textarea id="message-textarea" class="form-control custom-control" rows="3" style="resize:none"></textarea>     
-			    <span id="message-send" class="input-group-addon btn btn-primary">Send</span>
-			</div>	 	
-		</div>
-	</div>
-	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog  modal-sm" role="document">
-	    <div class="modal-content">
-	      <div class="modal-body">
-	      	{{#with pet}}
-	        <h4>What is a walker verifier?</h4>
-	        <p>A walker verifier is a person certified by <span class="highlight">Petflix & Chill</span> who will ensure that you are able to walk a dog of this class.</p>
-	        <h4>Why do I need a verifier to walk this dog?</h4>
-	        <p>{{name}} belongs to class <img id = "class" src = "{{class}}"/> and you currently have not been verified for dogs of any class. You need to have a verifier to ensure that you do well with dogs of {{name}}'s class.</p>
-	        <h5>You need a verifier if:</h5>
-	        <li>You have not walked a dog of at least this class before. </li>
-	        <li>You are a new user and have not yet completed your first walk.</li>
-	        <h5>You will be exempt from walking with a verifier if you:</h5>
-	        <li>Have walked a dog of this class before. </li>
-	        {{/with}}
-	      </div>
-	      <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
-	    </div>
-	  </div>
 	</div>
 
 </template>
@@ -562,7 +511,7 @@
 
 			{{#with pet}}
   				<div class="col-xs-4 back-arrow">
-  					<a href="/scheduler"><img id = "back" src = "Back.png"/>Back</a>
+  					<a href="/scheduler"><img id = "back" src = "/Back.png"/>Back</a>
 				</div>
 				<div class="col-xs-5 title"><p>{{name}} - Schedule</p></div>
 			{{/with}}
@@ -635,27 +584,6 @@
 	</div>
 </template>
 
-
-<template name="success">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-4 back-arrow">
-			  <a href="/list"><img id="back" src="Back.png"/>Back to List</a>
-			</div>
-		</div>
-		{{#with pet}}
-		<div id="success-text">
-			  <h1 id="success-heading">Congratulations!</h1>
-			  <h2 id="success-body">You've successfully confirmed {{name}}</h2>
-		</div>
-		<img class="profile-dog img-circle center-block" src="../{{imgURL}}"/>
-		{{/with}}
-		<div id="return">
-			<a href="/"><h5>Return to menu</h5></a>
-		</div>
-	</div>
-</template>
-
 <template name="addowner">
 	<div class="container">
 		<div class="row">
@@ -682,7 +610,6 @@
 				</form>
 			</div>
 		</div>
-		<!-- Need to add form elements to owner database -->
 	
 	</div>
 </template>
@@ -861,43 +788,12 @@
 	</div>
 </template>
 
-<template name="login">
-	<div class="container">
-		<div class="row bordered-header">
-	  	<div class="col-xs-4 back-arrow back-narrow">
-	  		<a href="/"><img id = "back" src = "Back.png"/>Back</a>
-			</div>
-			<div class="col-xs-6 signup-title" id="login-title">
-				<p>Login</p>
-			</div>
-  	</div>
-		<div class="row" id="login-ornament">
-			<div class="col-xs-6 col-xs-offset-3">
-				<img class="paw" src="paw.png">
-				<p id="tell">Login</p>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-6 col-xs-offset-3">
-				<form role="form" id="dog-form">
-					<input type="text" class="input-field" id="username" placeholder="Username"><br>
-					<input type="password" class="input-field" id="password" placeholder="Password"><br>
-					<a href="/list"><input type="image" class="paw" id="login-finishbutton" src="bone-button.png" alt="next"></a>
-				</form>
-			</div>
-		</div>
-		<!-- Need to integrate form elements with user database -->
-		<a href="/select"><p id="temp-select-link">Temporary link to "select" view. In case you want to test scheduling</p></a>
-	</div>
-</template>
-
 <!-- Template for walker dashboard - schedule -->
 <template name="walkerdashboard">
 	<div class="container">
 		<div class="row mail-logout-bar">
 			<a href="/list"><img class="doghome" src="../doghouse-home.png"></a>
-			<a href="/chats"><img class="mail-symbol" src="../mail-symbol.png"></a>
+			<a href="/chatswalker"><img class="mail-symbol" src="../mail-symbol.png"></a>
 			<a href="/"><p class="logout">Logout</p></a>
 		</div>
 		<div class="row">
@@ -968,34 +864,201 @@
 </template>
 
 
-<template name="chats">
+<template name="chatsowner">
 	<div class="container">
 		<div class="row border-bottom-thin">
   			<div class="col-xs-4 back-arrow">
-  				<a href="/walkerdashboard"><img id = "back" src = "Back.png"/>Back</a>
+  				<a href="/profile" id="backbutton"><img id = "back" src = "/Back.png"/>Back</a>
+			</div>
+			<div class="col-xs-5 title">
+				<p>Messages</p>
+			</div>
+		</div>
+		
+		<br>
+		{{#each message}}
+			<a href="{{chat}}/message">Message from {{name}}</a><br>
+		{{/each}}
+	</div>
+</template>
+
+<template name="message">
+	<div class="container">
+		<div class="row border-bottom-thin">
+  			<div class="col-xs-4 back-arrow">
+  				<a href="/chatsowner"><img id = "back" src = "/Back.png"/>Back</a>
 			</div>
 			<div class="col-xs-5 title">
 				<p>Messages</p>
 			</div>
 		</div>
 		{{#each chats}}
-			<a href="/scheduler">	
-				<div class="row border-bottom-thin message-list-padding conversation">
-					<div class="col-xs-3">
-						<img class="profile-dog img-circle" src="../{{imgURL}}"/>
-					</div>
-					<div class="col-xs-7 message-info-padding">
-						<span class="pull-left">{{dogID}}</span>
-					</div>
-					<div class="col-xs-2 message-info-padding">
-						<span class="pull-right">{{date}}</span>
-					</div>
-					{{#each users}}
-						<input type="hidden" value={{this}}>
-					{{/each}}
-					<input type="hidden" value={{dogID}}>
-				</div>
-			</a>
+				{{#if walker}}
+				<p>{{walkername}}: {{message}}</p>
+				{{else}}
+				<p>{{dogownername}}: {{message}}</p>
+				{{/if}}
 		{{/each}}
+		<div class="container">
+			 <div class="row">
+				 <div class="form-group">
+				    <textarea id="message-textarea" class="form-control custom-control" rows="3" style="resize:none"></textarea>     
+				    <span id="message-send" class="input-group-addon btn btn-primary">Send</span>
+				</div>	 	
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="chatswalker">
+	<div class="container">
+		<div class="row border-bottom-thin">
+  			<div class="col-xs-4 back-arrow">
+  				<a href="/walkerdashboard"><img id = "back" src = "/Back.png"/>Back</a>
+			</div>
+			<div class="col-xs-5 title">
+				<p>Messages</p>
+			</div>
+		</div>
+		
+		<br>
+		{{#each message}}
+			<a href="{{chat}}/messengeradded">Message from {{name}}</a><br>
+		{{/each}}
+	</div>
+</template>
+
+<template name="messengeradded">
+	<div class="container">
+		<div class="row border-bottom-thin">
+  			<div class="col-xs-4 back-arrow">
+  				<a href="/chatswalker"><img id = "back" src = "/Back.png"/>Back</a>
+			</div>
+			<div class="col-xs-5 title">
+				<p>Messages</p>
+			</div>
+		</div>
+		{{#each chats}}
+			{{#if walker}}
+			<p>{{walkername}}: {{message}}</p>
+			{{else}}
+			<p>{{dogownername}}: {{message}}</p>
+			{{/if}}
+		{{/each}}
+		<br>
+		<div class="container">
+			 <div class="row">
+				 <div class="form-group">
+				    <textarea id="message-textarea" class="form-control custom-control" rows="3" style="resize:none"></textarea>     
+				    <span id="message-send" class="input-group-addon btn btn-primary">Send</span>
+				</div>	 	
+			</div>
+		</div>
+		<div class="row" id="form">
+			<form role="form" id="dog-form">
+				<div class="row">
+					<div class="col-xs-10 col-xs-offset-3">
+						<input type="time" id="time"> <br>
+						<input type="date" id="date"> <br>
+					</div>
+				</div>
+				<div class="row verifier-remind">
+					<div class="col-xs-10 col-xs-offset-1">
+						<p>You need a verifier to walk {{name}}<a href="#" data-toggle="modal" data-target="#myModal3"> Why?</a></p>
+					</div>
+					<div class="col-xs-11">
+						<a id="button-text" href="/walkerdashboard"><button type="button" class="btn btn-default btn-lg center-block general-button" id="confirm-button" >Confirm {{name}}</button></a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	{{#with pet}}
+	        <h4>What is a walker verifier?</h4>
+	        <p>A walker verifier is a person certified by <span class="highlight">Petflix & Chill</span> who will ensure that you are able to walk a dog of this class.</p>
+	        <h4>Why do I need a verifier to walk this dog?</h4>
+	        <p>{{name}} belongs to class <img id = "class" src = "/{{class}}"/> and you currently have not been verified for dogs of any class. You need to have a verifier to ensure that you do well with dogs of {{name}}'s class.</p>
+	        <h5>You need a verifier if:</h5>
+	        <li>You have not walked a dog of at least this class before. </li>
+	        <li>You are a new user and have not yet completed your first walk.</li>
+	        <h5>You will be exempt from walking with a verifier if you:</h5>
+	        <li>Have walked a dog of this class before. </li>
+	        {{/with}}
+	      </div>
+	      <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
+	</div>
+</template>
+
+<template name="messenger">
+	<div class="container">
+		<div class="row border-bottom-thin">
+  			<div class="col-xs-4 back-arrow">
+  				<a href="/scheduler"><img id = "back" src = "/Back.png"/>Back</a>
+			</div>
+			<div class="col-xs-5 title">
+				<p>Messages</p>
+			</div>
+		</div>
+		{{#each chats}}
+			{{#if walker}}
+			<p>{{walkername}}: {{message}}</p>
+			{{else}}
+			<p>{{dogownername}}: {{message}}</p>
+			{{/if}}
+		{{/each}}
+		<br>
+		<div class="container">
+			 <div class="row">
+				 <div class="form-group">
+				    <textarea id="message-textarea" class="form-control custom-control" rows="3" style="resize:none"></textarea>     
+				    <span id="message-send" class="input-group-addon btn btn-primary">Send</span>
+				</div>	 	
+			</div>
+		</div>
+		<div class="row" id="form">
+			<form role="form" id="dog-form">
+				<div class="row">
+					<div class="col-xs-10 col-xs-offset-3">
+						<input type="time" id="time"> <br>
+						<input type="date" id="date"> <br>
+					</div>
+				</div>
+				<div class="row verifier-remind">
+					<div class="col-xs-10 col-xs-offset-1">
+						<p>You need a verifier to walk {{name}}<a href="#" data-toggle="modal" data-target="#myModal4"> Why?</a></p>
+					</div>
+					<div class="col-xs-11">
+						<a id="button-text" href="/walkerdashboard"><button type="button" class="btn btn-default btn-lg center-block general-button" id="confirm-button" >Confirm {{name}}</button></a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog  modal-sm" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	{{#with pet}}
+	        <h4>What is a walker verifier?</h4>
+	        <p>A walker verifier is a person certified by <span class="highlight">Petflix & Chill</span> who will ensure that you are able to walk a dog of this class.</p>
+	        <h4>Why do I need a verifier to walk this dog?</h4>
+	        <p>{{name}} belongs to class <img id = "class" src = "/{{class}}"/> and you currently have not been verified for dogs of any class. You need to have a verifier to ensure that you do well with dogs of {{name}}'s class.</p>
+	        <h5>You need a verifier if:</h5>
+	        <li>You have not walked a dog of at least this class before. </li>
+	        <li>You are a new user and have not yet completed your first walk.</li>
+	        <h5>You will be exempt from walking with a verifier if you:</h5>
+	        <li>Have walked a dog of this class before. </li>
+	        {{/with}}
+	      </div>
+	      <button class="btn center-block" id="ok-button" data-dismiss="modal">OK</button>
+	    </div>
+	  </div>
 	</div>
 </template>
