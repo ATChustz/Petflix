@@ -6,7 +6,10 @@ Router.route('/list', function () {
   this.render('list');
 });
 
-Router.route('/scheduler', function () {
+Router.route('/scheduler/:_id', function () {
+  var params = this.params;
+  var id = params._id;
+  pet_name = pet_profile.findOne({_id: id}).name;
   this.render('scheduler');
   Tracker.afterFlush(function () {
     $(window).scrollTop(0);
@@ -471,7 +474,7 @@ if (Meteor.isClient) {
     },
 
     pet: function() {
-      var pet =  pet_profile.findOne({name: pet_name});
+      var pet =  pet_profile.findOne({owner: owners.findOne({_id: schedule_id}).owner});
       return pet;
     }
 
