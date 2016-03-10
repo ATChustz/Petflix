@@ -389,7 +389,7 @@ if (Meteor.isClient) {
   }
 
   Template.scheduler.events({
-    'click #button-text': function (event) {
+    'click #button-message': function (event) {
       event.preventDefault();
       var id = owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id;
       Router.go('messenger', {_id: id});
@@ -618,22 +618,12 @@ if (Meteor.isClient) {
 
   });
 
-
-
-
   Template.verifier.helpers({
     /*finds schedules*/
     schedule: function() {
       var schedule =  schedules.findOne({name: pet_name});
       return schedule;
     },
-      pet: function() {
-        var pet =  pet_profile.findOne({name: pet_name});
-        return pet;
-      }
-  });
-
-  Template.success.helpers({
       pet: function() {
         var pet =  pet_profile.findOne({name: pet_name});
         return pet;

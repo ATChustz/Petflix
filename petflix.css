@@ -136,6 +136,11 @@ a:hover{
 	margin: 0px;
 }
 
+#button-message {
+	color: #FF9600;
+	border: 2px solid #FF9600;
+}
+
 .dropdown-toggle{
 	background-color: transparent;
 	width: 140px;
