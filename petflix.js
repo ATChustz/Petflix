@@ -415,7 +415,7 @@ if (Meteor.isClient) {
     },
     /* for modal */
     pet: function() {
-      var pet =  et_profile.findOne({owner: owners.findOne({_id: schedule_id}).owner});
+      var pet =  pet_profile.findOne({owner: owners.findOne({_id: schedule_id}).owner});
       return pet;
     }
 
