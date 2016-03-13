@@ -25,4 +25,3 @@ cfs:gridfs
 cfs:filesystem
 accounts-ui
 accounts-password
-accounts-facebook
