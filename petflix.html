@@ -367,7 +367,7 @@
 			{{/each}}
 		</div>
 	</div>
-	<a href="/scheduler"><img id="chill-button" src="bone-button.png"></a>
+	<a href="/scheduler/{{_id}}"><img id="chill-button" src="bone-button.png"></a>
 	{{#each comments}}
 	<div class="row comments">
 		<div class="row">
@@ -466,7 +466,7 @@
 			<br>
 			<div id="messages-box">
 				<div class="row text-center">
-					<img class="small-profile-dog img-circle center-block" src="{{imgURL}}"/>
+					<img class="small-profile-dog img-circle center-block" src="/{{imgURL}}"/>
 					<br>
 					<p class="lead" id="chill-pet"> Message {{name}}'s owner to suggest...</p>
 					<br>
@@ -999,7 +999,9 @@
 	<div class="container">
 		<div class="row border-bottom-thin">
   			<div class="col-xs-4 back-arrow">
-  				<a href="/scheduler"><img id = "back" src = "/Back.png"/>Back</a>
+  				{{#with pet}}
+  				<a href="/scheduler/{{_id}}"><img id = "back" src = "/Back.png"/>Back</a>
+  				{{/with}}
 			</div>
 			<div class="col-xs-5 title">
 				<p>Messages</p>

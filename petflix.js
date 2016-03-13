@@ -6,7 +6,10 @@ Router.route('/list', function () {
   this.render('list');
 });
 
-Router.route('/scheduler', function () {
+Router.route('/scheduler/:_id', function () {
+  var params = this.params;
+  var id = params._id;
+  pet_name = pet_profile.findOne({_id: id}).name;
   this.render('scheduler');
   Tracker.afterFlush(function () {
     $(window).scrollTop(0);
@@ -471,7 +474,7 @@ if (Meteor.isClient) {
     },
 
     pet: function() {
-      var pet =  pet_profile.findOne({name: pet_name});
+      var pet =  pet_profile.findOne({owner: owners.findOne({_id: schedule_id}).owner});
       return pet;
     }
 
@@ -482,7 +485,7 @@ if (Meteor.isClient) {
     'click #message-send': function (event) {
       event.preventDefault();
       /*checks if there is an existing chat happening*/
-      var chatslist = owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner}).chats;
+      var chatslist = owners.findOne({_id: schedule_id}).chats;
       var bool;
       if(chatslist){
         bool = chatslist.indexOf(chatslist.filter(function (val) {
@@ -497,13 +500,13 @@ if (Meteor.isClient) {
           _id: walkers.findOne({owner: Meteor.userId()})._id
         }, {
           $push: {chats: {
-            chat: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id,
-            name: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner}).name
+            chat: owners.findOne({_id: schedule_id})._id,
+            name: owners.findOne({_id: schedule_id}).name
           }
         }});
 
         owners.update({
-          _id: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id
+          _id: owners.findOne({_id: schedule_id})._id
         }, {
           $push: {chats: {
             chat: walkers.findOne({owner: Meteor.userId()})._id,
@@ -517,8 +520,8 @@ if (Meteor.isClient) {
       messages.insert({
         message: message,
         time: Date.now(),
-        dogownername: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner}).name,
-        dogownerid: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id,
+        dogownername: owners.findOne({_id: schedule_id}).name,
+        dogownerid: schedule_id,
         walkername: walkers.findOne({owner: Meteor.userId()}).name,
         dogname: pet_name,
         walker: true,
@@ -535,8 +538,8 @@ if (Meteor.isClient) {
         time: time,
         date: date,
         owner: Meteor.userId(),
-        dogownername: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner}).name,
-        dogownerid: owners.findOne({owner: pet_profile.findOne({name: pet_name}).owner})._id,
+        dogownername: owners.findOne({_id: schedule_id}).name,
+        dogownerid: schedule_id,
         walkername: walkers.findOne({owner: Meteor.userId()}).name,
         dogname: pet_name,
         confirmed: false,
