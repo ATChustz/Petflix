@@ -16,7 +16,7 @@ The first time that a user goes to the owner side of the app they have to sign u
 
 The walker side of the app revolves around selecting a dog and then confirming it.
 
-The walker has the option to either scroll and browse dogs or search for a dog. Eventually they will have the option to filter. 
+The walker has the option to either scroll and browse dogs or search for a dog. Search functionality only works if the user inputs the full name of the dog with no spaces. To get all dogs again the user must press enter while having the search bar selected and nothing written in the search bar. Eventually they will have the option to filter. 
 
 Once they have selcedted a dog they are taken to the dogs profile and if the user chooses to they can choose to 'chill' with the dog.
 
