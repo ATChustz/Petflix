@@ -10,13 +10,13 @@ The first is messaging walkers. They can access this section by going to the mai
 
 The second is either rejecting or confirming requests from walkers. This can be done under the scheduling tab of the dog's profile.
 
-The first time that a user goes to the owner side of the app they have to sign up as an owner and add a dog before they are able to view their dogs profile.
+The first time that a user goes to the owner side of the app they have to sign up as an owner and add a dog before they are able to view their dogs profile. They must complete add all dog info before being able to move on. Owners currently cannot name their dog the same name as another dog in the app.
 
 # Walker
 
 The walker side of the app revolves around selecting a dog and then confirming it.
 
-The walker has the option to either scroll and browse dogs or search for a dog. Eventually they will have the option to filter. 
+The walker has the option to either scroll and browse dogs or search for a dog. Search functionality only works if the user inputs the full name of the dog with no spaces. To get all dogs again the user must press enter while having the search bar selected and nothing written in the search bar. Eventually they will have the option to filter. The app has the functionality to filer from the walker side, however the owners don't have the option to add tags to their dogs for the filter to work. 
 
 Once they have selcedted a dog they are taken to the dogs profile and if the user chooses to they can choose to 'chill' with the dog.
 
