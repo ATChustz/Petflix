@@ -2,6 +2,8 @@
 
 Petflix is an app design to connect dog owners with people who want to walk dogs around. The app is split into two sides, one for the walkers and one for the owners.
 
+It is important to note that if petflix.meteor.com says it is loading to wait 30 seconds and then refresh the page. If it still says it is loading email sbuck@stanford.edu so that we can wake the server up manually.
+
 # Owner
 
 The owner side of the app revolves the dog that an owner puts up on the app. Each owner can only have one dog registered per user account. The owner has two main flows that they can go through.
